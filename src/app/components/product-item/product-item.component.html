@@ -1,0 +1,77 @@
+<div class="product-men women_two  mx-1">
+    <div class="product-googles-info googles">
+        <div class="men-pro-item">
+
+            <div class="men-thumb-item">
+
+                <img src="{{ imgUrl }}" class="img-fluid" alt="">
+
+                <div class="men-cart-pro">
+                    <div class="inner-men-cart-pro">
+                        <a href="single.html" class="link-product-add-cart">Quick View</a>
+                    </div>
+                </div>
+
+                <span *ngIf="status==='NEW'" class="product-new-top">New</span>
+
+
+            </div>
+
+            <div class="item-info-product">
+                <div class="info-product-price">
+
+                    <div class="grid_meta">
+
+                        <div class="product_price">
+                            <h4>
+                                <a href="single.html">{{ name }}</a>
+                            </h4>
+                            <div class="grid-price mt-2">
+                                <span class="money ">{{ price | currency : "USD" }}</span>
+                            </div>
+                        </div>
+
+                        <ul class="stars">
+                            <li>
+                                <a href="#">
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <fa-icon [icon]="faStarHalfStroke" aria-hidden="true"></fa-icon>
+                                </a>
+                            </li>
+                            ({{ star }})
+                        </ul>
+
+                    </div>
+
+                    <div class="googles single-item hvr-outline-out">
+                        <button type="submit" class="googles-cart pgoogles-cart">
+                            <fa-icon [icon]="faCartPlus"></fa-icon>
+                        </button>
+                    </div>
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+    </div>
+</div>

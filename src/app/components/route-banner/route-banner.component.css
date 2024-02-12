@@ -1,0 +1,88 @@
+.banner_inner {
+    background: url(../../../assets/images/banner-mid.jpg)no-repeat 0px -73px;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    moz-background-size: cover;
+    min-height: 180px;
+}
+
+ul.short {
+    text-align: left;
+    padding: 5em 0em 0 2em;
+}
+
+ul.short li {
+    display: inline-block;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 0.9em;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+ul.short li a {
+    color: #ff4e00;
+}
+
+.services-breadcrumb ul li i {
+    padding: 0 2em;
+    letter-spacing: 1em;
+}
+
+
+@media(max-width:1280px) {
+
+    .banner_inner {
+        background: url(../../../assets/images/banner4.jpg)no-repeat 0px -55px;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        -ms-background-size: cover;
+        moz-background-size: cover;
+        min-height: 159px;
+    }
+
+    ul.short {
+        text-align: left;
+        padding: 4.5em 0em 0 2em;
+    }
+
+}
+
+@media(max-width:991px) {
+
+    .banner_inner {
+        background: url(../../../assets/images/banner4.jpg)no-repeat 0px -20px;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        -ms-background-size: cover;
+        moz-background-size: cover;
+        min-height: 133px;
+    }
+
+    ul.short {
+        text-align: left;
+        padding: 3.5em 0em 0 1.3em;
+    }
+
+}
+
+@media(max-width:640px) {
+
+    ul.short {
+        text-align: left;
+        padding: 3em 0em 0 1.3em;
+    }
+
+}
+
+@media(max-width:384px) {
+
+    .banner_inner {
+        min-height: 109px;
+    }
+
+}

@@ -1,0 +1,191 @@
+footer {
+    background: #151515;
+}
+
+.footer p {
+    color: #808080;
+}
+
+.footer-grid-w3ls h3 {
+    font-size: 1.4em;
+    color: #ffffff;
+    font-weight: 300;
+    margin-bottom: 1em;
+    letter-spacing: 1px;
+    border-bottom: 1px dotted #4d5052;
+    padding-bottom: 0.8em;
+}
+
+.footer-grid-w3ls form {
+    border: 1px solid #3e3c3c;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.footer-text p,
+.contact-info p {
+    color: #616263;
+    line-height: 1.9em;
+}
+
+.footer-text input[type="email"] {
+    outline: none;
+    padding: 12px 15px;
+    color: #fff;
+    font-size: 13px;
+    width: 84%;
+    border: none;
+    background: none;
+    letter-spacing: 1px;
+    float: left;
+}
+
+.footer-text button.btn1 {
+    color: #ff4e00;
+    border: none;
+    padding: 10px 0;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    background: none;
+    cursor: pointer;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    transition: 0.5s all;
+    float: right;
+    width: 15%;
+}
+
+.contact-info h4 {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.2em;
+    line-height: 1.9;
+    color: #ff4e00;
+}
+
+.phone {
+    margin-top: 20px;
+}
+
+.phone p a {
+    color: #808080;
+}
+
+.phone p a:hover {
+    color: #fff;
+}
+
+ul.links li {
+    list-style-type: none;
+    margin: 10px 0;
+}
+
+ul.links li a {
+    color: #616263;
+}
+
+ul.links li a:hover {
+    color: #fff;
+}
+
+.form-control:focus {
+    border: 1px solid #ccc;
+    outline: 0;
+    box-shadow: none !important;
+}
+
+button.btn1 {
+    color: #fff;
+    border: none;
+    padding: 12px 0;
+    text-align: center;
+    text-decoration: none;
+    background: #151515;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    transition: 0.5s all;
+    float: right;
+    width: 20%;
+    cursor: pointer;
+}
+
+button.btn1:hover {
+    background: #ff4e00;
+}
+
+.copyright-w3layouts {
+    border-top: 1px solid #292828;
+    margin-top: 2em;
+    padding-top: 2em;
+}
+
+.copyright-w3layouts p {
+    color: #616263;
+}
+
+.copyright-w3layouts p a:hover {
+    color: #fff;
+}
+
+.copyright-w3layouts a {
+    color: #ff4e00;
+}
+
+.copyright-w3layouts a i:hover {
+    color: #ffa200;
+    transition: all 0.7s ease-in-out;
+    -webkit-transition: all 0.7s ease-in-out;
+    -moz-transition: all 0.7s ease-in-out;
+    -o-transition: all 0.7s ease-in-out;
+    -ms-transition: all 0.7s ease-in-out;
+}
+
+.newsletter .email {
+    background-color: #F4F4F4;
+    border: none;
+}
+
+.newsletter {
+    position: relative;
+    margin-top: 2em;
+}
+
+
+/*-- social-icons --*/
+.footer-social li {
+    display: inline-block;
+}
+
+.footer-social li a {
+    color: #999;
+    font-size: 15px;
+}
+
+.footer-social li a:hover {
+    color: #ff4e00;
+}
+
+ul.social_section_1info li {
+    display: inline-block;
+}
+
+ul.social_section_1info {
+    margin-top: 15px;
+}
+
+ul.social_section_1info a {
+    color: #808080;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+ul.social_section_1info a:hover {
+    color: #fff;
+}
+
+/*-- //social-icons --*/

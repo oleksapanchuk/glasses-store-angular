@@ -1,0 +1,54 @@
+<header>
+    <div class="row">
+
+        <!-- NEED HELP TEXT-->
+        <div class="col-md-3 top-info text-left mt-lg-4">
+            <h6>Need Help</h6>
+            <ul>
+                <li>
+                    <fa-icon [icon]="faPhone"></fa-icon> Call
+                </li>
+                <li class="number-phone mt-3">12345678099</li>
+            </ul>
+        </div>
+
+        <!-- BRAND NAME -->
+        <div class="col-md-6 logo-title text-center">
+            <h1 class="logo-title">
+                <a routerLink="/home" routerLinkActive="active" class="navbar-brand">Goggles</a>
+            </h1>
+        </div>
+
+
+        <!-- CART AND PROFILE -->
+        <div class="col-md-3 top-info-cart text-right mt-lg-4">
+            <ul class="cart-inner-info">
+
+                <li class="button-log">
+                    <a routerLink="/sign-in" routerLinkActive="active" class="btn-open">
+                        <fa-icon [icon]="faUser" aria-hidden="true"></fa-icon>
+                    </a>
+                </li>
+
+                <li class="galssescart galssescart2 cart cart box_1">
+                    <button class="top_googles_cart" type="submit" name="submit" value="">
+                        My Cart
+                        <fa-icon [icon]="faCartArrowDown"></fa-icon>
+                    </button>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- SEARCH -->
+    <app-search></app-search>
+
+    <!-- LINE-->
+    <label class="top-log mx-auto"></label>
+
+    <!-- NAV BAR -->
+    <app-navbar></app-navbar>
+
+</header>

@@ -1,0 +1,51 @@
+.special-deal-item-container {
+    margin: 15px 0;
+}
+
+.img-deals {
+    float: left;
+    width: 25%;
+}
+
+.img-deals img {
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+.special-product-details {
+    float: left;
+    text-align: left;
+    width: 55%;
+    margin-left: 10%;
+}
+
+.special-product-details h3 {
+    color: #080808;
+    font-size: 1em;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.special-product-details h3:hover {
+    color: #ff4e00;
+}
+
+.special-product-details .new-price {
+    font-size: 1em;
+    color: #ff4e00;
+}
+
+.special-product-details .old-price {
+    font-size: 0.8em;
+    color: #6d6c6c;
+    text-decoration: line-through;
+    padding-left: 1.5em;
+}
+
+
+@media(max-width:1280px) {
+
+    .img-deals {
+        padding-left: 0;
+    }
+}

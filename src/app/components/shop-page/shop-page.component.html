@@ -1,0 +1,196 @@
+<app-route-banner pageName="Shop"></app-route-banner>
+
+<section class="py-lg-5 py-3">
+    <div class="container-fluid">
+        <div class="px-lg-4 px-3">
+
+            <h3 class="tittle-main my-lg-4 mt-3">New Arrivals for you</h3>
+
+            <div class="row">
+
+                <!-- product left -->
+                <div class="side-bar col-lg-3">
+
+                    <!-- search products -->
+                    <div class="search-goods-container">
+
+                        <h3 class="tittle-h3">Search Here..</h3>
+
+                        <form action="#" method="post">
+                            <input class="form-control" type="search" name="search" placeholder="Search here..."
+                                required="">
+                            <button class="btn1">
+                                <fa-icon [icon]="faSearch"></fa-icon>
+                            </button>
+                            <div class="clearfix"></div>
+                        </form>
+
+                    </div>
+
+                    <!-- price range -->
+                    <div class="range">
+                        <h3 class="tittle-h3">Price range</h3>
+
+                        <div class="slider-range">{{ rangeValues[0] }} - {{ rangeValues[1] }}</div>
+
+                        <p-slider [(ngModel)]="rangeValues" [range]="true" [step]="1"></p-slider>
+                    </div>
+
+                    <!-- discounts -->
+                    <div class="left-side">
+
+                        <h3 class="tittle-h3">Discount</h3>
+
+                        <ul>
+                            <li>
+                                <input type="checkbox" class="checked">
+                                <span class="span">5% or More</span>
+                            </li>
+                            <li>
+                                <input type="checkbox" class="checked">
+                                <span class="span">10% or More</span>
+                            </li>
+                            <li>
+                                <input type="checkbox" class="checked">
+                                <span class="span">20% or More</span>
+                            </li>
+                            <li>
+                                <input type="checkbox" class="checked">
+                                <span class="span">30% or More</span>
+                            </li>
+                            <li>
+                                <input type="checkbox" class="checked">
+                                <span class="span">50% or More</span>
+                            </li>
+                            <li>
+                                <input type="checkbox" class="checked">
+                                <span class="span">60% or More</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- rating  -->
+                    <div class="left-side customer-rev">
+
+                        <h3 class="tittle-h3">Customer Review</h3>
+
+                        <ul>
+                            <li>
+                                <a routerLink="/shop">
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <span>5.0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/shop">
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="faStarHalfStroke" aria-hidden="true"></fa-icon>
+                                    <span>4.5</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/shop">
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="farStar" aria-hidden="true"></fa-icon>
+                                    <span>4.0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/shop">
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="faStarHalfStroke" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="farStar" aria-hidden="true"></fa-icon>
+                                    <span>3.5</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/shop">
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="farStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="farStar" aria-hidden="true"></fa-icon>
+                                    <span>3.0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/shop">
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="faStarHalfStroke" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="farStar" aria-hidden="true"></fa-icon>
+                                    <fa-icon [icon]="farStar" aria-hidden="true"></fa-icon>
+                                    <span>2.5</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- special deals -->
+                    <div class="left-side">
+
+                        <h3 class="tittle-h3">Special Deals</h3>
+
+                        <app-special-deal-item [productId]="1" imageUrl="../../../assets/images/s1.jpg"
+                            name="Farenheit (Grey)" [oldPrice]="575.00" [newPrice]="450.00"></app-special-deal-item>
+                        <app-special-deal-item [productId]="2" imageUrl="../../../assets/images/s2.jpg"
+                            name="Opium (Grey)" [oldPrice]="325.00" [newPrice]="200.00"></app-special-deal-item>
+                        <app-special-deal-item [productId]="3" imageUrl="../../../assets/images/s3.jpg"
+                            name="Azmani Round" [oldPrice]="725.00" [newPrice]="510.00"></app-special-deal-item>
+                        <app-special-deal-item [productId]="4" imageUrl="../../../assets/images/s4.jpg"
+                            name="Farenheit Oval" [oldPrice]="325.00" [newPrice]="150.00"></app-special-deal-item>
+
+                    </div>
+
+                </div>
+
+                <!--product right-->
+                <div class="left-ads-display col-lg-9">
+                    <div class="wrapper_top_shop">
+
+                        <div class="row">
+
+                            <div class="col-md-6 shop_left">
+                                <img src="../../../assets/images/banner3.jpg" alt="">
+                                <h6>40% off</h6>
+                            </div>
+
+                            <div class="col-md-6 shop_right">
+                                <img src="../../../assets/images/banner4.jpg" alt="">
+                                <h6>50% off</h6>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <app-product-list></app-product-list>
+                        </div>
+
+                        <div class="my-lg-3 my-0">
+
+                        </div>
+
+                        <div class="row">
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,20 @@
+<div class="special-deal-item-container">
+
+    <a routerLink="/shop"><!-- TODO links below -->
+
+        <div class="img-deals">
+            <img [src]="imageUrl" alt="">
+        </div>
+
+        <div class="special-product-details">
+
+            <h3>{{ name }}</h3>
+            <span class="new-price">{{ newPrice | currency: "USD" }}</span>
+            <span class="old-price">{{ oldPrice | currency: "USD" }}</span>
+
+        </div>
+
+        <div class="clearfix"></div>
+    </a>
+
+</div>

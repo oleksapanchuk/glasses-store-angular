@@ -1,0 +1,71 @@
+<div class="sign-in-container">
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form">
+
+                    <div class="from-tittle pb-4">
+                        Login to continue
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="email">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Email</span>
+                    </div>
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" name="pass">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Password</span>
+                    </div>
+
+                    <div class="small-text">
+                        <a routerLink="/forgot-password" routerLinkActive="active" class="txt1">
+                            Forgot Password?
+                        </a>
+                    </div>
+
+
+                    <div class="container-login100-form-btn">
+                        <button class="form-btn" type="submit">
+                            Login
+                        </button>
+                    </div>
+
+                    <div class="text-center pt-3 pb-2">
+                        <span class="txt2">
+                            or sign in using
+                        </span>
+                    </div>
+
+                    <div class="flex-c-m">
+                        <a href="#" class="form-social-item flex-c-m mx-1">
+                            <fa-icon [icon]="faGoogle"></fa-icon>
+                        </a>
+
+                        <a href="#" class="form-social-item flex-c-m mx-1">
+                            <fa-icon [icon]="faGithub"></fa-icon>
+                        </a>
+                        <a href="#" class="form-social-item flex-c-m mx-1">
+                            <fa-icon [icon]="faFacebook"></fa-icon>
+                        </a>
+                    </div>
+
+                    <div class="text-center pt-5">
+                        <span class="txt2">
+                            Not sign up yet?
+                        </span>
+                        <a routerLink="/sign-up" class="link-sign-up"> Sign Up here!</a>
+                    </div>
+                </form>
+
+                <div class="login100-more" style="background-image: url('../../../assets/images/bg-01.jpg');">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,15 @@
+h3.tittle-w3layouts {
+    color: #353434;
+    font-size: 3em;
+    text-align: left;
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
+}
+
+h3.tittle-w3layouts.two {
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: 10px;
+}
+
