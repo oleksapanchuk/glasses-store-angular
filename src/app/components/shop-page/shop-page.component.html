@@ -77,62 +77,32 @@
                         <ul>
                             <li>
                                 <a routerLink="/shop">
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <span>5.0</span>
+                                    <app-rating-stars [starNumber]="5"></app-rating-stars>
                                 </a>
                             </li>
                             <li>
                                 <a routerLink="/shop">
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="faStarHalfStroke" aria-hidden="true"></fa-icon>
-                                    <span>4.5</span>
+                                    <app-rating-stars [starNumber]="4.5"></app-rating-stars>
                                 </a>
                             </li>
                             <li>
                                 <a routerLink="/shop">
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="farStar" aria-hidden="true"></fa-icon>
-                                    <span>4.0</span>
+                                    <app-rating-stars [starNumber]="4"></app-rating-stars>
                                 </a>
                             </li>
                             <li>
                                 <a routerLink="/shop">
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="faStarHalfStroke" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="farStar" aria-hidden="true"></fa-icon>
-                                    <span>3.5</span>
+                                    <app-rating-stars [starNumber]="3.5"></app-rating-stars>
                                 </a>
                             </li>
                             <li>
                                 <a routerLink="/shop">
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="farStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="farStar" aria-hidden="true"></fa-icon>
-                                    <span>3.0</span>
+                                    <app-rating-stars [starNumber]="3"></app-rating-stars>
                                 </a>
                             </li>
                             <li>
                                 <a routerLink="/shop">
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="faStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="faStarHalfStroke" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="farStar" aria-hidden="true"></fa-icon>
-                                    <fa-icon [icon]="farStar" aria-hidden="true"></fa-icon>
-                                    <span>2.5</span>
+                                    <app-rating-stars [starNumber]="2.5"></app-rating-stars>
                                 </a>
                             </li>
                         </ul>
@@ -178,15 +148,17 @@
                             <app-product-list></app-product-list>
                         </div>
 
-                        <div class="my-lg-3 my-0">
-
-                        </div>
-
-                        <div class="row">
-
-                        </div>
-
                     </div>
+
+                </div>
+
+                <!-- Featured Products -->
+                <div class="slider-img mid-sec mt-lg-5 mt-2">
+
+                    <h3 class="tittle-main text-left my-lg-4 my-3">Featured Products</h3>
+
+                    <app-slider></app-slider>
+
                 </div>
 
             </div>

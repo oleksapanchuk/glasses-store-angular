@@ -2,12 +2,18 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faStar, faStarHalfStroke, faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { RouterLink } from '@angular/router';
+import { Product } from '../../common/product';
+import { RatingStarsComponent } from "../rating-stars/rating-stars.component";
+import { CartService } from '../../services/cart.service';
+import { CartItem } from '../../common/cart-item';
+
 @Component({
-  selector: 'app-product-item',
-  standalone: true,
-  imports: [FontAwesomeModule, CommonModule],
-  templateUrl: './product-item.component.html',
-  styleUrl: './product-item.component.css'
+    selector: 'app-product-item',
+    standalone: true,
+    templateUrl: './product-item.component.html',
+    styleUrl: './product-item.component.css',
+    imports: [FontAwesomeModule, CommonModule, RouterLink, RatingStarsComponent]
 })
 export class ProductItemComponent {
 
@@ -16,19 +22,25 @@ export class ProductItemComponent {
   faStarHalfStroke = faStarHalfStroke;
   faCartPlus = faCartPlus;
 
-  @Input() name: string | undefined;
-  @Input() price: number | undefined;
-  @Input() star: number | undefined;
-  @Input() imgUrl: string | undefined;
-  @Input() status: string | undefined;
+  @Input() product: Product | undefined;
 
-
-  constructor() {
-    console.log(this.imgUrl);
+  constructor(
+    public cartService: CartService
+  ) {
+    console.log(this.product);
     
    }
 
   ngOnInit(): void {
+
+  }
+
+  addToCart() {
+
+    console.log(`Adding to cart: ${this.product?.name}, unitPrice=${this.product?.price}`);
+
+    const theCartItem = new CartItem(this.product!);
+    this.cartService.addToCart(theCartItem);
 
   }
 

@@ -1,23 +1,10 @@
-<!-- <div class="slider-img mid-sec">
-    <div class="mid-slider">
-        <div class="owl-carousel owl-theme row">
-
-            <app-product-item class="col-md-3 mt-3" name="Fastrack Aviator" imgUrl="../../../assets/images/s5.jpg" [price]="325.00"
-                [star]="3.5" status="NEW"></app-product-item>
-
-
-
-        </div>
-    </div>
-</div> -->
-
 <p-carousel [value]="products" [numVisible]="4" [numScroll]="1" [circular]="true"
     [responsiveOptions]="responsiveOptions" [autoplayInterval]="10000">
 
     <ng-template let-product pTemplate="item">
 
-        <app-product-item class="col-md-3 mt-3" name="{{ product.random }}" imgUrl="{{ product.picture }}"
-            [price]="325.00" [star]="3.5" status="NEW"></app-product-item>
+        <!-- <app-product-item class="col-md-3 mt-3" name="{{ product.random }}" imgUrl="{{ product.picture }}"
+            [price]="325.00" [star]="3.5" status="NEW"></app-product-item> -->
 
     </ng-template>
 

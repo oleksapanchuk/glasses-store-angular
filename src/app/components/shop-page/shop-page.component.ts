@@ -8,13 +8,15 @@ import { faSearch, faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { SliderModule } from 'primeng/slider';
 import { FormsModule } from '@angular/forms';
+import { SliderComponent } from "../home-page-components/slider/slider.component";
+import { RatingStarsComponent } from "../rating-stars/rating-stars.component";
 
 @Component({
-  selector: 'app-shop-page',
-  standalone: true,
-  imports: [RouterLink, FontAwesomeModule, RouteBannerComponent, SpecialDealItemComponent, ProductListComponent, SliderModule, FormsModule],
-  templateUrl: './shop-page.component.html',
-  styleUrl: './shop-page.component.css'
+    selector: 'app-shop-page',
+    standalone: true,
+    templateUrl: './shop-page.component.html',
+    styleUrl: './shop-page.component.css',
+    imports: [RouterLink, FontAwesomeModule, RouteBannerComponent, SpecialDealItemComponent, ProductListComponent, SliderModule, FormsModule, SliderComponent, RatingStarsComponent]
 })
 export class ShopPageComponent {
 

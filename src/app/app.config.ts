@@ -4,6 +4,9 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { IMAGE_CONFIG } from '@angular/common';
+import { provideHttpClient } from '@angular/common/http';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,5 +18,6 @@ export const appConfig: ApplicationConfig = {
         disableImageLazyLoadWarning: true
       }
     },
+    provideHttpClient(), provideAnimationsAsync(),
   ]
 };

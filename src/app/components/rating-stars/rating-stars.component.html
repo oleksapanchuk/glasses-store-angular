@@ -1,0 +1,9 @@
+<div class="customer-rev">
+
+    <div>
+        <fa-icon *ngFor="let index of arrayStarSolid" [icon]="faStar" aria-hidden="true"></fa-icon>
+        <fa-icon *ngIf="isNonIntegerNumber" [icon]="faStarHalfStroke" aria-hidden="true"></fa-icon>
+        <fa-icon *ngFor="let index of arrayStarRegular" [icon]="farStar" aria-hidden="true"></fa-icon>
+    </div>
+
+</div>

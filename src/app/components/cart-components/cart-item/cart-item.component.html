@@ -1,0 +1,38 @@
+<div class="cart__positions">
+
+    <div class="cart__product">
+        <div class="cart__product-img">
+            <img [src]=" cartItem?.imageUrl " alt="">
+        </div>
+        <div class="cart__product-info">
+
+            <div class="cart__product-name">
+                <a href="#">{{ cartItem?.name}}</a>
+            </div>
+            <div class="cart__product-artikul">
+                Artikul: {{ cartItem?.sku }}
+            </div>
+            <div class="cart__product-rating">
+                <app-rating-stars [starNumber]=" cartItem?.rating "></app-rating-stars>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="cart__order-data">
+
+        <div class="cart__quantity">
+            <button (click)="incrementQuantity()">+</button>
+            <span>{{ cartItem?.quantity }}</span>
+            <button (click)="decrementQuantity()">–</button>
+        </div>
+        <div class="cart__price">
+            {{ cartItem?.price! * cartItem?.quantity! | currency: "USD" }}
+        </div>
+        <button (click)="remove()" class="cart__delete">
+            <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+
+    </div>
+
+</div>
