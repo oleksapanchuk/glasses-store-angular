@@ -28,7 +28,7 @@ export class ProductListComponent {
     rows: number | undefined = 12;
 
     thePageNumber: number = 0;
-    thePageSize: number = 8;
+    thePageSize: number = 12;
     theTotalElements: number = 0;
 
 
@@ -83,7 +83,7 @@ export class ProductListComponent {
         }
 
         //
-        // Check if we have a defferent category then previous 
+        // Check if we have a defferent category then previous
         // Note: Angular will reuse a component if it is currently being viewd
         //
 

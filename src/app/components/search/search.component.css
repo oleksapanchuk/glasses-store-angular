@@ -1,15 +1,4 @@
 
-.search {
-    position: relative;
-}
-
-.mobile-nav-button {
-    position: absolute;
-    right: 355px;
-    top: 24px;
-    z-index: 9;
-}
-
 /* Overlay style */
 .overlay {
     position: fixed;
@@ -55,7 +44,7 @@ button#trigger-overlay {
     cursor: pointer;
 }
 
-.search form input[type="search"] {
+form input[type="search"] {
     width: 100%;
     padding: 1em 1.5em;
     font-size: 17px;
@@ -69,7 +58,7 @@ button#trigger-overlay {
     border-radius: 0;
 }
 
-.search button.btn.btn-primary.submit {
+button.btn.btn-primary.submit {
     color: #fff;
     font-size: 15px;
     font-weight: 600;
@@ -85,39 +74,6 @@ button#trigger-overlay {
     -webkit-appearance: none;
     background: #ff4e00;
     border-radius: 0;
-}
-
-/* Menu style *
-.overlay ul {
-	list-style: none;
-	padding: 0;
-	margin: 0 auto;
-	display: inline-block;
-	height: 100%;
-	position: relative;
-}
-
-.overlay ul li {
-	display: block;
-	height: 20%;
-	height: calc(100% / 5);
-	min-height: 54px;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-}
-
-.overlay ul li a {
-	font-size: 54px;
-	font-weight: 300;
-	display: block;
-	color: #fff;
-	-webkit-transition: color 0.2s;
-	transition: color 0.2s;
-}
-
-.overlay ul li a:hover,
-.overlay ul li a:focus {
-	color: #f0f0f0;
 }
 
 /* Effects */
@@ -166,86 +122,20 @@ button#trigger-overlay {
     transition-delay: 0s;
 }
 
-/*--/responsive--*/
-@media(max-width:1366px) {
-    .mobile-nav-button {
-        position: absolute;
-        right: 245px;
-        top: 24px;
-    }
-}
-
-@media(max-width:1280px) {
-    .mobile-nav-button {
-        position: absolute;
-        right: 230px;
-        top: 24px;
-    }
-}
-
-@media (max-width: 1080px) {
-    .mobile-nav-button {
-        position: absolute;
-        right: 200px;
-        top: 24px;
-    }
-}
+/*-- responsive --*/
 
 @media (max-width: 1050px) {
-    .mobile-nav-button {
-        position: absolute;
-        right: 195px;
-        top: 24px;
-    }
 
     .overlay-door form {
         width: 70%;
     }
 }
 
-@media (max-width: 1024px) {
-    .mobile-nav-button {
-        position: absolute;
-        right: 185px;
-        top: 24px;
-    }
-}
-
-@media (max-width:767px) {
-    .mobile-nav-button {
-        position: absolute;
-        right: 185px;
-        top: 36px;
-    }
-}
-
 @media (max-width:640px) {
-    .mobile-nav-button {
-        position: absolute;
-        right: 112px;
-        top: 36px;
-    }
 
     .overlay-door form {
         width: 90%;
     }
 }
 
-@media (max-width:480px) {
-    .mobile-nav-button {
-        position: absolute;
-        right: 70px;
-        top: 36px;
-    }
-
-}
-
-@media (max-width:375px) {
-    .mobile-nav-button {
-        position: absolute;
-        right: 46px;
-        top: 36px;
-    }
-}
-
-/*--//responsive--*/
+/*-- /responsive  --*/

@@ -1,24 +1,18 @@
-<div class="search">
+<button id="trigger-overlay" type="button">
+  <fa-icon [icon]="faSearch"></fa-icon>
+</button>
 
-    <div class="mobile-nav-button">
-        <button id="trigger-overlay" type="button">
-            <fa-icon [icon]="faSearch"></fa-icon>
-        </button>
-    </div>
+<div class="overlay overlay-door close">
 
-    <div class="overlay overlay-door close">
+  <button type="button" class="overlay-close">
+    <fa-icon [icon]="faTimes"></fa-icon>
+  </button>
 
-        <button type="button" class="overlay-close">
-            <fa-icon [icon]="faTimes"></fa-icon>
-        </button>
-
-        <form action="#" method="post" class="d-flex">
-            <input class="form-control" type="search" placeholder="Search here..." required="">
-            <button type="submit" class="btn btn-primary submit">
-                <fa-icon [icon]="faSearch"></fa-icon>
-            </button>
-        </form>
-        
-    </div>
+  <form action="#" method="post" class="d-flex">
+    <input class="form-control" type="search" placeholder="Search here..." required="">
+    <button type="submit" class="btn btn-primary submit">
+      <fa-icon [icon]="faSearch"></fa-icon>
+    </button>
+  </form>
 
 </div>
