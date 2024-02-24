@@ -7,13 +7,14 @@ import {RouterLink, RouterLinkActive} from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CartDialogComponent } from '../cart-components/cart-dialog/cart-dialog.component';
 import {faHeart} from "@fortawesome/free-regular-svg-icons";
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-header',
   standalone: true,
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
-  imports: [FontAwesomeModule, SearchComponent, NavbarComponent, RouterLink, RouterLinkActive]
+  imports: [FontAwesomeModule, SearchComponent, NavbarComponent, RouterLink, RouterLinkActive, NgOptimizedImage]
 })
 export class HeaderComponent {
 

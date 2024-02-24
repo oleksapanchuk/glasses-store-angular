@@ -1,29 +1,26 @@
-<header>
+<header class="m-0 p-0">
   <div class="row">
 
-    <!-- NEED HELP TEXT-->
-    <div class="col-md-3 top-info text-left mt-lg-4">
-      <h6>Need Help</h6>
-      <ul>
-        <li>
-          <fa-icon [icon]="faPhone"></fa-icon>
-          Call
-        </li>
-        <li class="number-phone mt-3">12345678099</li>
-      </ul>
+    <!-- LOGO & BRAND NAME -->
+    <div class="col-3">
+
+      <a routerLink="/home" routerLinkActive="active" class="navbar-brand">
+        <div class="justify-content-end d-flex align-items-center">
+          <img src="../../../assets/images/logo/logo_small.png" alt="" style="height: 80px">
+          <h1 class="logo-title">Visionarium</h1>
+        </div>
+      </a>
+
     </div>
 
-    <!-- BRAND NAME -->
-    <div class="col-md-6 logo-title text-center">
-      <h1 class="logo-title">
-        <a routerLink="/home" routerLinkActive="active" class="navbar-brand">Goggles</a>
-      </h1>
+    <!-- NAV BAR -->
+    <div class="col-6 d-flex justify-content-center align-items-center p-0 m-0">
+      <app-navbar></app-navbar>
     </div>
-
 
     <!-- CART AND PROFILE -->
-    <div class="col-md-3 top-info-cart text-right mt-lg-4">
-      <ul class="cart-inner-info">
+    <div class="col-3 d-flex align-items-center m-0 p-0">
+      <ul class="cart-inner-info justify-content-start d-flex ">
 
         <!-- SEARCH -->
         <li class="button__icon">
@@ -31,21 +28,21 @@
         </li>
 
         <!-- SIGN IN -->
-        <li class="button__icon">
+        <li class="button__icon mx-3">
           <a routerLink="/sign-in" routerLinkActive="active" class="btn-open">
             <fa-icon [icon]="faUser" aria-hidden="true"></fa-icon>
           </a>
         </li>
 
         <!-- FAVORITES -->
-        <li class="button__icon">
+        <li class="button__icon mx-3">
           <a routerLink="/liked" routerLinkActive="active" class="btn-open">
             <fa-icon [icon]="faHeart" aria-hidden="true"></fa-icon>
           </a>
         </li>
 
         <!-- CART -->
-        <li class="button__icon">
+        <li class="button__icon mx-3">
           <button (click)="openDialog()" class="cart__button" type="submit" name="submit" value="">
             <fa-icon [icon]="faCartArrowDown"></fa-icon>
           </button>
@@ -54,14 +51,7 @@
       </ul>
 
     </div>
+
   </div>
-
-
-
-  <!-- LINE-->
-  <label class="top-log mx-auto"></label>
-
-  <!-- NAV BAR -->
-  <app-navbar></app-navbar>
 
 </header>

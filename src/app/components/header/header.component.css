@@ -39,13 +39,19 @@ span.sub {
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.14);
 }
 
-h1.logo-title a.navbar-brand {
+.logo-title a.navbar-brand {
   font-size: 1.5em;
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.26);
   color: #454546;
   margin: 0;
   font-weight: 700;
   font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+}
+
+.logo-title {
+  margin: 0;
+  font-size: 2em;
   text-transform: uppercase;
 }
 
@@ -135,8 +141,6 @@ li.number-phone {
 ul.cart-inner-info li {
   display: inline-block;
   list-style: none;
-  margin-left: 2em;
-
 }
 
 .top-info ul li {
@@ -2110,7 +2114,7 @@ a.carousel-control-prev.test {
     font-size: 0.9em;
   }
 
-  h1.logo-title a.navbar-brand {
+  .logo-title a.navbar-brand {
     font-size: 1.3em;
   }
 
@@ -2388,7 +2392,7 @@ a.carousel-control-prev.test {
     letter-spacing: 2px;
   }
 
-  h1.logo-title a.navbar-brand {
+  .logo-title a.navbar-brand {
     font-size: 1.2em;
   }
 
