@@ -1,50 +1,42 @@
-<div class="product-men women_two  mx-1">
-    <div class="product-googles-info googles">
-        <div class="men-pro-item">
+<div class="card__container googles">
 
-            <div class="men-thumb-item">
+  <div class="card__top-container card__thumb-item">
 
-                <img src="{{ product?.imageUrl }}" class="img-fluid" alt="">
+    <img src="{{ product.imageUrl }}" alt="">
 
-                <div class="men-cart-pro">
-                    <div class="inner-men-cart-pro">
-                        <a routerLink="/shop/products/{{ product?.id }}" class="link-product-add-cart">Quick View</a>
-                    </div>
-                </div>
-
-                <span *ngIf="product?.active" class="product-new-top">New</span>
-
-
-            </div>
-
-            <div class="item-info-product">
-                <div class="info-product-price">
-
-                    <div class="grid_meta">
-
-                        <div class="product_price">
-                            <h4>
-                                <a href="single.html">{{ product?.name }}</a>
-                            </h4>
-                            <div class="grid-price mt-2">
-                                <span class="money ">{{ product?.price| currency : "USD" }}</span>
-                            </div>
-                        </div>
-
-                        <app-rating-stars [starNumber]=" product?.rating "></app-rating-stars>
-
-                    </div>
-
-                    <div class="googles single-item hvr-outline-out">
-                        <button (click)="addToCart()" type="submit" class="googles-cart pgoogles-cart">
-                            <fa-icon [icon]="faCartPlus"></fa-icon>
-                        </button>
-                    </div>
-
-                </div>
-                <div class="clearfix"></div>
-            </div>
-
-        </div>
+    <div class="card__quick-view-container">
+      <div class="card__quick-view-container-inner">
+        <a routerLink="/shop/products/{{ product.id }}" class="card__quick-view-link">Quick View</a>
+      </div>
     </div>
+
+    <span *ngIf="!product.active" class="card__new-product">New</span>
+
+  </div>
+
+  <div class="card__info row">
+
+    <div class="card__product-info col-10">
+
+      <div class="card__product-name">
+        <a routerLink="/shop/products/{{ product.id }}">{{ product.name }}</a>
+      </div>
+
+      <div class="card__product-price">
+        <span class="money">{{ product.price| currency : "USD" }}</span>
+      </div>
+
+    </div>
+
+    <div class="card__buttons col-2">
+      <button (click)="addToCart()" class="card__button">
+        <fa-icon [icon]="faHeart"></fa-icon>
+      </button>
+      <button (click)="addToCart()" class="card__button">
+        <fa-icon [icon]="faCartPlus"></fa-icon>
+      </button>
+    </div>
+
+  </div>
+
 </div>
