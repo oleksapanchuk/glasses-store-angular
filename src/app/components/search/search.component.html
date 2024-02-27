@@ -8,11 +8,18 @@
     <fa-icon [icon]="faTimes"></fa-icon>
   </button>
 
-  <form action="#" method="post" class="d-flex">
-    <input class="form-control" type="search" placeholder="Search here..." required="">
-    <button type="submit" class="btn btn-primary submit">
+  <form class="d-flex">
+    <input #searchInput
+           class="form-control"
+           type="text"
+           placeholder="Search for data ..."
+           (keyup.enter)="doSearch(searchInput.value)">
+
+    <button (click)="doSearch(searchInput.value)"
+            class=" btn btn-primary submit">
       <fa-icon [icon]="faSearch"></fa-icon>
     </button>
+
   </form>
 
 </div>

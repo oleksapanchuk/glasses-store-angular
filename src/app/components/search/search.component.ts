@@ -1,6 +1,8 @@
 import { Component, ElementRef } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {ProductService} from "../../services/product.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-search',
@@ -14,7 +16,10 @@ export class SearchComponent {
   faSearch = faSearch;
   faTimes = faTimes;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef,
+              private productService: ProductService,
+              private router: Router
+  ) { }
 
 
   ngOnInit(): void {
@@ -38,6 +43,11 @@ export class SearchComponent {
     closeBttn.addEventListener('click', toggleOverlay);
   }
 
-  
+  doSearch(value: string) {
+    console.log(`value=${value}`);
+    this.router.navigateByUrl(`/shop/${value}`);
+  }
+
+
 
 }

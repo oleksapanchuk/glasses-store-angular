@@ -210,6 +210,23 @@ input.checked {
     background: #2b2d2d;
 }
 
+::ng-deep .p-paginator .p-paginator-first {
+  color: #353434;
+}
+
+::ng-deep .p-paginator .p-paginator-first:hover,
+::ng-deep .p-paginator .p-paginator-prev:hover,
+::ng-deep .p-paginator .p-paginator-next:hover,
+::ng-deep .p-paginator .p-paginator-last:hover {
+  color: #ff4e00;
+}
+
+::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: #f3efef;
+  border-color: #f3efef;
+  color: #ff4e00;
+}
+
 @media(max-width:1050px) {
 
     .search-goods-container input[type="search"] {

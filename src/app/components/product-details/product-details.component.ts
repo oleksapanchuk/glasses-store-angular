@@ -1,36 +1,29 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { RatingStarsComponent } from "../rating-stars/rating-stars.component";
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faFacebook, faTwitter, faGooglePlus, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import {faHeart} from "@fortawesome/free-regular-svg-icons";
+import {faFacebook} from "@fortawesome/free-brands-svg-icons";
+import {faTelegram} from "@fortawesome/free-brands-svg-icons/faTelegram";
+import {Product} from "../../common/product";
+import {ProductService} from "../../services/product.service";
+import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css',
-  imports: [RouterLink, RatingStarsComponent, CommonModule, FontAwesomeModule]
+  imports: [RouterLink, RatingStarsComponent, CommonModule, FontAwesomeModule, NgOptimizedImage]
 })
 export class ProductDetailsComponent {
 
-  faFacebook = faFacebook;
-  faTwitter = faTwitter;
-  faGooglePlus = faGooglePlus;
-  faLinkedin = faLinkedin;
-
-  id: number | undefined = 1;
-  name: string | undefined = "Irayz Butterfly Sunglasses (Black)";
-  description: string | undefined = "Round Blue Eyeglasses";
-  price: number | undefined = 650;
-  rating: number | undefined = 3;
-
-
-  //  product!: Product;
+  product!: Product;
 
   constructor(
-    // private productService: ProductService,
-    // private cartService: CartService,
+    private productService: ProductService,
+    private cartService: CartService,
     private route: ActivatedRoute
   ) { }
 
@@ -45,17 +38,19 @@ export class ProductDetailsComponent {
   handleProductDetails() {
 
     // get the "id" param string. convert string to a number using the "+" symbol
-    const theProuctId: number = +this.route.snapshot.paramMap.get('id')!;
+    const theProductId: number = +this.route.snapshot.paramMap.get('id')!;
 
+    console.log(theProductId);
 
-    console.log(theProuctId);
-
-    // this.productService.getProduct(theProuctId).subscribe(
-    //   data => {
-    //     this.product = data;
-    //   }
-    // );
+    this.productService.getProduct(theProductId).subscribe(
+      data => {
+        this.product = data;
+      }
+    );
 
   }
 
+  protected readonly faHeart = faHeart;
+  protected readonly faFacebook = faFacebook;
+  protected readonly faTelegram = faTelegram;
 }

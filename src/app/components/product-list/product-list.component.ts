@@ -31,8 +31,6 @@ export class ProductListComponent {
     thePageSize: number = 12;
     theTotalElements: number = 0;
 
-
-
     products: Product[] = [];
     currentCategoryId: number = 1;
     previousCategoryId: number = 1;
@@ -62,6 +60,8 @@ export class ProductListComponent {
         this.handelListProducts();
 
     }
+
+
 
     handelListProducts() {
 
@@ -112,10 +112,10 @@ export class ProductListComponent {
 
     processResult() {
         return (data: any) => {
-            this.products = data._embedded.products;
-            this.thePageNumber = data.page.number;
-            this.thePageSize = data.page.size;
-            this.theTotalElements = data.page.totalElements;
+            this.products = data.content;
+            this.thePageNumber = data.number;
+            this.thePageSize = data.size;
+            this.theTotalElements = data.totalElements;
 
         }
     }

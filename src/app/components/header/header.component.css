@@ -39,19 +39,13 @@ span.sub {
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.14);
 }
 
-.logo-title a.navbar-brand {
-  font-size: 1.5em;
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.26);
-  color: #454546;
-  margin: 0;
-  font-weight: 700;
-  font-family: 'Poppins', sans-serif;
-  text-transform: uppercase;
-}
-
-.logo-title {
+.logo-title  {
   margin: 0;
   font-size: 2em;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.26);
+  color: #454546;
+  font-weight: 700;
+  font-family: Raleway, sans-serif;
   text-transform: uppercase;
 }
 
