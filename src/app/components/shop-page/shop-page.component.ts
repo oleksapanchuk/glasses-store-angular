@@ -4,14 +4,14 @@ import {RouteBannerComponent} from '../route-banner/route-banner.component';
 import {ProductListComponent} from '../product-list/product-list.component';
 import {SpecialDealItemComponent} from '../shop-page-components/special-deal-item/special-deal-item.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {faSearch} from '@fortawesome/free-solid-svg-icons';
+import {faCaretDown, faSearch, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {SliderModule} from 'primeng/slider';
 import {FormsModule} from '@angular/forms';
 import {SliderComponent} from "../home-page-components/slider/slider.component";
 import {RatingStarsComponent} from "../rating-stars/rating-stars.component";
 import {NgbDropdown, NgbDropdownItem, NgbDropdownMenu, NgbDropdownToggle} from "@ng-bootstrap/ng-bootstrap";
 import {CategoryDropdownComponent} from "../shop-page-components/category-dropdown/category-dropdown.component";
-import {NgForOf, NgIf} from "@angular/common";
+import {NgForOf, NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
 import {PaginatorModule, PaginatorState} from "primeng/paginator";
 import {ProductItemComponent} from "../product-item/product-item.component";
 import {Product} from "../../common/product";
@@ -22,12 +22,15 @@ import {ProductService} from "../../services/product.service";
   standalone: true,
   templateUrl: './shop-page.component.html',
   styleUrl: './shop-page.component.css',
-  imports: [RouterLink, FontAwesomeModule, RouteBannerComponent, SpecialDealItemComponent, ProductListComponent, SliderModule, FormsModule, SliderComponent, RatingStarsComponent, NgbDropdown, NgbDropdownMenu, NgbDropdownItem, NgbDropdownToggle, CategoryDropdownComponent, NgForOf, NgIf, PaginatorModule, ProductItemComponent]
+  imports: [RouterLink, FontAwesomeModule, RouteBannerComponent, SpecialDealItemComponent, ProductListComponent, SliderModule, FormsModule, SliderComponent, RatingStarsComponent, NgbDropdown, NgbDropdownMenu, NgbDropdownItem, NgbDropdownToggle, CategoryDropdownComponent, NgForOf, NgIf, PaginatorModule, ProductItemComponent, NgSwitch, NgSwitchCase]
 })
 export class ShopPageComponent {
 
-  faSearch = faSearch;
-  rangeValues: number[] = [0, 50];
+  // for modal window (choosing sorting method)
+  showModal: boolean = false;
+  sortingOption: string = "newest-first";
+
+  rangeValues: number[] = [0, 100];
 
   // new properties for pagination
   first: number | undefined = 0;
@@ -154,5 +157,37 @@ export class ShopPageComponent {
     this.listProducts();
   }
 
+  toggleSort(option: string) {
+
+    if (option === this.sortingOption) return;
+
+    switch (option) {
+      case 'newest-first':
+        this.sortingOption = 'newest-first';
+        break;
+      case 'from-cheap-to-expensive':
+        this.sortingOption = 'from-cheap-to-expensive';
+        break;
+      case 'from-expensive-to-cheap':
+        this.sortingOption = 'from-expensive-to-cheap';
+        break;
+      case 'discounted-first':
+        this.sortingOption = 'discounted-first';
+        break;
+      case 'highest-rating-first':
+        this.sortingOption = 'highest-rating-first';
+        break;
+    }
+
+    this.toggleModal();
+  }
+
+  toggleModal() {
+    this.showModal = !this.showModal;
+  }
+
+  protected readonly faSearch = faSearch;
+  protected readonly faCaretDown = faCaretDown;
+  protected readonly faTimes = faTimes;
 
 }

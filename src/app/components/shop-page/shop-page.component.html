@@ -1,226 +1,231 @@
 <app-route-banner pageName="Shop"></app-route-banner>
 
-<section class="py-lg-5 py-3">
-  <div class="container-fluid">
-    <div class="px-lg-4 px-3">
+<div class="shop__container">
+  <div class="row">
 
-      <h3 class="tittle-main my-lg-4 mt-3">New Arrivals for you</h3>
+    <!-- side bar -->
+    <div class="shop__side-bar col-3">
 
-      <div class="row">
+      <!-- search products -->
+      <div class="shop__search-container">
 
-        <!-- product left -->
-        <div class="side-bar col-lg-3">
+        <input class="shop__input-search" name="search" type="text" placeholder="Search here..." required="">
 
-          <!-- search products -->
-          <div class="search-goods-container">
+        <button class="shop__button-search">
+          <fa-icon [icon]="faSearch"></fa-icon>
+        </button>
 
-            <h3 class="tittle-h3">Search Here..</h3>
+      </div>
 
-            <form action="#" method="post">
-              <input class="form-control" type="search" name="search" placeholder="Search here..."
-                     required="">
-              <button class="btn1">
-                <fa-icon [icon]="faSearch"></fa-icon>
-              </button>
-              <div class="clearfix"></div>
-            </form>
+      <!-- sorting -->
+      <div class="shop__sorting-container">
 
+        <button (click)="toggleModal()" class="shop__button-down">
+          <div class="shop__tittle">Sorting</div>
+          <fa-icon [icon]="faCaretDown"></fa-icon>
+        </button>
+
+        <div *ngIf="showModal" class="shop__sorting-options-container">
+
+          <div class="shop__modal-header">
+            <div class="shop__tittle m-0">Sorting</div>
+            <button (click)="toggleModal()">
+              <fa-icon [icon]="faTimes"></fa-icon>
+            </button>
           </div>
 
-          <!-- price range -->
-          <div class="range">
-            <h3 class="tittle-h3">Price range</h3>
-
-            <div class="slider-range">{{ rangeValues[0] }} - {{ rangeValues[1] }}</div>
-
-            <p-slider [(ngModel)]="rangeValues" [range]="true" [step]="1"></p-slider>
-          </div>
-
-          <!-- gender -->
-          <div class="left-side">
-
-            <h3 class="tittle-h3">Gender</h3>
-
-            <app-category-dropdown></app-category-dropdown>
-
-          </div>
-
-          <!-- age -->
-          <div class="left-side">
-
-            <h3 class="tittle-h3">Age</h3>
-
-            <app-category-dropdown></app-category-dropdown>
-
-          </div>
-
-          <!-- purpose -->
-          <div class="left-side">
-
-            <h3 class="tittle-h3">Purpose</h3>
-
-            <app-category-dropdown></app-category-dropdown>
-
-          </div>
-
-          <!-- style -->
-          <div class="left-side">
-
-            <h3 class="tittle-h3">Style</h3>
-
-            <app-category-dropdown></app-category-dropdown>
-
-          </div>
-
-          <!-- discounts -->
-          <div class="left-side">
-
-            <h3 class="tittle-h3">Discount</h3>
-
-            <ul>
-              <li>
-                <input type="checkbox" class="checked">
-                <span class="span">5% or More</span>
-              </li>
-              <li>
-                <input type="checkbox" class="checked">
-                <span class="span">10% or More</span>
-              </li>
-              <li>
-                <input type="checkbox" class="checked">
-                <span class="span">20% or More</span>
-              </li>
-              <li>
-                <input type="checkbox" class="checked">
-                <span class="span">30% or More</span>
-              </li>
-              <li>
-                <input type="checkbox" class="checked">
-                <span class="span">50% or More</span>
-              </li>
-              <li>
-                <input type="checkbox" class="checked">
-                <span class="span">60% or More</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- rating  -->
-          <div class="left-side customer-rev">
-
-            <h3 class="tittle-h3">Customer Review</h3>
-
-            <ul>
-              <li>
-                <a routerLink="/shop">
-                  <app-rating-stars [starNumber]="5"></app-rating-stars>
-                </a>
-              </li>
-              <li>
-                <a routerLink="/shop">
-                  <app-rating-stars [starNumber]="4.5"></app-rating-stars>
-                </a>
-              </li>
-              <li>
-                <a routerLink="/shop">
-                  <app-rating-stars [starNumber]="4"></app-rating-stars>
-                </a>
-              </li>
-              <li>
-                <a routerLink="/shop">
-                  <app-rating-stars [starNumber]="3.5"></app-rating-stars>
-                </a>
-              </li>
-              <li>
-                <a routerLink="/shop">
-                  <app-rating-stars [starNumber]="3"></app-rating-stars>
-                </a>
-              </li>
-              <li>
-                <a routerLink="/shop">
-                  <app-rating-stars [starNumber]="2.5"></app-rating-stars>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- special deals -->
-          <div class="left-side">
-
-            <h3 class="tittle-h3">Special Deals</h3>
-
-            <app-special-deal-item [productId]="1" imageUrl="../../../assets/images/s1.jpg"
-                                   name="Farenheit (Grey)" [oldPrice]="575.00"
-                                   [newPrice]="450.00"></app-special-deal-item>
-            <app-special-deal-item [productId]="2" imageUrl="../../../assets/images/s2.jpg"
-                                   name="Opium (Grey)" [oldPrice]="325.00"
-                                   [newPrice]="200.00"></app-special-deal-item>
-            <app-special-deal-item [productId]="3" imageUrl="../../../assets/images/s3.jpg"
-                                   name="Azmani Round" [oldPrice]="725.00"
-                                   [newPrice]="510.00"></app-special-deal-item>
-            <app-special-deal-item [productId]="4" imageUrl="../../../assets/images/s4.jpg"
-                                   name="Farenheit Oval" [oldPrice]="325.00"
-                                   [newPrice]="150.00"></app-special-deal-item>
-
+          <div class="shop__modal-options">
+            <button (click)="toggleSort('newest-first')"
+                    class="shop__modal-option {{ sortingOption === 'newest-first' ? 'active' : '' }}">
+              Newest first
+            </button>
+            <button (click)="toggleSort('from-cheap-to-expensive')"
+                    class="shop__modal-option {{ sortingOption === 'from-cheap-to-expensive' ? 'active' : '' }}">
+              From cheap to expensive
+            </button>
+            <button (click)="toggleSort('from-expensive-to-cheap')"
+                    class="shop__modal-option {{ sortingOption === 'from-expensive-to-cheap' ? 'active' : '' }}">
+              From expensive to cheap
+            </button>
+            <button (click)="toggleSort('discounted-first')"
+                    class="shop__modal-option {{ sortingOption === 'discounted-first' ? 'active' : '' }}">
+              Discounted first
+            </button>
+            <button (click)="toggleSort('highest-rating-first')"
+                    class="shop__modal-option {{ sortingOption === 'highest-rating-first' ? 'active' : '' }}">
+              Highest rating first
+            </button>
           </div>
 
         </div>
 
-        <!--product right-->
-        <div class="left-ads-display col-lg-9">
-          <div class="wrapper_top_shop">
+        <hr>
 
-            <div class="row">
-
-              <div class="col-md-6 shop_left">
-                <img src="../../../assets/images/banner3.jpg" alt="">
-                <h6>40% off</h6>
-              </div>
-
-              <div class="col-md-6 shop_right">
-                <img src="../../../assets/images/banner4.jpg" alt="">
-                <h6>50% off</h6>
-              </div>
-
-            </div>
-
-            <div class="row">
-<!--              <app-product-list></app-product-list>-->
-
-              <div class="row" style="background-color: #f9f9f9;">
-
-                <div class="row">
-                  <app-product-item *ngFor="let tempProduct of products" class="col-md-4 mt-4"
-                                    [product]="tempProduct"></app-product-item>
-                </div>
-
-                <!-- if products empty then display a message -->
-                <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
-                  No products found.
-                </div>
-
-                <div class="flex justify-content-center pt-3">
-                  <p-paginator (onPageChange)="onPageChange($event)" [first]="thePageNumber * thePageSize" [rows]="thePageSize" [totalRecords]="theTotalElements"></p-paginator>
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
+        <div [ngSwitch]="sortingOption">
+          <div *ngSwitchCase="'newest-first'" class="shop__sorting-category-selected">Newest first</div>
+          <div *ngSwitchCase="'from-cheap-to-expensive'" class="shop__sorting-category-selected">From cheap to expensive</div>
+          <div *ngSwitchCase="'from-expensive-to-cheap'" class="shop__sorting-category-selected">From expensive to cheap</div>
+          <div *ngSwitchCase="'discounted-first'" class="shop__sorting-category-selected">Discounted first</div>
+          <div *ngSwitchCase="'highest-rating-first'" class="shop__sorting-category-selected">Highest rating first</div>
 
         </div>
 
-        <!-- Featured Products -->
-        <div class="slider-img mid-sec mt-lg-5 mt-2">
 
-          <h3 class="tittle-main text-left my-lg-4 my-3">Featured Products</h3>
+      </div>
 
-          <app-slider></app-slider>
+      <!-- price range -->
+      <div class="shop__filter-container">
+
+        <div class="shop__tittle">Price</div>
+
+        <div class="shop__price-range">
+          <p-slider [(ngModel)]="rangeValues" [range]="true" [step]="1"></p-slider>
+        </div>
+
+        <div class="shop__price-inputs">
+
+          <div class="shop__min-price">
+            <span>from </span>
+            <input class="shop__input-price" name="min-price" type="text" value="{{ rangeValues[0] }}"/>
+          </div>
+          <div class="shop__max-price">
+            <span>to </span>
+            <input class="shop__input-price" name="min-price" type="text" value="{{ rangeValues[1] }}"/>
+          </div>
 
         </div>
 
       </div>
+
+      <!-- gender -->
+      <div class="shop__filter-container">
+
+        <div class="shop__tittle">Gender</div>
+
+        <ul>
+          <li>
+            <input type="checkbox" class="checked">
+            All
+          </li>
+          <li>
+            <input type="checkbox" class="checked">
+            Man
+          </li>
+          <li>
+            <input type="checkbox" class="checked">
+            Woman
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- type -->
+      <div class="shop__filter-container">
+
+        <div class="shop__tittle">Type</div>
+
+        <ul>
+          <li>
+            <input type="checkbox" class="checked">
+            All
+          </li>
+          <li>
+            <input type="checkbox" class="checked">
+            Prescription
+          </li>
+          <li>
+            <input type="checkbox" class="checked">
+            Reading
+          </li>
+          <li>
+            <input type="checkbox" class="checked">
+            Computer
+          </li>
+          <li>
+            <input type="checkbox" class="checked">
+            Sunglasses
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- frame material -->
+      <div class="shop__filter-container">
+
+        <div class="shop__tittle">Frame Material</div>
+
+        <ul>
+          <li>
+            <input type="checkbox" class="checked">
+            All
+          </li>
+          <li>
+            <input type="checkbox" class="checked">
+            Metal
+          </li>
+          <li>
+            <input type="checkbox" class="checked">
+            Plastic
+          </li>
+          <li>
+            <input type="checkbox" class="checked">
+            Wooden
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- special deals -->
+      <div class="shop__filter-container">
+
+        <div class="shop__tittle">Special Deals</div>
+
+        <app-special-deal-item [productId]="1" imageUrl="../../../assets/images/s1.jpg"
+                               name="Farenheit (Grey)" [oldPrice]="575.00"
+                               [newPrice]="450.00"></app-special-deal-item>
+        <app-special-deal-item [productId]="2" imageUrl="../../../assets/images/s2.jpg"
+                               name="Opium (Grey)" [oldPrice]="325.00"
+                               [newPrice]="200.00"></app-special-deal-item>
+        <app-special-deal-item [productId]="3" imageUrl="../../../assets/images/s3.jpg"
+                               name="Azmani Round" [oldPrice]="725.00"
+                               [newPrice]="510.00"></app-special-deal-item>
+        <app-special-deal-item [productId]="4" imageUrl="../../../assets/images/s4.jpg"
+                               name="Farenheit Oval" [oldPrice]="325.00"
+                               [newPrice]="150.00"></app-special-deal-item>
+
+      </div>
+
     </div>
+
+    <!-- product container -->
+    <div class="shop__product-container row col-9">
+
+      <div class="row">
+        <app-product-item *ngFor="let tempProduct of products" class="col-4"
+                          [product]="tempProduct"></app-product-item>
+      </div>
+
+      <!-- if products empty then display a message -->
+      <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
+        No products found.
+      </div>
+
+      <div class="flex justify-content-center">
+        <p-paginator (onPageChange)="onPageChange($event)" [first]="thePageNumber * thePageSize"
+                     [rows]="thePageSize" [totalRecords]="theTotalElements"></p-paginator>
+      </div>
+
+    </div>
+
   </div>
-</section>
+
+  <!-- Featured Products -->
+  <div class="slider-img mid-sec mt-lg-5 mt-2">
+
+    <h3 class="tittle-main text-left my-lg-4 my-3">Featured Products</h3>
+
+    <app-slider></app-slider>
+
+  </div>
+
+</div>
