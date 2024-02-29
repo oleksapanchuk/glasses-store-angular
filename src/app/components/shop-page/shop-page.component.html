@@ -104,16 +104,22 @@
 
         <ul>
           <li>
-            <input type="checkbox" class="checked">
-            All
+            <button (click)="toggleGenderCategory('all')" class="shop__button-filter-item {{ genderFilter === 'all' ? 'active' : '' }}">
+              <fa-icon [icon]="genderFilter === 'all' ? faPlus : faMinus"></fa-icon>
+              All
+            </button>
           </li>
           <li>
-            <input type="checkbox" class="checked">
-            Man
+            <button (click)="toggleGenderCategory('man')" class="shop__button-filter-item {{ genderFilter === 'man' ? 'active' : '' }}">
+              <fa-icon [icon]="genderFilter === 'man' ? faPlus : faMinus"></fa-icon>
+              Man
+            </button>
           </li>
           <li>
-            <input type="checkbox" class="checked">
-            Woman
+            <button (click)="toggleGenderCategory('woman')" class="shop__button-filter-item {{ genderFilter === 'woman' ? 'active' : '' }}">
+              <fa-icon [icon]="genderFilter === 'woman' ? faPlus : faMinus"></fa-icon>
+              Woman
+            </button>
           </li>
         </ul>
 
@@ -126,24 +132,34 @@
 
         <ul>
           <li>
-            <input type="checkbox" class="checked">
-            All
+            <button (click)="toggleTypeCategory('all')" class="shop__button-filter-item {{ typeFilter === 'all' ? 'active' : '' }}">
+              <fa-icon [icon]="typeFilter === 'all' ? faPlus : faMinus"></fa-icon>
+              All
+            </button>
           </li>
           <li>
-            <input type="checkbox" class="checked">
-            Prescription
+            <button (click)="toggleTypeCategory('prescription')" class="shop__button-filter-item {{ typeFilter === 'prescription' ? 'active' : '' }}">
+              <fa-icon [icon]="typeFilter === 'prescription' ? faPlus : faMinus"></fa-icon>
+              Prescription
+            </button>
           </li>
           <li>
-            <input type="checkbox" class="checked">
-            Reading
+            <button (click)="toggleTypeCategory('reading')" class="shop__button-filter-item {{ typeFilter === 'reading' ? 'active' : '' }}">
+              <fa-icon [icon]="typeFilter === 'reading' ? faPlus : faMinus"></fa-icon>
+              Reading
+            </button>
           </li>
           <li>
-            <input type="checkbox" class="checked">
-            Computer
+            <button (click)="toggleTypeCategory('computer')" class="shop__button-filter-item {{ typeFilter === 'computer' ? 'active' : '' }}">
+              <fa-icon [icon]="typeFilter === 'computer' ? faPlus : faMinus"></fa-icon>
+              Computer
+            </button>
           </li>
           <li>
-            <input type="checkbox" class="checked">
-            Sunglasses
+            <button (click)="toggleTypeCategory('sunglasses')" class="shop__button-filter-item {{ typeFilter === 'sunglasses' ? 'active' : '' }}">
+              <fa-icon [icon]="typeFilter === 'sunglasses' ? faPlus : faMinus"></fa-icon>
+              Sunglasses
+            </button>
           </li>
         </ul>
 
@@ -156,61 +172,53 @@
 
         <ul>
           <li>
-            <input type="checkbox" class="checked">
-            All
+            <button (click)="toggleFrameMaterialCategory('all')" class="shop__button-filter-item {{ frameFilter === 'all' ? 'active' : '' }}">
+              <fa-icon [icon]="frameFilter === 'all' ? faPlus : faMinus"></fa-icon>
+              All
+            </button>
           </li>
           <li>
-            <input type="checkbox" class="checked">
-            Metal
+            <button (click)="toggleFrameMaterialCategory('metal')" class="shop__button-filter-item {{ frameFilter === 'metal' ? 'active' : '' }}">
+              <fa-icon [icon]="frameFilter === 'metal' ? faPlus : faMinus"></fa-icon>
+              Metal
+            </button>
           </li>
           <li>
-            <input type="checkbox" class="checked">
-            Plastic
+            <button (click)="toggleFrameMaterialCategory('plastic')" class="shop__button-filter-item {{ frameFilter === 'plastic' ? 'active' : '' }}">
+              <fa-icon [icon]="frameFilter === 'plastic' ? faPlus : faMinus"></fa-icon>
+              Plastic
+            </button>
           </li>
           <li>
-            <input type="checkbox" class="checked">
-            Wooden
+            <button (click)="toggleFrameMaterialCategory('wooden')" class="shop__button-filter-item {{ frameFilter === 'wooden' ? 'active' : '' }}">
+              <fa-icon [icon]="frameFilter === 'wooden' ? faPlus : faMinus"></fa-icon>
+              Wooden
+            </button>
           </li>
         </ul>
 
       </div>
 
-      <!-- special deals -->
-      <div class="shop__filter-container">
+    </div>
 
-        <div class="shop__tittle">Special Deals</div>
+    <!-- if products empty then display a message -->
+    <div *ngIf="products.length == 0" class="shop__no-products-container col-9">
 
-        <app-special-deal-item [productId]="1" imageUrl="../../../assets/images/s1.jpg"
-                               name="Farenheit (Grey)" [oldPrice]="575.00"
-                               [newPrice]="450.00"></app-special-deal-item>
-        <app-special-deal-item [productId]="2" imageUrl="../../../assets/images/s2.jpg"
-                               name="Opium (Grey)" [oldPrice]="325.00"
-                               [newPrice]="200.00"></app-special-deal-item>
-        <app-special-deal-item [productId]="3" imageUrl="../../../assets/images/s3.jpg"
-                               name="Azmani Round" [oldPrice]="725.00"
-                               [newPrice]="510.00"></app-special-deal-item>
-        <app-special-deal-item [productId]="4" imageUrl="../../../assets/images/s4.jpg"
-                               name="Farenheit Oval" [oldPrice]="325.00"
-                               [newPrice]="150.00"></app-special-deal-item>
+      <img src="../../../assets/images/no-product.png" alt="">
 
-      </div>
+      <div class="shop__large-title">No products found</div>
 
     </div>
 
     <!-- product container -->
-    <div class="shop__product-container row col-9">
+    <div *ngIf="products.length > 0" class="shop__product-container col-9">
 
       <div class="row">
-        <app-product-item *ngFor="let tempProduct of products" class="col-4"
+        <app-product-item *ngFor="let tempProduct of products" class="shop__product-item col-4"
                           [product]="tempProduct"></app-product-item>
       </div>
 
-      <!-- if products empty then display a message -->
-      <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
-        No products found.
-      </div>
-
-      <div class="flex justify-content-center">
+      <div class="d-flex justify-content-center align-items-end">
         <p-paginator (onPageChange)="onPageChange($event)" [first]="thePageNumber * thePageSize"
                      [rows]="thePageSize" [totalRecords]="theTotalElements"></p-paginator>
       </div>
@@ -220,9 +228,9 @@
   </div>
 
   <!-- Featured Products -->
-  <div class="slider-img mid-sec mt-lg-5 mt-2">
+  <div class="shop__featured-container mt-lg-5">
 
-    <h3 class="tittle-main text-left my-lg-4 my-3">Featured Products</h3>
+    <h3 class="shop__large-title">Featured Products</h3>
 
     <app-slider></app-slider>
 

@@ -4,7 +4,7 @@ import {RouteBannerComponent} from '../route-banner/route-banner.component';
 import {ProductListComponent} from '../product-list/product-list.component';
 import {SpecialDealItemComponent} from '../shop-page-components/special-deal-item/special-deal-item.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {faCaretDown, faSearch, faTimes} from '@fortawesome/free-solid-svg-icons';
+import {faCaretDown, faMinus, faPlus, faSearch, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {SliderModule} from 'primeng/slider';
 import {FormsModule} from '@angular/forms';
 import {SliderComponent} from "../home-page-components/slider/slider.component";
@@ -29,6 +29,9 @@ export class ShopPageComponent {
   // for modal window (choosing sorting method)
   showModal: boolean = false;
   sortingOption: string = "newest-first";
+  genderFilter: string = "all";
+  typeFilter: string = 'all';
+  frameFilter: string = 'all';
 
   rangeValues: number[] = [0, 100];
 
@@ -186,8 +189,22 @@ export class ShopPageComponent {
     this.showModal = !this.showModal;
   }
 
+  toggleGenderCategory(option: string) {
+    this.genderFilter = option;
+  }
+
+  toggleTypeCategory(option: string) {
+    this.typeFilter = option;
+  }
+
+  toggleFrameMaterialCategory(option: string) {
+    this.frameFilter = option;
+  }
+
   protected readonly faSearch = faSearch;
   protected readonly faCaretDown = faCaretDown;
   protected readonly faTimes = faTimes;
 
+  protected readonly faMinus = faMinus;
+  protected readonly faPlus = faPlus;
 }

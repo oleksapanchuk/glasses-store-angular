@@ -182,7 +182,6 @@
   outline: 0;
 }
 
-
 .shop__filter-container ul li {
   display: inline-block;
   width: 100%;
@@ -197,83 +196,63 @@
   vertical-align: top;
 }
 
+.shop__button-filter-item {
+  font-size: 1.1em;
+}
+
+.shop__button-filter-item.active {
+  font-weight: 600;
+}
+
+.shop__button-filter-item fa-icon {
+  margin-right: 10px;
+}
 
 
 
 
 
 
-
-
-
-.tittle-main {
+.shop__large-title {
   color: #353434;
-  font-size: 3em;
-  text-align: left;
-  letter-spacing: 1px;
+  font-size: 2.5em;
+  font-family: Unbounded, sans-serif;
   font-weight: 400;
+  letter-spacing: 1.5px;
+  text-align: left;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
 }
 
-/* -- rating -- */
-.customer-rev ul li fa-icon {
-  color: #ff4e00;
-  font-size: 0.7em;
-  margin-right: 0.7em;
+.shop__no-products-container {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: start; /* Horizontally center the items */
+  align-items: center; /* Vertically center the items */
 }
 
-.customer-rev ul li {
-  list-style: none;
+.shop__no-products-container img {
+  padding-top: 50px;
+  height: 450px;
 }
 
-.customer-rev ul li a span {
-  color: #000;
-  font-weight: normal;
-  font-size: 14px;
-  margin-left: 8px;
+.shop__no-products-container div {
+  margin-top: 3rem;
 }
 
-/* -- /rating -- */
 
-
-/* -- RIGHT SIDE -- */
 .shop__product-container {
+  min-height: 800px;
   background-color: #f9f9f9;
   padding-top: 15px;
 }
 
-
-.shop_left img,
-.shop_right img {
-  width: 100%;
+.shop__product-item {
+  max-height: 320px;
 }
 
-.shop_left,
-.shop_right {
-  padding: 0;
-  margin-bottom: 1.3em;
-  position: relative;
+::ng-deep .p-paginator {
+  background-color: #f9f9f9;
 }
-
-.shop_left.shp,
-.shop_right.shp {
-  margin-bottom: 0;
-  margin-top: 1.2em;
-}
-
-.shop_left h6,
-.shop_right h6 {
-  font-size: 20px;
-  margin-top: 15px;
-  color: #fff;
-  letter-spacing: 1px;
-  font-weight: 700;
-  position: absolute;
-  top: 38%;
-  left: 12%;
-}
-
-
 
 ::ng-deep .p-paginator .p-paginator-first {
   color: #353434;
