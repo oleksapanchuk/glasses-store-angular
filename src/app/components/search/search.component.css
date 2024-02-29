@@ -1,3 +1,8 @@
+.header__button-icon button fa-icon {
+  color: #131415;
+  font-size: 20px;
+}
+
 
 /* Overlay style */
 .overlay {
@@ -32,16 +37,6 @@
     height: auto;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-}
-
-button#trigger-overlay {
-    outline: none;
-    border: none;
-    background: none;
-    text-align: center;
-    color: #131415;
-    font-size: 1.2em;
-    cursor: pointer;
 }
 
 form input[type="search"] {

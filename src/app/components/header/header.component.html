@@ -1,57 +1,73 @@
-<header class="m-0 p-0">
+<header>
   <div class="row">
 
     <!-- LOGO & BRAND NAME -->
-    <div class="col-3">
+    <div class="header__brand-container col-3">
 
-      <a routerLink="/home" routerLinkActive="active" class="navbar-brand">
-        <div class="justify-content-end d-flex align-items-center">
-          <img src="../../../assets/images/logo/logo_small.png" alt="" style="height: 80px">
-          <h1 class="logo-title">Visionarium</h1>
-        </div>
+      <a routerLink="/home" routerLinkActive="active" class="header__brand-link">
+
+        <img src="../../../assets/images/logo/logo_small.png" alt="logo">
+        <div class="header__main-title">panorama</div>
+
       </a>
 
     </div>
 
     <!-- NAV BAR -->
-    <div class="col-6 d-flex justify-content-center align-items-center p-0 m-0">
-      <app-navbar></app-navbar>
+    <div class="header__navbar-container col-6">
+
+      <!-- HOME -->
+      <div class="header__navbar-item">
+        <a routerLink="/home" routerLinkActive="active">Home</a>
+      </div>
+
+      <!-- SHOP -->
+      <!-- <app-shop-dropdown></app-shop-dropdown> -->
+      <div class="header__navbar-item">
+        <a routerLink="/shop" routerLinkActive="active">Shop</a>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="header__navbar-item">
+        <a routerLink="/about" routerLinkActive="active">About</a>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="header__navbar-item">
+        <a routerLink="/contact" routerLinkActive="active">Contact</a>
+      </div>
     </div>
 
     <!-- CART AND PROFILE -->
-    <div class="col-3 d-flex align-items-center m-0 p-0">
-      <ul class="cart-inner-info justify-content-start d-flex ">
+    <div class="header__icons-container col-3">
 
-        <!-- SEARCH -->
-        <li class="button__icon">
-          <app-search></app-search>
-        </li>
+      <!-- SEARCH -->
+      <div class="header__button-icon">
+        <app-search></app-search>
+      </div>
 
-        <!-- SIGN IN -->
-        <li class="button__icon mx-3">
-          <a routerLink="/sign-in" routerLinkActive="active" class="btn-open">
-            <fa-icon [icon]="faUser" aria-hidden="true"></fa-icon>
-          </a>
-        </li>
+      <!-- SIGN IN -->
+      <div class="header__button-icon">
+        <a routerLink="/sign-in" routerLinkActive="active" class="btn-open">
+          <fa-icon [icon]="faUser" aria-hidden="true"></fa-icon>
+        </a>
+      </div>
 
-        <!-- FAVORITES -->
-        <li class="button__icon mx-3">
-          <a routerLink="/liked" routerLinkActive="active" class="btn-open">
-            <fa-icon [icon]="faHeart" aria-hidden="true"></fa-icon>
-          </a>
-        </li>
+      <!-- FAVORITES -->
+      <div class="header__button-icon">
+        <a routerLink="/liked" routerLinkActive="active" class="btn-open">
+          <fa-icon [icon]="faHeart" aria-hidden="true"></fa-icon>
+        </a>
+      </div>
 
-        <!-- CART -->
-        <li class="button__icon mx-3">
-          <button (click)="openDialog()" class="cart__button" type="submit" name="submit" value="">
-            <fa-icon [icon]="faCartArrowDown"></fa-icon>
-          </button>
-        </li>
-
-      </ul>
+      <!-- CART -->
+      <div class="header__button-icon">
+        <button (click)="openDialog()" name="cart">
+          <fa-icon [icon]="faCartArrowDown"></fa-icon>
+        </button>
+      </div>
 
     </div>
 
   </div>
-
 </header>
