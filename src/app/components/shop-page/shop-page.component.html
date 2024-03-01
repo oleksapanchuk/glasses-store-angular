@@ -35,25 +35,25 @@
           </div>
 
           <div class="shop__modal-options">
-            <button (click)="toggleSort('newest-first')"
-                    class="shop__modal-option {{ sortingOption === 'newest-first' ? 'active' : '' }}">
-              Newest first
+            <button (click)="toggleSort(SortingMethod.NEWEST_FIRST)"
+                    class="shop__modal-option {{ selectedSortingMethod === SortingMethod.NEWEST_FIRST ? 'active' : '' }}">
+              {{ SortingMethod.NEWEST_FIRST }}
             </button>
-            <button (click)="toggleSort('from-cheap-to-expensive')"
-                    class="shop__modal-option {{ sortingOption === 'from-cheap-to-expensive' ? 'active' : '' }}">
-              From cheap to expensive
+            <button (click)="toggleSort(SortingMethod.FROM_CHEAP_TO_EXPENSIVE)"
+                    class="shop__modal-option {{ selectedSortingMethod === SortingMethod.FROM_CHEAP_TO_EXPENSIVE ? 'active' : '' }}">
+              {{ SortingMethod.FROM_CHEAP_TO_EXPENSIVE }}
             </button>
-            <button (click)="toggleSort('from-expensive-to-cheap')"
-                    class="shop__modal-option {{ sortingOption === 'from-expensive-to-cheap' ? 'active' : '' }}">
-              From expensive to cheap
+            <button (click)="toggleSort(SortingMethod.FROM_EXPENSIVE_TO_CHEAP)"
+                    class="shop__modal-option {{ selectedSortingMethod === SortingMethod.FROM_EXPENSIVE_TO_CHEAP ? 'active' : '' }}">
+              {{ SortingMethod.FROM_EXPENSIVE_TO_CHEAP }}
             </button>
-            <button (click)="toggleSort('discounted-first')"
-                    class="shop__modal-option {{ sortingOption === 'discounted-first' ? 'active' : '' }}">
-              Discounted first
+            <button (click)="toggleSort(SortingMethod.DISCOUNTED_FIRST)"
+                    class="shop__modal-option {{ selectedSortingMethod === SortingMethod.DISCOUNTED_FIRST ? 'active' : '' }}">
+              {{ SortingMethod.DISCOUNTED_FIRST }}
             </button>
-            <button (click)="toggleSort('highest-rating-first')"
-                    class="shop__modal-option {{ sortingOption === 'highest-rating-first' ? 'active' : '' }}">
-              Highest rating first
+            <button (click)="toggleSort(SortingMethod.HIGHEST_RATING_FIRST)"
+                    class="shop__modal-option {{ selectedSortingMethod === SortingMethod.HIGHEST_RATING_FIRST ? 'active' : '' }}">
+              {{ SortingMethod.HIGHEST_RATING_FIRST }}
             </button>
           </div>
 
@@ -61,15 +61,7 @@
 
         <hr>
 
-        <div [ngSwitch]="sortingOption">
-          <div *ngSwitchCase="'newest-first'" class="shop__sorting-category-selected">Newest first</div>
-          <div *ngSwitchCase="'from-cheap-to-expensive'" class="shop__sorting-category-selected">From cheap to expensive</div>
-          <div *ngSwitchCase="'from-expensive-to-cheap'" class="shop__sorting-category-selected">From expensive to cheap</div>
-          <div *ngSwitchCase="'discounted-first'" class="shop__sorting-category-selected">Discounted first</div>
-          <div *ngSwitchCase="'highest-rating-first'" class="shop__sorting-category-selected">Highest rating first</div>
-
-        </div>
-
+        <div class="shop__sorting-category-selected">{{ selectedSortingMethod }}</div>
 
       </div>
 
@@ -104,20 +96,23 @@
 
         <ul>
           <li>
-            <button (click)="toggleGenderCategory('all')" class="shop__button-filter-item {{ genderFilter === 'all' ? 'active' : '' }}">
-              <fa-icon [icon]="genderFilter === 'all' ? faPlus : faMinus"></fa-icon>
+            <button (click)="toggleGenderCategory(GenderFilter.ALL)"
+                    class="shop__button-filter-item {{ genderFilter === GenderFilter.ALL ? 'active' : '' }}">
+              <fa-icon [icon]="genderFilter === GenderFilter.ALL ? faPlus : faMinus"></fa-icon>
               All
             </button>
           </li>
           <li>
-            <button (click)="toggleGenderCategory('man')" class="shop__button-filter-item {{ genderFilter === 'man' ? 'active' : '' }}">
-              <fa-icon [icon]="genderFilter === 'man' ? faPlus : faMinus"></fa-icon>
+            <button (click)="toggleGenderCategory(GenderFilter.MAN)"
+                    class="shop__button-filter-item {{ genderFilter === GenderFilter.MAN ? 'active' : '' }}">
+              <fa-icon [icon]="genderFilter === GenderFilter.MAN ? faPlus : faMinus"></fa-icon>
               Man
             </button>
           </li>
           <li>
-            <button (click)="toggleGenderCategory('woman')" class="shop__button-filter-item {{ genderFilter === 'woman' ? 'active' : '' }}">
-              <fa-icon [icon]="genderFilter === 'woman' ? faPlus : faMinus"></fa-icon>
+            <button (click)="toggleGenderCategory(GenderFilter.WOMAN)"
+                    class="shop__button-filter-item {{ genderFilter === GenderFilter.WOMAN ? 'active' : '' }}">
+              <fa-icon [icon]="genderFilter === GenderFilter.WOMAN ? faPlus : faMinus"></fa-icon>
               Woman
             </button>
           </li>
@@ -132,32 +127,37 @@
 
         <ul>
           <li>
-            <button (click)="toggleTypeCategory('all')" class="shop__button-filter-item {{ typeFilter === 'all' ? 'active' : '' }}">
-              <fa-icon [icon]="typeFilter === 'all' ? faPlus : faMinus"></fa-icon>
+            <button (click)="toggleTypeCategory(TypeFilter.ALL)"
+                    class="shop__button-filter-item {{ typeFilter === TypeFilter.ALL ? 'active' : '' }}">
+              <fa-icon [icon]="typeFilter === TypeFilter.ALL ? faPlus : faMinus"></fa-icon>
               All
             </button>
           </li>
           <li>
-            <button (click)="toggleTypeCategory('prescription')" class="shop__button-filter-item {{ typeFilter === 'prescription' ? 'active' : '' }}">
-              <fa-icon [icon]="typeFilter === 'prescription' ? faPlus : faMinus"></fa-icon>
+            <button (click)="toggleTypeCategory(TypeFilter.PRESCRIPTION)"
+                    class="shop__button-filter-item {{ typeFilter === TypeFilter.PRESCRIPTION ? 'active' : '' }}">
+              <fa-icon [icon]="typeFilter === TypeFilter.PRESCRIPTION ? faPlus : faMinus"></fa-icon>
               Prescription
             </button>
           </li>
           <li>
-            <button (click)="toggleTypeCategory('reading')" class="shop__button-filter-item {{ typeFilter === 'reading' ? 'active' : '' }}">
-              <fa-icon [icon]="typeFilter === 'reading' ? faPlus : faMinus"></fa-icon>
+            <button (click)="toggleTypeCategory(TypeFilter.READING)"
+                    class="shop__button-filter-item {{ typeFilter === TypeFilter.READING ? 'active' : '' }}">
+              <fa-icon [icon]="typeFilter === TypeFilter.READING ? faPlus : faMinus"></fa-icon>
               Reading
             </button>
           </li>
           <li>
-            <button (click)="toggleTypeCategory('computer')" class="shop__button-filter-item {{ typeFilter === 'computer' ? 'active' : '' }}">
-              <fa-icon [icon]="typeFilter === 'computer' ? faPlus : faMinus"></fa-icon>
+            <button (click)="toggleTypeCategory(TypeFilter.COMPUTER)"
+                    class="shop__button-filter-item {{ typeFilter === TypeFilter.COMPUTER ? 'active' : '' }}">
+              <fa-icon [icon]="typeFilter === TypeFilter.COMPUTER ? faPlus : faMinus"></fa-icon>
               Computer
             </button>
           </li>
           <li>
-            <button (click)="toggleTypeCategory('sunglasses')" class="shop__button-filter-item {{ typeFilter === 'sunglasses' ? 'active' : '' }}">
-              <fa-icon [icon]="typeFilter === 'sunglasses' ? faPlus : faMinus"></fa-icon>
+            <button (click)="toggleTypeCategory(TypeFilter.SUNGLASSES)"
+                    class="shop__button-filter-item {{ typeFilter === TypeFilter.SUNGLASSES ? 'active' : '' }}">
+              <fa-icon [icon]="typeFilter === TypeFilter.SUNGLASSES ? faPlus : faMinus"></fa-icon>
               Sunglasses
             </button>
           </li>
@@ -172,26 +172,30 @@
 
         <ul>
           <li>
-            <button (click)="toggleFrameMaterialCategory('all')" class="shop__button-filter-item {{ frameFilter === 'all' ? 'active' : '' }}">
-              <fa-icon [icon]="frameFilter === 'all' ? faPlus : faMinus"></fa-icon>
+            <button (click)="toggleFrameMaterialCategory(FrameFilter.ALL)"
+                    class="shop__button-filter-item {{ frameFilter === FrameFilter.ALL ? 'active' : '' }}">
+              <fa-icon [icon]="frameFilter === FrameFilter.ALL ? faPlus : faMinus"></fa-icon>
               All
             </button>
           </li>
           <li>
-            <button (click)="toggleFrameMaterialCategory('metal')" class="shop__button-filter-item {{ frameFilter === 'metal' ? 'active' : '' }}">
-              <fa-icon [icon]="frameFilter === 'metal' ? faPlus : faMinus"></fa-icon>
+            <button (click)="toggleFrameMaterialCategory(FrameFilter.METAL)"
+                    class="shop__button-filter-item {{ frameFilter === FrameFilter.METAL ? 'active' : '' }}">
+              <fa-icon [icon]="frameFilter === FrameFilter.METAL ? faPlus : faMinus"></fa-icon>
               Metal
             </button>
           </li>
           <li>
-            <button (click)="toggleFrameMaterialCategory('plastic')" class="shop__button-filter-item {{ frameFilter === 'plastic' ? 'active' : '' }}">
-              <fa-icon [icon]="frameFilter === 'plastic' ? faPlus : faMinus"></fa-icon>
+            <button (click)="toggleFrameMaterialCategory(FrameFilter.PLASTIC)"
+                    class="shop__button-filter-item {{ frameFilter === FrameFilter.PLASTIC ? 'active' : '' }}">
+              <fa-icon [icon]="frameFilter === FrameFilter.PLASTIC ? faPlus : faMinus"></fa-icon>
               Plastic
             </button>
           </li>
           <li>
-            <button (click)="toggleFrameMaterialCategory('wooden')" class="shop__button-filter-item {{ frameFilter === 'wooden' ? 'active' : '' }}">
-              <fa-icon [icon]="frameFilter === 'wooden' ? faPlus : faMinus"></fa-icon>
+            <button (click)="toggleFrameMaterialCategory(FrameFilter.WOODEN)"
+                    class="shop__button-filter-item {{ frameFilter === FrameFilter.WOODEN ? 'active' : '' }}">
+              <fa-icon [icon]="frameFilter === FrameFilter.WOODEN ? faPlus : faMinus"></fa-icon>
               Wooden
             </button>
           </li>

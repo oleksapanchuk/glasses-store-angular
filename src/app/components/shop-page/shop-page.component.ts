@@ -10,29 +10,34 @@ import {FormsModule} from '@angular/forms';
 import {SliderComponent} from "../home-page-components/slider/slider.component";
 import {RatingStarsComponent} from "../rating-stars/rating-stars.component";
 import {NgbDropdown, NgbDropdownItem, NgbDropdownMenu, NgbDropdownToggle} from "@ng-bootstrap/ng-bootstrap";
-import {CategoryDropdownComponent} from "../shop-page-components/category-dropdown/category-dropdown.component";
 import {NgForOf, NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
 import {PaginatorModule, PaginatorState} from "primeng/paginator";
 import {ProductItemComponent} from "../product-item/product-item.component";
 import {Product} from "../../common/product";
 import {ProductService} from "../../services/product.service";
+import {ProductCategory} from "../../common/product-category";
+import {ProductCategoryService} from "../../services/product-category.service";
+import {SortingMethod} from "../shop-page-components/sorting-method.enum";
+import {GenderFilter} from "../shop-page-components/gender-filter.enum";
+import {TypeFilter} from "../shop-page-components/type-filter.enum";
+import {FrameFilter} from "../shop-page-components/frame-filter.enum";
 
 @Component({
   selector: 'app-shop-page',
   standalone: true,
   templateUrl: './shop-page.component.html',
   styleUrl: './shop-page.component.css',
-  imports: [RouterLink, FontAwesomeModule, RouteBannerComponent, SpecialDealItemComponent, ProductListComponent, SliderModule, FormsModule, SliderComponent, RatingStarsComponent, NgbDropdown, NgbDropdownMenu, NgbDropdownItem, NgbDropdownToggle, CategoryDropdownComponent, NgForOf, NgIf, PaginatorModule, ProductItemComponent, NgSwitch, NgSwitchCase]
+  imports: [RouterLink, FontAwesomeModule, RouteBannerComponent, SpecialDealItemComponent, ProductListComponent, SliderModule, FormsModule, SliderComponent, RatingStarsComponent, NgbDropdown, NgbDropdownMenu, NgbDropdownItem, NgbDropdownToggle, NgForOf, NgIf, PaginatorModule, ProductItemComponent, NgSwitch, NgSwitchCase]
 })
 export class ShopPageComponent {
 
   // for modal window (choosing sorting method)
   showModal: boolean = false;
-  sortingOption: string = "newest-first";
-  genderFilter: string = "all";
-  typeFilter: string = 'all';
-  frameFilter: string = 'all';
 
+  selectedSortingMethod: SortingMethod = SortingMethod.NEWEST_FIRST;
+  genderFilter: GenderFilter = GenderFilter.ALL;
+  typeFilter: TypeFilter = TypeFilter.ALL;
+  frameFilter: FrameFilter = FrameFilter.ALL;
   rangeValues: number[] = [0, 100];
 
   // new properties for pagination
@@ -44,6 +49,8 @@ export class ShopPageComponent {
   theTotalElements: number = 0;
 
   products: Product[] = [];
+  productCategories: ProductCategory[] = [];
+
   currentCategoryId: number = 1;
   previousCategoryId: number = 1;
   currentCategoryName: string = "";
@@ -53,14 +60,28 @@ export class ShopPageComponent {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
+    private productCategoryService: ProductCategoryService
   ) {
   }
 
   ngOnInit(): void {
+
+    this.listProductCategories();
+
     this.route.paramMap.subscribe(() => {
       this.listProducts();
     })
 
+  }
+
+  listProductCategories() {
+    this.productCategoryService.getProductCategories().subscribe(
+      data => {
+        console.log('Product Categories = ' + JSON.stringify(data));
+        this.productCategories = data;
+
+      }
+    );
   }
 
   listProducts() {
@@ -160,27 +181,11 @@ export class ShopPageComponent {
     this.listProducts();
   }
 
-  toggleSort(option: string) {
+  toggleSort(option: SortingMethod) {
 
-    if (option === this.sortingOption) return;
+    if (option === this.selectedSortingMethod) return;
 
-    switch (option) {
-      case 'newest-first':
-        this.sortingOption = 'newest-first';
-        break;
-      case 'from-cheap-to-expensive':
-        this.sortingOption = 'from-cheap-to-expensive';
-        break;
-      case 'from-expensive-to-cheap':
-        this.sortingOption = 'from-expensive-to-cheap';
-        break;
-      case 'discounted-first':
-        this.sortingOption = 'discounted-first';
-        break;
-      case 'highest-rating-first':
-        this.sortingOption = 'highest-rating-first';
-        break;
-    }
+    this.selectedSortingMethod = option;
 
     this.toggleModal();
   }
@@ -189,22 +194,25 @@ export class ShopPageComponent {
     this.showModal = !this.showModal;
   }
 
-  toggleGenderCategory(option: string) {
+  toggleGenderCategory(option: GenderFilter) {
     this.genderFilter = option;
   }
 
-  toggleTypeCategory(option: string) {
+  toggleTypeCategory(option: TypeFilter) {
     this.typeFilter = option;
   }
 
-  toggleFrameMaterialCategory(option: string) {
+  toggleFrameMaterialCategory(option: FrameFilter) {
     this.frameFilter = option;
   }
 
   protected readonly faSearch = faSearch;
   protected readonly faCaretDown = faCaretDown;
   protected readonly faTimes = faTimes;
-
   protected readonly faMinus = faMinus;
   protected readonly faPlus = faPlus;
+  protected readonly SortingMethod = SortingMethod;
+  protected readonly GenderFilter = GenderFilter;
+  protected readonly TypeFilter = TypeFilter;
+  protected readonly FrameFilter = FrameFilter;
 }
