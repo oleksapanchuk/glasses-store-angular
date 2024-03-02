@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {RouteBannerComponent} from '../route-banner/route-banner.component';
 import {ProductListComponent} from '../product-list/product-list.component';
@@ -21,6 +21,7 @@ import {SortingMethod} from "../shop-page-components/sorting-method.enum";
 import {GenderFilter} from "../shop-page-components/gender-filter.enum";
 import {TypeFilter} from "../shop-page-components/type-filter.enum";
 import {FrameFilter} from "../shop-page-components/frame-filter.enum";
+import {range} from "rxjs";
 
 @Component({
   selector: 'app-shop-page',
@@ -77,7 +78,7 @@ export class ShopPageComponent {
   listProductCategories() {
     this.productCategoryService.getProductCategories().subscribe(
       data => {
-        console.log('Product Categories = ' + JSON.stringify(data));
+
         this.productCategories = data;
 
       }
@@ -101,7 +102,8 @@ export class ShopPageComponent {
     // if we have a different keyword then previous
     // then set thePageNumber to 1
     if (this.previousKeyword != theKeyword) {
-      this.thePageNumber = 1;
+      this.thePageNumber = 0;
+      this.thePageSize = 12;
     }
 
     this.previousKeyword = theKeyword;
@@ -118,48 +120,29 @@ export class ShopPageComponent {
 
   private handelListProducts() {
 
-    // check if "id" param is avalible
-    const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
-
-    if (hasCategoryId) {
-      // get the "id" param string. convert string to a number using the "+" symbol
-      // "!" symbol in the end is the non-null assertion operator. Tells compiler that the object is not null.
-      this.currentCategoryId = +this.route.snapshot.paramMap.get('id')!;
-
-      // get the "name" param string
-      this.currentCategoryName = this.route.snapshot.paramMap.get('name')!;
-    } else {
-      // no category id avalibe ... default to category id 1
-      this.currentCategoryId = 1;
-      this.currentCategoryName = 'Books';
-    }
-
-    //
-    // Check if we have a defferent category then previous
-    // Note: Angular will reuse a component if it is currently being viewd
-    //
-
-    // if we have a different category id then previous
-    // then set thePageNumber back to 1
-    if (this.previousCategoryId != this.currentCategoryId) {
-      this.thePageNumber = 1;
-    }
-
-    this.previousCategoryId = this.currentCategoryId;
-
-    console.log(`currentCategoryId=${this.currentCategoryId}, thePageNumber=${this.thePageNumber}`);
-
-    // now get the products for the given category id
-    // this.productService.getProductListPaginate(
-    //     this.thePageNumber - 1,
-    //     this.thePageSize,
-    //     this.currentCategoryId)
-    //     .subscribe(this.processResult());
-    this.productService.getProductListPaginate(
+    this.productService.getProductListPaginateWithFilters(
+      this.rangeValues[0],
+      this.rangeValues[1],
+      this.genderFilter,
+      this.typeFilter,
+      this.frameFilter,
+      this.selectedSortingMethod,
       this.thePageNumber,
-      this.thePageSize,
-      this.currentCategoryId)
+      this.thePageSize)
       .subscribe(this.processResult());
+  }
+
+  toggleRefresh() {
+    this.productService.getProductListPaginateWithFilters(
+      this.rangeValues[0],
+      this.rangeValues[1],
+      this.genderFilter,
+      this.typeFilter,
+      this.frameFilter,
+      this.selectedSortingMethod,
+      0,
+      12
+    ).subscribe(this.processResult());
   }
 
   processResult() {
@@ -181,12 +164,33 @@ export class ShopPageComponent {
     this.listProducts();
   }
 
+  handleInputChange(event: any, isMin: boolean) {
+    let newValue = parseFloat(event.target.value);
+
+    // Check if the input value is empty or NaN
+    if (isNaN(newValue) || event.target.value.trim() === '') {
+      // Set default value (0 for min, 100 for max)
+      newValue = isMin ? 0 : 100;
+    }
+
+    if (isMin) {
+      this.rangeValues[0] = newValue;
+    } else {
+      this.rangeValues[1] = newValue;
+    }
+
+    console.log(`Received value: ${this.rangeValues}`);
+
+    this.toggleRefresh();
+  }
+
   toggleSort(option: SortingMethod) {
 
     if (option === this.selectedSortingMethod) return;
 
     this.selectedSortingMethod = option;
 
+    this.toggleRefresh();
     this.toggleModal();
   }
 
@@ -194,16 +198,24 @@ export class ShopPageComponent {
     this.showModal = !this.showModal;
   }
 
+  fetchProducts() {
+    console.log('Fetching products with range:', this.rangeValues);
+    this.toggleRefresh();
+  }
+
   toggleGenderCategory(option: GenderFilter) {
     this.genderFilter = option;
+    this.toggleRefresh();
   }
 
   toggleTypeCategory(option: TypeFilter) {
     this.typeFilter = option;
+    this.toggleRefresh();
   }
 
   toggleFrameMaterialCategory(option: FrameFilter) {
     this.frameFilter = option;
+    this.toggleRefresh();
   }
 
   protected readonly faSearch = faSearch;

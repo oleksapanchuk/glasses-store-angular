@@ -7,6 +7,7 @@
     <div class="shop__side-bar col-3">
 
       <!-- search products -->
+      <!--
       <div class="shop__search-container">
 
         <input class="shop__input-search" name="search" type="text" placeholder="Search here..." required="">
@@ -14,6 +15,31 @@
         <button class="shop__button-search">
           <fa-icon [icon]="faSearch"></fa-icon>
         </button>
+
+      </div>
+      -->
+
+      <!-- price range -->
+      <div class="shop__filter-container">
+
+        <div class="shop__tittle">Price</div>
+
+        <div class="shop__price-range">
+          <p-slider [(ngModel)]="rangeValues" [range]="true" [step]="1" (onSlideEnd)="fetchProducts()"></p-slider>
+        </div>
+
+        <div class="shop__price-inputs">
+
+          <div class="shop__min-price">
+            <span>from </span>
+            <input (change)="handleInputChange($event, true)" class="shop__input-price" name="min-price" type="text" value="{{ rangeValues[0] }}" [(ngModel)]="rangeValues[0]"/>
+          </div>
+          <div class="shop__max-price">
+            <span>to </span>
+            <input (change)="handleInputChange($event, false)" class="shop__input-price" name="min-price" type="text" value="{{ rangeValues[1] }}" [(ngModel)]="rangeValues[1]"/>
+          </div>
+
+        </div>
 
       </div>
 
@@ -62,30 +88,6 @@
         <hr>
 
         <div class="shop__sorting-category-selected">{{ selectedSortingMethod }}</div>
-
-      </div>
-
-      <!-- price range -->
-      <div class="shop__filter-container">
-
-        <div class="shop__tittle">Price</div>
-
-        <div class="shop__price-range">
-          <p-slider [(ngModel)]="rangeValues" [range]="true" [step]="1"></p-slider>
-        </div>
-
-        <div class="shop__price-inputs">
-
-          <div class="shop__min-price">
-            <span>from </span>
-            <input class="shop__input-price" name="min-price" type="text" value="{{ rangeValues[0] }}"/>
-          </div>
-          <div class="shop__max-price">
-            <span>to </span>
-            <input class="shop__input-price" name="min-price" type="text" value="{{ rangeValues[1] }}"/>
-          </div>
-
-        </div>
 
       </div>
 

@@ -97,16 +97,9 @@ export class ProductListComponent {
 
         console.log(`currentCategoryId=${this.currentCategoryId}, thePageNumber=${this.thePageNumber}`);
 
-        // now get the products for the given category id
-        // this.productService.getProductListPaginate(
-        //     this.thePageNumber - 1,
-        //     this.thePageSize,
-        //     this.currentCategoryId)
-        //     .subscribe(this.processResult());
         this.productService.getProductListPaginate(
             this.thePageNumber,
-            this.thePageSize,
-            this.currentCategoryId)
+            this.thePageSize)
             .subscribe(this.processResult());
     }
 

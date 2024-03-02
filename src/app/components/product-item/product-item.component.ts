@@ -23,7 +23,7 @@ export class ProductItemComponent {
   constructor(
     public cartService: CartService
   ) {
-    console.log(this.product);
+
   }
 
   ngOnInit(): void {
