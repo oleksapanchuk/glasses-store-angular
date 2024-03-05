@@ -52,9 +52,6 @@ export class ShopPageComponent {
   products: Product[] = [];
   productCategories: ProductCategory[] = [];
 
-  currentCategoryId: number = 1;
-  previousCategoryId: number = 1;
-  currentCategoryName: string = "";
   previousKeyword: string = "";
   searchMode: boolean = false;
 
@@ -67,7 +64,9 @@ export class ShopPageComponent {
 
   ngOnInit(): void {
 
-    this.listProductCategories();
+    console.log("Access Token: ", localStorage.getItem('accessToken'));
+
+    // this.listProductCategories();
 
     this.route.paramMap.subscribe(() => {
       this.listProducts();

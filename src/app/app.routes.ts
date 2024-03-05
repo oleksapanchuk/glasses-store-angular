@@ -8,9 +8,11 @@ import {SignInComponent} from './components/sign-in/sign-in.component';
 import {SignUpComponent} from './components/sign-up/sign-up.component';
 import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component';
 import {ProductDetailsComponent} from './components/product-details/product-details.component';
+import {UserPageComponent} from "./components/user-page/user-page.component";
 
 export const routes: Routes = [
 
+  {path: 'user-account', component: UserPageComponent},
   {path: 'shop', component: ShopPageComponent},
   {path: 'shop/products/:id', component: ProductDetailsComponent},
   {path: 'shop/:keyword', component: ShopPageComponent},

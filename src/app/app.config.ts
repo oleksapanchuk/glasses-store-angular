@@ -1,11 +1,12 @@
-import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import {ApplicationConfig} from '@angular/core';
+import {provideRouter} from '@angular/router';
 
 
-import { routes } from './app.routes';
-import { IMAGE_CONFIG } from '@angular/common';
-import { provideHttpClient } from '@angular/common/http';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {routes} from './app.routes';
+import {IMAGE_CONFIG} from '@angular/common';
+import {provideHttpClient, withInterceptors} from '@angular/common/http';
+import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
+import {authInterceptor} from "./interceptors/auth.interceptor";
 
 
 export const appConfig: ApplicationConfig = {
@@ -18,6 +19,10 @@ export const appConfig: ApplicationConfig = {
         disableImageLazyLoadWarning: true
       }
     },
-    provideHttpClient(), provideAnimationsAsync(),
+    provideHttpClient(withInterceptors([
+      authInterceptor
+    ])),
+    provideHttpClient(),
+    provideAnimationsAsync(),
   ]
 };
