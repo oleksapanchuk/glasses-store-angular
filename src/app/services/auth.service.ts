@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {TokensDto} from "../common/dto/tokens.dto";
 
 
 const AUTH_API = environment.panShopApiUrl + '/auth/';
@@ -24,11 +25,25 @@ export class AuthService {
     }, httpOptions);
   }
 
-  refreshToken(token: string) {
+  register(username: string, email: string, password: string): Observable<any> {
+    return this.http.post(
+      AUTH_API + 'sign-up',
+      {
+        username,
+        email,
+        password,
+      },
+      httpOptions
+    );
+  }
 
-    console.log("here 3.5 ", token)
+  logout(): Observable<any> {
+    return this.http.post(AUTH_API + 'sign-out', {}, httpOptions);
+  }
 
-    return this.http.post(AUTH_API + 'refresh-token', {
+  refreshToken(token: string): Observable<TokensDto> {
+
+    return this.http.post<TokensDto>(AUTH_API + 'refresh-token', {
       refreshToken: token
     }, httpOptions);
   }

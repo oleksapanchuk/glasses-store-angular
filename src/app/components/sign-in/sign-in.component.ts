@@ -4,6 +4,8 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {faFacebook, faGithub, faGoogle} from '@fortawesome/free-brands-svg-icons';
 import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
+import {StorageService} from "../../services/storage.service";
+import {TokensDto} from "../../common/dto/tokens.dto";
 
 @Component({
   selector: 'app-sign-in',
@@ -21,6 +23,7 @@ export class SignInComponent {
 
   constructor(
     private formBuilder: FormBuilder,
+    private storageService: StorageService,
     private authService: AuthService,
     private router: Router
   ) {
@@ -28,14 +31,15 @@ export class SignInComponent {
 
   onSubmitLogin() {
     if (this.loginForm.valid) {
-
       this.authService.login(
         this.loginForm.getRawValue().username!,
         this.loginForm.getRawValue().password!)
         .subscribe({
           next: (data: any) => {
-            localStorage.setItem('accessToken', data.accessToken);
-            localStorage.setItem('refreshToken', data.refreshToken);
+
+            this.storageService.saveTokens(data)
+            // localStorage.setItem('accessToken', data.accessToken);
+            // localStorage.setItem('refreshToken', data.refreshToken);
 
             // Navigate to UserAccount component upon successful login
             this.router.navigate(['/user-account']);
