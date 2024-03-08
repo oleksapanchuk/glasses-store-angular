@@ -7,22 +7,29 @@ import {RouterLink, RouterLinkActive} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {CartDialogComponent} from '../cart-components/cart-dialog/cart-dialog.component';
 import {faHeart} from "@fortawesome/free-regular-svg-icons";
-import {NgOptimizedImage} from "@angular/common";
+import {NgIf, NgOptimizedImage} from "@angular/common";
 import {ShopDropdownComponent} from "../shop-dropdown/shop-dropdown.component";
 import {NgbDropdownToggle} from "@ng-bootstrap/ng-bootstrap";
+import {StorageService} from "../../services/storage.service";
 
 @Component({
   selector: 'app-header',
   standalone: true,
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
-  imports: [FontAwesomeModule, SearchComponent, NavbarComponent, RouterLink, RouterLinkActive, NgOptimizedImage, ShopDropdownComponent, NgbDropdownToggle]
+  imports: [FontAwesomeModule, SearchComponent, NavbarComponent, RouterLink, RouterLinkActive, NgOptimizedImage, ShopDropdownComponent, NgbDropdownToggle, NgIf]
 })
 export class HeaderComponent {
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private storageService: StorageService
   ) {
+  }
+
+  isUserAuthorized(): boolean {
+    // Check if JWT token exists in local storage
+    return this.storageService.isLoggedIn();
   }
 
   openDialog() {

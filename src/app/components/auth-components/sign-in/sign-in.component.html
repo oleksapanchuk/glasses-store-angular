@@ -1,0 +1,66 @@
+<div class="sign-in__container">
+  <div class="sign-in__login-container">
+    <div class="sign-in__login-wrap">
+
+      <form class="sign-in__from validate-form">
+
+        <div class="sign-in__from-title">
+          Login to continue
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+
+          <div class="sign-in__from-input-container validate-input" data-validate="Valid email is required: ex@abc.xyz">
+            <input class="sign-in__form-input" type="text" formControlName="username" #inputField>
+            <span class="sign-in__form-focus-input"></span>
+            <span class="sign-in__form-label">Username</span>
+          </div>
+
+          <div class="sign-in__from-input-container validate-input" data-validate="Password is required">
+            <input class="sign-in__form-input" type="password" formControlName="password" #inputField>
+            <span class="sign-in__form-focus-input"></span>
+            <span class="sign-in__form-label">Password</span>
+          </div>
+
+          <div class="sign-in__forgot-pass">
+            <a routerLink="/forgot-password" class="txt1">
+              Forgot Password?
+            </a>
+          </div>
+
+          <div class="sign-in__button-container">
+            <button class="app-button form-btn" type="submit" [disabled]="!loginForm.valid">
+              Login
+            </button>
+          </div>
+
+        </form>
+
+        <div class="sign-in__under-btn">
+          <span>or sign in using</span>
+        </div>
+
+        <div class="sign-in__social-container">
+          <a href="#" class="sign-in__social-item">
+            <fa-icon [icon]="faGoogle"></fa-icon>
+          </a>
+
+          <a href="#" class="sign-in__social-item">
+            <fa-icon [icon]="faGithub"></fa-icon>
+          </a>
+          <a href="#" class="sign-in__social-item">
+            <fa-icon [icon]="faFacebook"></fa-icon>
+          </a>
+        </div>
+
+        <div class="sign-in__not-reg-container">
+          <span>Not sign up yet? </span>
+          <a routerLink="/sign-up"> Sign Up here!</a>
+        </div>
+      </form>
+
+      <div class="sign-in__login-photo"></div>
+
+    </div>
+  </div>
+</div>

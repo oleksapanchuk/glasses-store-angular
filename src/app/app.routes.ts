@@ -4,15 +4,15 @@ import {AboutComponent} from './components/about/about.component';
 import {ShopPageComponent} from './components/shop-page/shop-page.component';
 import {ContactPageComponent} from './components/contact-page/contact-page.component';
 import {ErrorPageComponent} from './components/error-page/error-page.component';
-import {SignInComponent} from './components/sign-in/sign-in.component';
-import {SignUpComponent} from './components/sign-up/sign-up.component';
-import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component';
+import {SignInComponent} from './components/auth-components/sign-in/sign-in.component';
+import {SignUpComponent} from './components/auth-components/sign-up/sign-up.component';
+import {ForgotPasswordComponent} from './components/auth-components/forgot-password/forgot-password.component';
 import {ProductDetailsComponent} from './components/product-details/product-details.component';
 import {UserPageComponent} from "./components/user-page/user-page.component";
 
 export const routes: Routes = [
 
-  {path: 'user-account', component: UserPageComponent},
+  {path: 'user-profile', component: UserPageComponent},
   {path: 'shop', component: ShopPageComponent},
   {path: 'shop/products/:id', component: ProductDetailsComponent},
   {path: 'shop/:keyword', component: ShopPageComponent},

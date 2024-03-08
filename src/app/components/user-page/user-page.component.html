@@ -1,1 +1,64 @@
-<p>user-page works!</p>
+<app-route-banner pageName="Profile"></app-route-banner>
+
+<div class="account__common-container">
+  <div class="account__container">
+
+    <div class="account__page-content">
+
+      <div class="account__details">
+
+        <div class="account__page-title">
+          <div class="account__title">Data</div>
+        </div>
+
+        <div class="account__page-row">
+          {{ user.username }}
+        </div>
+        <div class="account__page-row">
+          FIRST LAST
+        </div>
+        <div class="account__page-row">
+          {{ user.email }}
+        </div>
+        <div class="account__page-row">
+          +380674000543
+        </div>
+        <div class="account__page-row">
+          {{ user.role }}
+        </div>
+      </div>
+
+    </div>
+
+    <div class="account__page-slidebar">
+      <div class="account__slidebar-menu">
+
+        <div class="account__slidebar-menu-item">
+          <a href="#">
+            Personal data
+          </a>
+        </div>
+
+        <div class="account__slidebar-menu-item">
+          <a href="#">
+            Saved addresses
+          </a>
+        </div>
+
+        <div class="account__slidebar-menu-item">
+          <a href="#">
+            Order history
+          </a>
+        </div>
+
+        <div class="account__slidebar-menu-item">
+          <a href="#">
+            Sign Out
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

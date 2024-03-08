@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {TokensDto} from "../common/dto/tokens.dto";
 import {jwtDecode} from "jwt-decode";
+import {UserDto} from "../common/dto/user.dto";
+import {throwError} from "rxjs";
 
 const ACCESS_TOKEN = "accessToken";
 const REFRESH_TOKEN = "refreshToken";
@@ -17,6 +19,14 @@ export class StorageService {
   private storage: Storage = window.localStorage;
 
   constructor() {
+  }
+
+  public getId(): string {
+    return this.storage.getItem(USER_ID)!;
+  }
+
+  public getUsername(): string {
+    return this.storage.getItem(USER_SUBJECT)!;
   }
 
   public getRole(): string {

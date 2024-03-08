@@ -48,7 +48,13 @@
 
       <!-- SIGN IN -->
       <div class="header__button-icon">
-        <a routerLink="/sign-in" routerLinkActive="active" class="btn-open">
+        <!-- If user is not authorized -->
+        <a *ngIf="!isUserAuthorized()" routerLink="/sign-in" routerLinkActive="active" class="btn-open">
+          <fa-icon [icon]="faUser" aria-hidden="true"></fa-icon>
+        </a>
+
+        <!-- If user is authorized -->
+        <a *ngIf="isUserAuthorized()" routerLink="/user-profile" routerLinkActive="active" class="btn-open">
           <fa-icon [icon]="faUser" aria-hidden="true"></fa-icon>
         </a>
       </div>

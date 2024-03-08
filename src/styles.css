@@ -3,10 +3,11 @@
 
 html,
 body {
+  height: 100%;
   margin: 0;
-  font-size: 100%;
   background: #fff;
   font-family: Raleway, sans-serif;
+  font-size: 100%;
   overflow-x: hidden;
 }
 
@@ -62,6 +63,7 @@ ul {
 }
 
 label {
+  display: block;
   margin: 0;
 }
 
@@ -75,11 +77,41 @@ button, select, textarea {
   color: #000;
 }
 
+iframe {
+  border: none !important;
+}
+
 /*
 *
 * ____________________________________________
 *
  */
+
+/* -- button -- */
+
+.app-button {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+  background: #0e0f10;
+  font-family: Raleway, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  transition: 0.5s all;
+}
+
+.app-button:hover {
+  background: #ff4e00;
+}
+
+/* -- /button -- */
 
 .mobile-nav-button {
   position: absolute;
@@ -247,11 +279,4 @@ button#trigger-overlay {
   }
 }
 
-html, body {
-  height: 100%;
-}
 
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}

@@ -1,0 +1,83 @@
+.account__title {
+  color: #2f2f2f;
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-family: Unbounded, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.account__common-container {
+  margin: 0 auto;
+  max-width: 1280px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.account__container {
+  padding: 0 45px 50px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.account__page-content {
+  width: calc(100% - 320px);
+}
+
+.account__page-title .account__title {
+  margin-top: 20px;
+}
+
+.account__details {
+  margin: 80px 0 60px;
+}
+
+.account__page-row {
+  margin-bottom: 20px;
+  color: #000;
+  font-family: Raleway, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.account__page-slidebar {
+  width: 265px;
+}
+
+.account__slidebar-menu {
+  margin-top: 80px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /*border-bottom: 1px solid #000;*/
+  flex-direction: column;
+}
+
+.account__slidebar-menu-item {
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+}
+
+.account__slidebar-menu-item a {
+  color: #000;
+  outline: none;
+  text-decoration: none;
+  font-family: Raleway, sans-serif;
+  font-size: 1.3rem;
+  text-shadow: 0 0 0 #000;
+  text-transform: uppercase;
+}
+
+.account__slidebar-menu-item a .active {
+  font-weight: 700;
+}
+
+
+
