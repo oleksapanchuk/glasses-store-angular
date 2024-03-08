@@ -1,0 +1,148 @@
+input {
+  outline: none;
+  border: none;
+}
+
+.auth__from-title {
+  margin-bottom: 50px;
+
+  color: #353434;
+  font-family: Unbounded, sans-serif;
+  font-size: 3em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
+}
+
+/* -- button -- */
+.auth__button-container {
+  width: 100%;
+  margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.auth__button {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+  background: #0e0f10;
+  font-family: Raleway, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  transition: 0.5s all;
+}
+
+.auth__button:hover {
+  background: #ff4e00;
+}
+
+/* -- /button -- */
+
+/* -- form -- */
+.auth__from-input-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  width: 100%;
+  height: 80px;
+  position: relative;
+  border: 1px solid #313233;
+  margin-bottom: 1.5em;
+}
+
+.auth__form-label {
+  width: 100%;
+  left: 0;
+  top: 30px;
+  display: block;
+  position: absolute;
+  padding-left: 24px;
+
+  color: #353434;
+  font-family: Raleway, sans-serif;
+  font-size: 1.1em;
+  font-weight: 400;
+  transition: all 0.4s;
+  pointer-events: none;
+}
+
+.auth__form-input {
+  width: 100%;
+  height: 100%;
+  padding: 0 26px;
+  display: block;
+  background: transparent;
+
+  color: #0e0f10;
+  font-family: Raleway, sans-serif;
+  font-size: 1.3em;
+  font-weight: 500;
+  transition: all 0.4s;
+}
+
+.auth__form-input:focus + .auth__form-focus-input {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.auth__form-input:focus {
+  height: 48px;
+}
+
+.auth__form-input:focus + .auth__form-focus-input + .auth__form-label {
+  top: 14px;
+  font-size: 13px;
+}
+
+.auth__has-value {
+  height: 48px !important;
+}
+
+.auth__has-value + .auth__form-focus-input + .auth__form-label {
+  top: 14px;
+  font-size: 13px;
+}
+/* -- /form -- */
+
+/* -- social links -- */
+.auth__under-btn {
+  padding: 10px 0;
+  text-align: center;
+}
+
+.auth__under-btn span {
+  color: #0e0f10;
+
+  font-family: Raleway, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.auth__social-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth__social-item {
+  margin-top: 7px;
+  padding: 0 10px;
+
+  color: #292b2c;
+  font-size: 1.8em;
+}
+
+.auth__social-item:hover {
+  color: #ff4e00;
+}
+/* -- /social links -- */

@@ -1,64 +1,59 @@
-<div class="form-content">
+<div class="sign-up__container">
 
-    <div class="sign-up-photo" style="background-image: url('../../../../assets/images/banner3.jpg');">
+  <div class="sign-up__photo-container"></div>
+
+  <div class="sign-in__wrap">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmitRegister()">
+
+      <div class="auth__from-title">Register to continue</div>
+
+      <div class="auth__from-input-container validate-input" data-validate="Username is required">
+        <input class="auth__form-input" type="text" formControlName="username" #inputField>
+        <span class="auth__form-focus-input"></span>
+        <span class="auth__form-label">Username</span>
+      </div>
+
+      <div class="auth__from-input-container validate-input" data-validate="Valid email is required: ex@abc.xyz">
+        <input class="auth__form-input" type="text" formControlName="email" #inputField>
+        <span class="auth__form-focus-input"></span>
+        <span class="auth__form-label">Email</span>
+      </div>
+
+      <div class="auth__from-input-container validate-input" data-validate="Password is required">
+        <input class="auth__form-input" type="text" formControlName="password" #inputField>
+        <span class="auth__form-focus-input"></span>
+        <span class="auth__form-label">Password</span>
+      </div>
+
+      <div class="auth__button-container">
+        <button class="auth__button" type="submit" [disabled]="!registerForm.valid">
+          Register
+        </button>
+      </div>
+
+      <div class="auth__under-btn">
+        <span>or sign in using</span>
+      </div>
+
+    </form>
+
+    <div class="auth__social-container">
+      <a href="#" class="auth__social-item">
+        <fa-icon [icon]="faGoogle"></fa-icon>
+      </a>
+
+      <a href="#" class="auth__social-item">
+        <fa-icon [icon]="faGithub"></fa-icon>
+      </a>
+      <a href="#" class="auth__social-item">
+        <fa-icon [icon]="faFacebook"></fa-icon>
+      </a>
     </div>
 
-    <div class="wrap-sign-in">
-        <form class="form-detail" action="#" method="post">
-
-            <h3 class="from-tittle pb-4">Register Form</h3>
-
-            <div class="wrap-input validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                <input class="input" type="text" name="name">
-                <span class="focus-input"></span>
-                <span class="label-input">Name</span>
-            </div>
-
-            <div class="wrap-input validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                <input class="input" type="text" name="email">
-                <span class="focus-input"></span>
-                <span class="label-input">Email</span>
-            </div>
-
-            <div class="wrap-input validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                <input class="input" type="text" name="password">
-                <span class="focus-input"></span>
-                <span class="label-input">Password</span>
-            </div>
-
-            <div class="form-btn-container">
-                <button class="form-btn" type="submit">
-                    Register
-                </button>
-            </div>
-
-            <div class="text-center pt-3 pb-2">
-                <span class="txt2">
-                    or sign up using
-                </span>
-            </div>
-
-        </form>
-
-        <div class="flex-c-m">
-            <a href="#" class="form-social-item flex-c-m mx-1">
-                <fa-icon [icon]="faGoogle"></fa-icon>
-            </a>
-
-            <a href="#" class="form-social-item flex-c-m mx-1">
-                <fa-icon [icon]="faGithub"></fa-icon>
-            </a>
-            <a href="#" class="form-social-item flex-c-m mx-1">
-                <fa-icon [icon]="faFacebook"></fa-icon>
-            </a>
-        </div>
-
-        <div class="text-center pt-3">
-            <span class="txt2">
-                Already have account?
-            </span>
-            <a routerLink="/sign-in" class="link-sign-up"> Login</a>
-        </div>
+    <div class="sign-up__have-acc-container">
+      <span class="txt2">Already have account?</span>
+      <a routerLink="/sign-in" class="link-sign-up"> Login</a>
     </div>
+  </div>
 
 </div>

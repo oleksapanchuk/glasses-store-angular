@@ -1,258 +1,50 @@
-.form-content {
-    background: #f2f2f2;
-    position: relative;
-    display: flex;
-    display: -webkit-flex;
+.sign-up__container {
+  background: #f2f2f2;
+  position: relative;
+  display: flex;
 }
 
-.sign-up-photo {
-    width: calc(100% - 765px);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    z-index: 1;
+.sign-up__photo-container {
+  width: calc(100% - 765px);
+  background-image: url('../../../../assets/images/banner3.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1;
 }
 
-.wrap-sign-in {
-    width: 760px;
-    min-height: 80vh;
-    display: block;
-    background-color: #f5f7f7;
-    padding: 70px 55px 55px 55px;
+.sign-in__wrap {
+  width: 760px;
+  min-height: 80vh;
+  display: block;
+  background-color: #f5f7f7;
+  padding: 50px 55px 55px 55px;
 }
 
-.from-tittle {
-    color: #353434;
-    font-size: 3em;
-    letter-spacing: 1px;
-    font-weight: 400;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
-    margin-bottom: 0.2em;
+.sign-up__have-acc-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* -- INPUT -- */
-input {
-    outline: none;
-    border: none;
+.sign-up__have-acc-container span,
+.sign-up__have-acc-container a {
+  color: #0e0f10;
+  font-family: Raleway, sans-serif;
+  font-size: 1.1em;
+  font-weight: 500;
+  text-transform: uppercase;
 }
 
-.wrap-input {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    width: 100%;
-    height: 80px;
-    position: relative;
-    border: 1px solid #b0b0b0;
-    border-radius: 10px;
-    margin-bottom: 1em;
+.sign-up__have-acc-container a {
+  padding-left: 8px;
+  font-size: 1.3em;
+  font-weight: 600;
 }
 
-.validate-input {
-    position: relative;
-}
-
-.input {
-    display: block;
-    width: 100%;
-    background: transparent;
-    font-size: 1.2em;
-    color: #353434;
-    line-height: 1.2;
-    padding: 0 26px;
-}
-
-input.input {
-    height: 100%;
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s;
-}
-
-.input:focus+.focus-input {
-    visibility: visible;
-    opacity: 1;
-
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
-}
-
-.label-input {
-    font-size: 1em;
-    color: #353434;
-    line-height: 1.2;
-
-    display: block;
-    position: absolute;
-    pointer-events: none;
-    width: 100%;
-    padding-left: 24px;
-    left: 0;
-    top: 30px;
-
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s;
-}
-
-.input:focus {
-    height: 48px;
-}
-
-.input:focus+.focus-input+.label-input {
-    top: 14px;
-    font-size: 13px;
-}
-
-.has-val+.focus-input+.label-input {
-    top: 14px;
-    font-size: 13px;
-}
-
-/* -- /INPUT -- */
-
-/*------------------------------------------------------------------
-
-/* -- BUTTON -- */
-
-.form-btn-container {
-    width: 100%;
-    margin-top: 2em;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-button[type="submit"] {
-    outline: none;
-    padding: 20px 0;
-    font-size: 14px;
-    color: #fff;
-    background: #0e0f10;
-    border: none;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 600;
-    cursor: pointer;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.form-btn {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-    -o-transition: 0.5s all;
-    -ms-transition: 0.5s all;
-    transition: 0.5s all;
-}
-
-button[type="submit"]:hover {
-    background: #ff4e00;
-}
-
-/* -- /BUTTON -- */
-
-/*------------------------------------------------------------------
-
-/* -- SOCIAL -- */
-
-.flex-c-m {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    justify-content: center;
-    -ms-align-items: center;
-    align-items: center;
-}
-
-.form-social-item {
-    width: 36px;
-    height: 36px;
-    font-size: 1.5em;
-    color: #292b2c;
-}
-
-.form-social-item:hover {
-    color: #ff4e00;
-}
-
-.link-sign-up {
-    font-size: 1em;
-    color: #292b2c;
-}
-
-.link-sign-up:hover {
-    color: #ff4e00;
-}
-
-/* -- /SOCIAL -- */
-
-
-
-
-/* Responsive */
-@media screen and (max-width: 991px) {
-    .form-v6-content {
-        margin: 180px 20px;
-        flex-direction: column;
-        -o-flex-direction: column;
-        -ms-flex-direction: column;
-        -moz-flex-direction: column;
-        -webkit-flex-direction: column;
-    }
-
-    .form-v6-content .form-left {
-        width: 100%;
-    }
-
-    .form-v6-content .form-left img {
-        width: 100%;
-        border-bottom-left-radius: 0px;
-        border-top-right-radius: 8px;
-    }
-
-    .form-v6-content .form-detail {
-        padding: 30px 20px 30px 20px;
-        width: auto;
-    }
-
-    .form-v6-content .form-detail .form-row input {
-        width: 96%;
-    }
-
-    .form-v6-content .form-detail .register {
-        margin-bottom: 80px;
-    }
-}
-
-@media screen and (max-width: 767px) {
-    .form-v6-content .form-detail .form-row input {
-        width: 94%;
-    }
-}
-
-@media screen and (max-width: 575px) {
-    .form-v6-content .form-detail .form-row input {
-        width: 89%;
-    }
+.sign-up__have-acc-container a:hover {
+  color: #ff4e00;
+  font-weight: 700;
 }

@@ -4,51 +4,49 @@
 
       <form class="sign-in__from validate-form">
 
-        <div class="sign-in__from-title">
-          Login to continue
-        </div>
+        <div class="auth__from-title">Login to continue</div>
 
         <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
 
-          <div class="sign-in__from-input-container validate-input" data-validate="Valid email is required: ex@abc.xyz">
-            <input class="sign-in__form-input" type="text" formControlName="username" #inputField>
-            <span class="sign-in__form-focus-input"></span>
-            <span class="sign-in__form-label">Username</span>
+          <div class="auth__from-input-container validate-input" data-validate="Valid email is required: ex@abc.xyz">
+            <input class="auth__form-input" type="text" formControlName="username" #inputField>
+            <span class="auth__form-focus-input"></span>
+            <span class="auth__form-label">Username</span>
           </div>
 
-          <div class="sign-in__from-input-container validate-input" data-validate="Password is required">
-            <input class="sign-in__form-input" type="password" formControlName="password" #inputField>
-            <span class="sign-in__form-focus-input"></span>
-            <span class="sign-in__form-label">Password</span>
+          <div class="auth__from-input-container validate-input" data-validate="Password is required">
+            <input class="auth__form-input" type="password" formControlName="password" #inputField>
+            <span class="auth__form-focus-input"></span>
+            <span class="auth__form-label">Password</span>
           </div>
 
           <div class="sign-in__forgot-pass">
-            <a routerLink="/forgot-password" class="txt1">
+            <a routerLink="/forgot-password">
               Forgot Password?
             </a>
           </div>
 
-          <div class="sign-in__button-container">
-            <button class="app-button form-btn" type="submit" [disabled]="!loginForm.valid">
+          <div class="auth__button-container">
+            <button class="auth__button" type="submit" [disabled]="!loginForm.valid">
               Login
             </button>
           </div>
 
         </form>
 
-        <div class="sign-in__under-btn">
+        <div class="auth__under-btn">
           <span>or sign in using</span>
         </div>
 
-        <div class="sign-in__social-container">
-          <a href="#" class="sign-in__social-item">
+        <div class="auth__social-container">
+          <a href="#" class="auth__social-item">
             <fa-icon [icon]="faGoogle"></fa-icon>
           </a>
 
-          <a href="#" class="sign-in__social-item">
+          <a href="#" class="auth__social-item">
             <fa-icon [icon]="faGithub"></fa-icon>
           </a>
-          <a href="#" class="sign-in__social-item">
+          <a href="#" class="auth__social-item">
             <fa-icon [icon]="faFacebook"></fa-icon>
           </a>
         </div>
