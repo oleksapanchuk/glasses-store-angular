@@ -8,16 +8,44 @@
 
         <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
 
-          <div class="auth__from-input-container validate-input" data-validate="Valid email is required: ex@abc.xyz">
-            <input class="auth__form-input" type="text" formControlName="username" #inputField>
-            <span class="auth__form-focus-input"></span>
-            <span class="auth__form-label">Username</span>
+          <!-- Server error message -->
+          <div *ngIf="serverErrorMessage" class="auth__server-error">
+            {{ serverErrorMessage }}
           </div>
 
-          <div class="auth__from-input-container validate-input" data-validate="Password is required">
-            <input class="auth__form-input" type="password" formControlName="password" #inputField>
+          <div class="auth__from-input-container"
+               data-validate="Valid email is required: ex@abc.xyz"
+               [class.auth_form-input-invalid]="username?.invalid && (username?.dirty || username?.touched)">
+            <input class="auth__form-input" type="text" formControlName="username" #inputField (input)="serverErrorMessage=''">
+            <span class="auth__form-focus-input"></span>
+            <span class="auth__form-label">Username</span>
+
+            <div *ngIf="username?.invalid && (username?.dirty || username?.touched)" class="auth__alert">
+              <div *ngIf="username?.errors?.['required'] || username?.errors?.['notOnlyWhitespace']">
+                Username is required
+              </div>
+              <div *ngIf="username?.errors?.['minlength']">
+                Username must be at least 5 characters long
+              </div>
+            </div>
+          </div>
+
+
+          <div class="auth__from-input-container auth__validate-password"
+               data-validate="Password is required"
+               [class.auth_form-input-invalid]="password?.invalid && (password?.dirty || password?.touched)">
+            <input class="auth__form-input" type="password" formControlName="password" #inputField (input)="serverErrorMessage=''">
             <span class="auth__form-focus-input"></span>
             <span class="auth__form-label">Password</span>
+
+            <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="auth__alert">
+              <div *ngIf="password?.errors?.['required'] || password?.errors?.['notOnlyWhitespace']">
+                Password is required
+              </div>
+              <div *ngIf="password?.errors?.['pattern']">
+                Password must be 8+ characters with a mix of uppercase, lowercase, number, and special character.
+              </div>
+            </div>
           </div>
 
           <div class="sign-in__forgot-pass">

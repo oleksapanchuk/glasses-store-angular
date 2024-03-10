@@ -7,22 +7,63 @@
 
       <div class="auth__from-title">Register to continue</div>
 
-      <div class="auth__from-input-container validate-input" data-validate="Username is required">
-        <input class="auth__form-input" type="text" formControlName="username" #inputField>
+      <!-- Server error message -->
+      <div *ngIf="serverErrorMessage" class="auth__server-error">
+        {{ serverErrorMessage }}
+      </div>
+
+      <div class="auth__from-input-container"
+           data-validate="Username is required"
+           [class.auth_form-input-invalid]="username?.invalid && (username?.dirty || username?.touched)">
+        <input class="auth__form-input" type="text" formControlName="username" #inputField (input)="serverErrorMessage=''">
         <span class="auth__form-focus-input"></span>
         <span class="auth__form-label">Username</span>
+
+        <div *ngIf="username?.invalid && (username?.dirty || username?.touched)" class="auth__alert">
+          <div *ngIf="username?.errors?.['required'] || username?.errors?.['notOnlyWhitespace']">
+            Username is required
+          </div>
+          <div *ngIf="username?.errors?.['minlength']">
+            Username must be at least 5 characters long
+          </div>
+          <div *ngIf="username?.errors?.['maxlength']">
+            Username cannot exceed 20 characters
+          </div>
+        </div>
       </div>
 
-      <div class="auth__from-input-container validate-input" data-validate="Valid email is required: ex@abc.xyz">
-        <input class="auth__form-input" type="text" formControlName="email" #inputField>
+      <div class="auth__from-input-container"
+           data-validate="Valid email is required: ex@abc.xyz"
+           [class.auth_form-input-invalid]="email?.invalid && (email?.dirty || email?.touched)">
+        <input class="auth__form-input" type="text" formControlName="email" #inputField (input)="serverErrorMessage=''">
         <span class="auth__form-focus-input"></span>
         <span class="auth__form-label">Email</span>
+
+        <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="auth__alert">
+          <div *ngIf="email?.errors?.['required'] || email?.errors?.['notOnlyWhitespace']">
+            Email is required
+          </div>
+          <div *ngIf="email?.errors?.['email']">
+            Please enter a valid email
+          </div>
+        </div>
       </div>
 
-      <div class="auth__from-input-container validate-input" data-validate="Password is required">
-        <input class="auth__form-input" type="text" formControlName="password" #inputField>
+      <div class="auth__from-input-container auth__validate-password"
+           data-validate="Password is required"
+           [class.auth_form-input-invalid]="password?.invalid && (password?.dirty || password?.touched)">
+        <input class="auth__form-input" type="password" formControlName="password" #inputField (input)="serverErrorMessage=''">
         <span class="auth__form-focus-input"></span>
         <span class="auth__form-label">Password</span>
+
+        <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="auth__alert">
+          <div *ngIf="password?.errors?.['required'] || password?.errors?.['notOnlyWhitespace']">
+            Password is required
+          </div>
+          <div *ngIf="password?.errors?.['pattern']">
+            Password must be 8+ characters with a mix of uppercase, lowercase, number, and special character.
+          </div>
+        </div>
       </div>
 
       <div class="auth__button-container">

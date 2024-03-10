@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
 import {TokensDto} from "../common/dto/tokens.dto";
 import {jwtDecode} from "jwt-decode";
-import {UserDto} from "../common/dto/user.dto";
-import {throwError} from "rxjs";
 
 const ACCESS_TOKEN = "accessToken";
 const REFRESH_TOKEN = "refreshToken";
@@ -37,8 +35,18 @@ export class StorageService {
   }
 
   public isLoggedIn(): boolean {
-    const token = this.getAccessToken();
-    return !!token;
+    const token = this.getRefreshToken();
+    if (!token) return false;
+
+    const decodedToken: any = jwtDecode(token);
+    const isTokenExpired = decodedToken.exp * 1000 <= Date.now();
+
+    if (isTokenExpired) {
+      this.clear();
+      return false;
+    }
+
+    return true;
   }
 
   public saveTokens(tokens: TokensDto) {
@@ -62,7 +70,11 @@ export class StorageService {
   }
 
   public clear(): void {
-    this.storage.clear();
+    this.storage.removeItem(REFRESH_TOKEN);
+    this.storage.removeItem(ACCESS_TOKEN);
+    this.storage.removeItem(USER_ID);
+    this.storage.removeItem(USER_SUBJECT);
+    this.storage.removeItem(USER_ROLE);
   }
 
   private saveUserInfo(token: string): void {

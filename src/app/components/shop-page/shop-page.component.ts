@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {RouteBannerComponent} from '../route-banner/route-banner.component';
 import {ProductListComponent} from '../product-list/product-list.component';
@@ -21,7 +21,7 @@ import {SortingMethod} from "../shop-page-components/sorting-method.enum";
 import {GenderFilter} from "../shop-page-components/gender-filter.enum";
 import {TypeFilter} from "../shop-page-components/type-filter.enum";
 import {FrameFilter} from "../shop-page-components/frame-filter.enum";
-import {range} from "rxjs";
+import {catchError, throwError} from "rxjs";
 
 @Component({
   selector: 'app-shop-page',
@@ -63,25 +63,30 @@ export class ShopPageComponent {
   }
 
   ngOnInit(): void {
-
-    console.log("Access Token: ", localStorage.getItem('accessToken'));
-
-    // this.listProductCategories();
-
     this.route.paramMap.subscribe(() => {
       this.listProducts();
     })
-
   }
 
   listProductCategories() {
-    this.productCategoryService.getProductCategories().subscribe(
-      data => {
+    this.productCategoryService.getProductCategories()
+      // .pipe(
+      //   map((data) => {
+      //     console.log("here")
+      //     this.productCategories = data
+      //   } ),
+      //   catchError((error) => {
+      //     console.log(error)
+      //     return throwError(() => error);
+      //   })
+      // );
+      .subscribe(
+        data => {
 
-        this.productCategories = data;
+          this.productCategories = data;
 
-      }
-    );
+        }
+      );
   }
 
   listProducts() {
@@ -128,7 +133,12 @@ export class ShopPageComponent {
       this.selectedSortingMethod,
       this.thePageNumber,
       this.thePageSize)
-      .subscribe(this.processResult());
+      .pipe(
+        catchError((error) => {
+          console.log(error)
+          return throwError(() => error);
+        })
+      ).subscribe(() => this.processResult());
   }
 
   toggleRefresh() {
@@ -140,8 +150,13 @@ export class ShopPageComponent {
       this.frameFilter,
       this.selectedSortingMethod,
       0,
-      12
-    ).subscribe(this.processResult());
+      12)
+      .pipe(
+        catchError((error) => {
+          console.log(error)
+          return throwError(() => error);
+        })
+      ).subscribe(this.processResult());
   }
 
   processResult() {

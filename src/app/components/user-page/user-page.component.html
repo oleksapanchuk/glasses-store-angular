@@ -1,7 +1,7 @@
 <app-route-banner pageName="Profile"></app-route-banner>
 
 <div class="account__common-container">
-  <div class="account__container">
+  <div *ngIf="user" class="account__container">
 
     <div class="account__page-content">
 
@@ -52,7 +52,7 @@
         </div>
 
         <div class="account__slidebar-menu-item">
-          <a href="#">
+          <a routerLink="/home" (click)="signOut()">
             Sign Out
           </a>
         </div>

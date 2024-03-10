@@ -3,6 +3,7 @@ import {environment} from "../../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {TokensDto} from "../common/dto/tokens.dto";
+import {StorageService} from "./storage.service";
 
 
 const AUTH_API = environment.panShopApiUrl + '/auth/';
@@ -15,7 +16,10 @@ const httpOptions = {
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private storageService: StorageService
+  ) {
   }
 
   login(username: string, password: string): Observable<any> {
@@ -37,8 +41,12 @@ export class AuthService {
     );
   }
 
-  logout(): Observable<any> {
-    return this.http.post(AUTH_API + 'sign-out', {}, httpOptions);
+  // logout(): Observable<any> {
+  //   return this.http.post(AUTH_API + 'sign-out', {}, httpOptions);
+  // }
+
+  signOut(): void {
+    this.storageService.clear();
   }
 
   refreshToken(token: string): Observable<TokensDto> {

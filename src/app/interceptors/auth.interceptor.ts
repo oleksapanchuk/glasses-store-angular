@@ -47,25 +47,15 @@ export const unAuthErrorInterceptor: HttpInterceptorFn = (req: HttpRequest<unkno
 
       console.log("NO_AUTH_INTERCEPTOR | ERROR CATCH FOR URL: " + req.url);
 
-      if (
-        !(req.url.includes('auth/sign-in') || req.url.includes('auth/refresh-token'))
-        &&
-        error.status === 403) {
+      const urlToExclude = excludedUrls.some(url => req.url.includes(url));
 
-        console.log("NO_AUTH_INTERCEPTOR | need refresh token");
+      if (!urlToExclude && error.status === 403) {
 
-        const refreshToken = storageService.getRefreshToken();
-
-        if (refreshToken) {
-
-          console.log("NO_AUTH_INTERCEPTOR | REFRESH TOKEN: " + refreshToken);
-
+        if (storageService.isLoggedIn()) {
+          const refreshToken = storageService.getRefreshToken();
           return authService.refreshToken(refreshToken).pipe(
             switchMap((refreshResult) => {
-
-              // assuming that tokenService.refreshToken() will return { accessToken: 'myNewAccessToken', refreshToken: 'myNewRefreshToken'}
               storageService.refreshToken(refreshResult);
-
               return next(
                 req.clone({
                     headers: req.headers.set('Authorization', `Bearer ${refreshResult.accessToken}`),
@@ -73,21 +63,17 @@ export const unAuthErrorInterceptor: HttpInterceptorFn = (req: HttpRequest<unkno
                 ));
             }),
             catchError((error) => {
-              console.log('error')
-              if (error.status == '403' || error.status === '401') {
-                storageService.clear();
-                // authService.logout();
+              if (error.status === '401' || error.status == '403') {
+                authService.signOut();
               }
               return throwError(() => error);
             })
           );
         }
+
       }
-
-      storageService.clear();
-      // authService.logOut();
-
-      return throwError(() => new Error('Unauthorized Exception'));
+      authService.signOut();
+      return throwError(() => error);
     })
   );
 };
