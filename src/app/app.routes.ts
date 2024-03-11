@@ -8,7 +8,7 @@ import {SignInComponent} from './components/auth-components/sign-in/sign-in.comp
 import {SignUpComponent} from './components/auth-components/sign-up/sign-up.component';
 import {ForgotPasswordComponent} from './components/auth-components/forgot-password/forgot-password.component';
 import {ProductDetailsComponent} from './components/product-details/product-details.component';
-import {UserPageComponent} from "./components/user-page/user-page.component";
+import {UserPageComponent} from "./components/user-page-components/user-page/user-page.component";
 
 export const routes: Routes = [
 

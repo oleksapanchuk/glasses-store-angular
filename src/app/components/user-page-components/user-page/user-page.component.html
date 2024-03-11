@@ -5,28 +5,7 @@
 
     <div class="account__page-content">
 
-      <div class="account__details">
-
-        <div class="account__page-title">
-          <div class="account__title">Data</div>
-        </div>
-
-        <div class="account__page-row">
-          {{ user.username }}
-        </div>
-        <div class="account__page-row">
-          FIRST LAST
-        </div>
-        <div class="account__page-row">
-          {{ user.email }}
-        </div>
-        <div class="account__page-row">
-          +380674000543
-        </div>
-        <div class="account__page-row">
-          {{ user.role }}
-        </div>
-      </div>
+    <app-user-data [user-data]="user"></app-user-data>
 
     </div>
 

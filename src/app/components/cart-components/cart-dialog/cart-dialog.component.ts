@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
-import { CartItemComponent } from '../cart-item/cart-item.component';
-import { CartService } from '../../../services/cart.service';
+import {Component} from '@angular/core';
+import {CartItemComponent} from '../cart-item/cart-item.component';
+import {CartService} from '../../../services/cart.service';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { CartItem } from '../../../common/cart-item';
-import { CommonModule } from '@angular/common';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {CartItem} from '../../../common/cart-item';
+import {CommonModule} from '@angular/common';
+import {faXmark} from "@fortawesome/free-solid-svg-icons/faXmark";
 
 
 @Component({
@@ -20,15 +20,14 @@ import { CommonModule } from '@angular/common';
 })
 export class CartDialogComponent {
 
-  faTimes = faTimes;
-
   cartItems: CartItem[] = [];
   totalPrice: number = 0;
   totalQuantity: number = 0;
 
   constructor(
     private cartService: CartService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.listCartDetails();
@@ -54,4 +53,5 @@ export class CartDialogComponent {
 
   }
 
+  protected readonly faXmark = faXmark;
 }

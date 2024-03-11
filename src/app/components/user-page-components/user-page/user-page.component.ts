@@ -1,11 +1,12 @@
 import {Component} from '@angular/core';
-import {StorageService} from "../../services/storage.service";
-import {UserDto} from "../../common/dto/user.dto";
-import {UserService} from "../../services/user.service";
-import {RouteBannerComponent} from "../route-banner/route-banner.component";
+import {StorageService} from "../../../services/storage.service";
+import {UserDto} from "../../../common/dto/user.dto";
+import {UserService} from "../../../services/user.service";
+import {RouteBannerComponent} from "../../route-banner/route-banner.component";
 import {NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
-import {AuthService} from "../../services/auth.service";
+import {AuthService} from "../../../services/auth.service";
+import {UserDataComponent} from "../user-data/user-data.component";
 
 @Component({
   selector: 'app-user-page',
@@ -13,7 +14,8 @@ import {AuthService} from "../../services/auth.service";
   imports: [
     RouteBannerComponent,
     NgIf,
-    RouterLink
+    RouterLink,
+    UserDataComponent
   ],
   templateUrl: './user-page.component.html',
   styleUrl: './user-page.component.css'

@@ -1,60 +1,68 @@
-.cart__order {
-    margin: 0;
-    padding: 0;
-    min-width: 70vw;
-    min-height: 60vh;
+.cart__top-container {
+  padding: 15px 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.title__name {
-    padding: 0.7em 1.5rem;
+.cart__title {
+  color: #353434;
+  font-family: Unbounded, sans-serif;
+  font-size: 2.5em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
 }
 
-.title__name h2 {
-    margin: 0;
-    padding: 0;
-
-    color: #353434;
-    font-size: 2em;
-    text-align: left;
-    letter-spacing: 1px;
-    font-weight: 400;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
+.cart__close-button {
+  color: #353434;
+  font-family: Unbounded, sans-serif;
+  font-size: 2.5em;
+  font-weight: 500;
 }
 
-.cart__order-btn {
-    outline: none;
-    padding: 20px 50px;
-    font-size: 1.2em;
-    color: #fff;
-    background: #0e0f10;
-    border: none;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-    -o-transition: 0.5s all;
-    -ms-transition: 0.5s all;
-    transition: 0.5s all;
-    font-weight: 500;
-    cursor: pointer;
+.cart__item-list {
+  margin: 0;
+  padding: 0;
+  min-width: 65vw;
+  min-height: 60vh;
 }
 
-.cart__order-btn:hover {
-    background: #ff4e00;
+.cart__footer-container {
+  padding: 15px 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.mat-mdc-button:not(:disabled) {
-    color: #fff;
+.cart__total-info {
+  color: #353434;
+  font-family: Unbounded, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
-.cart__close-btn {
-    padding: 10px;
+.cart__order-button {
+  padding: 8px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+  background: #0e0f10;
+  font-family: Raleway, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  transition: 0.5s all;
 }
 
-.total__info {
-    padding: 0.7em 1.5rem;
-    font-size: 1.5em;
-    letter-spacing: 0.1em;
-    display: flex;
-    flex-direction: column;
+.cart__order-button:hover {
+  background: #ff4e00;
 }
