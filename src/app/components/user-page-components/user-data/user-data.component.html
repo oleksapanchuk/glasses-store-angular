@@ -1,0 +1,27 @@
+<div class="account__details">
+
+  <div class="account__page-title">
+    <div class="account__title">Data</div>
+  </div>
+
+  <div class="account__page-row">
+    <span>USERNAME: </span>
+    {{ user.username }}
+  </div>
+  <div class="account__page-row">
+    <span>FULL NAME: </span>
+    {{ user.firstName + " " + user.lastName }}
+  </div>
+  <div class="account__page-row">
+    <span>EMAIL: </span>
+    {{ user.email }}
+  </div>
+  <div class="account__page-row">
+    <span>PHONE NUMBER: </span>
+    {{ user.phoneNumber }}
+  </div>
+
+  <div class="account__button-container">
+    <button class="account__button" (click)="onSubmit()">Change</button>
+  </div>
+</div>

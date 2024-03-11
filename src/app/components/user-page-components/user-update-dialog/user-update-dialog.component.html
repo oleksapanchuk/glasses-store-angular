@@ -1,0 +1,63 @@
+<div class="user__form-top" mat-dialog-title>
+  <div class="user__form-title">Update data</div>
+  <button class="user_form-close-btn" mat-button (click)="onClose()">
+    <fa-icon [icon]="faXmark"></fa-icon>
+  </button>
+</div>
+
+
+<div class="user__form-container">
+  <form [formGroup]="formGroup">
+
+    <!-- Server error message -->
+    <div *ngIf="serverErrorMessage" class="auth__server-error">
+      {{ serverErrorMessage }}
+    </div>
+
+    <div class="auth__from-input-container"
+         data-validate="First Name is required">
+      <input class="auth__form-input" type="text" formControlName="firstName" #inputField
+             (input)="serverErrorMessage=''">
+      <span class="auth__form-focus-input"></span>
+      <span class="auth__form-label">First Name</span>
+    </div>
+
+    <div class="auth__from-input-container"
+         data-validate="Last Name is required">
+      <input class="auth__form-input" type="text" formControlName="lastName" #inputField
+             (input)="serverErrorMessage=''">
+      <span class="auth__form-focus-input"></span>
+      <span class="auth__form-label">Last Name</span>
+    </div>
+
+    <div class="auth__from-input-container"
+         data-validate="Phone Number is required">
+      <input class="auth__form-input" type="text" formControlName="phoneNumber" #inputField
+             (input)="serverErrorMessage=''">
+      <span class="auth__form-focus-input"></span>
+      <span class="auth__form-label">Phone Number</span>
+    </div>
+
+    <div class="user__email-verify-container">
+      <fa-icon [icon]="faEnvelope"></fa-icon>
+      <span class="user__email">Email2^ukr.net</span>
+
+
+      <div *ngIf="false" class="user__verified">
+        <span>verified</span>
+        <fa-icon [icon]="faCheck"></fa-icon>
+      </div>
+
+      <div *ngIf="true" class="user__verify">
+        <button class="user__button" type="submit" (click)="onClickVerifyAccount()">verify</button>
+      </div>
+
+    </div>
+
+    <button class="user__button user__button-submit" mat-button cdkFocusInitial type="submit"
+            (click)="onClickUpdateData()">Submit
+    </button>
+
+  </form>
+</div>
+
