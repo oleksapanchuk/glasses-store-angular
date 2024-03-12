@@ -7,6 +7,7 @@ import {NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {AuthService} from "../../../services/auth.service";
 import {UserDataComponent} from "../user-data/user-data.component";
+import {ChangePasswordComponent} from "../change-password/change-password.component";
 
 @Component({
   selector: 'app-user-page',
@@ -15,7 +16,8 @@ import {UserDataComponent} from "../user-data/user-data.component";
     RouteBannerComponent,
     NgIf,
     RouterLink,
-    UserDataComponent
+    UserDataComponent,
+    ChangePasswordComponent
   ],
   templateUrl: './user-page.component.html',
   styleUrl: './user-page.component.css'

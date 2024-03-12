@@ -24,7 +24,7 @@
 
 .cart__item-list {
   margin: 0;
-  padding: 0;
+  padding: 15px 30px;
   min-width: 65vw;
   min-height: 60vh;
 }

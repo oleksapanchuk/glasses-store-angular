@@ -9,6 +9,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {CartItem} from '../../../common/cart-item';
 import {CommonModule} from '@angular/common';
 import {faXmark} from "@fortawesome/free-solid-svg-icons/faXmark";
+import {RouterLink} from "@angular/router";
 
 
 @Component({
@@ -16,7 +17,7 @@ import {faXmark} from "@fortawesome/free-solid-svg-icons/faXmark";
   standalone: true,
   templateUrl: './cart-dialog.component.html',
   styleUrl: './cart-dialog.component.css',
-  imports: [FontAwesomeModule, MatDialogModule, MatButtonModule, CartItemComponent, CommonModule]
+  imports: [FontAwesomeModule, MatDialogModule, MatButtonModule, CartItemComponent, CommonModule, RouterLink]
 })
 export class CartDialogComponent {
 
@@ -31,6 +32,10 @@ export class CartDialogComponent {
 
   ngOnInit(): void {
     this.listCartDetails();
+  }
+
+  onSubmitOrder() {
+    console.log("Take order")
   }
 
   listCartDetails() {

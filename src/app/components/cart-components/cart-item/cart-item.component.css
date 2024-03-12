@@ -1,6 +1,5 @@
 .cart__item-container {
-  padding: 15px 30px;
-
+  margin-bottom: 30px;
   display: flex;
   justify-content: flex-start;
   align-items: center;

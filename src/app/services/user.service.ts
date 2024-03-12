@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserDto} from "../common/dto/user.dto";
 
@@ -9,17 +9,29 @@ import {UserDto} from "../common/dto/user.dto";
 })
 export class UserService {
 
-  private baseUrl = environment.panShopApiUrl + '/users';
+  private USERS_API = environment.panShopApiUrl + '/users';
 
 
   constructor(private httpClient: HttpClient) {
   }
 
   getUser(theUserId: string): Observable<UserDto> {
+    return this.httpClient.get<UserDto>(
+      this.USERS_API + `/${theUserId}`
+    );
+  }
 
-    const userUrl = `${this.baseUrl}/${theUserId}`;
+  updatePassword(theOldPassword: string, theNewPassword: string) {
 
-    return this.httpClient.get<UserDto>(userUrl);
+    console.log("service invoke")
+
+    return this.httpClient.put(
+      this.USERS_API + `/update-password`,
+      {
+        oldPassword: theOldPassword,
+        newPassword: theNewPassword
+      }
+    );
   }
 
 

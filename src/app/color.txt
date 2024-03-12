@@ -1,0 +1,7 @@
+orange -   color: #ff4e00;
+black  -
+  background: #0e0f10;
+  color: #292b2c;
+  color: #313233;
+ white -
+  background-color: #f9f9f9;

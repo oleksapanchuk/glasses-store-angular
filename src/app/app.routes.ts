@@ -9,10 +9,12 @@ import {SignUpComponent} from './components/auth-components/sign-up/sign-up.comp
 import {ForgotPasswordComponent} from './components/auth-components/forgot-password/forgot-password.component';
 import {ProductDetailsComponent} from './components/product-details/product-details.component';
 import {UserPageComponent} from "./components/user-page-components/user-page/user-page.component";
+import {OrderPageComponent} from "./components/order-components/order-page/order-page.component";
 
 export const routes: Routes = [
 
   {path: 'user-profile', component: UserPageComponent},
+  {path: 'order', component: OrderPageComponent},
   {path: 'shop', component: ShopPageComponent},
   {path: 'shop/products/:id', component: ProductDetailsComponent},
   {path: 'shop/:keyword', component: ShopPageComponent},

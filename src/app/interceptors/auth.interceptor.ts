@@ -11,26 +11,16 @@ const excludedUrls: string[] = [
 
 export const authInterceptor: HttpInterceptorFn = (request: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> => {
   const storageService = inject(StorageService);
-
-  console.log("AUTH_INTERCEPTOR | invoked");
-
   const urlToExclude = excludedUrls.some(url => request.url.includes(url));
 
   if (!urlToExclude) {
-
     const accessToken = storageService.getAccessToken();
-
     if (accessToken) {
-
       const clonedRequest = request.clone({
         headers: request.headers.set('Authorization', `Bearer ${accessToken}`),
       });
-
-      console.log("AUTH_INTERCEPTOR | access token added");
-
       return next(clonedRequest);
     }
-
   }
 
   return next(request)
@@ -40,13 +30,9 @@ export const unAuthErrorInterceptor: HttpInterceptorFn = (req: HttpRequest<unkno
   const authService = inject(AuthService);
   const storageService = inject(StorageService);
 
-  console.log("NO_AUTH_INTERCEPTOR | invoked");
-
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
-
-      console.log("NO_AUTH_INTERCEPTOR | ERROR CATCH FOR URL: " + req.url);
-
+      console.log("NO_AUTH_INTERCEPTOR | error: ", error)
       const urlToExclude = excludedUrls.some(url => req.url.includes(url));
 
       if (!urlToExclude && error.status === 403) {
@@ -70,9 +56,8 @@ export const unAuthErrorInterceptor: HttpInterceptorFn = (req: HttpRequest<unkno
             })
           );
         }
-
       }
-      authService.signOut();
+
       return throwError(() => error);
     })
   );

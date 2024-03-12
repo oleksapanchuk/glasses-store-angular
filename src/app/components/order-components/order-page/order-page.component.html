@@ -1,1 +1,24 @@
-<p>order-page works!</p>
+<app-route-banner pageName="Order"></app-route-banner>
+
+<div class="order__page-container">
+
+  <div class="order__main-title">placing an order</div>
+
+  <div class="order__row-title">Products</div>
+  <div class="order__items-list">
+    <app-cart-item *ngFor="let item of cartItems" [cartItem]="item"></app-cart-item>
+  </div>
+
+  <div class="order__details">
+    <div class="order__payment-container">
+      <div class="order__row-title">Payment Data</div>
+      some payment data
+    </div>
+
+    <div class="order__address-container">
+      <div class="order__row-title">Address</div>
+      pick address here
+    </div>
+  </div>
+    
+</div>

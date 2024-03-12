@@ -90,8 +90,8 @@ export class SignInComponent implements AfterViewInit, OnInit {
       // Set the server error message
       if (error.status === 401) {
         this.serverErrorMessage = "The login or password is incorrect. Try again.";
+        return;
       }
-
     }
 
     this.serverErrorMessage = "Server error.";

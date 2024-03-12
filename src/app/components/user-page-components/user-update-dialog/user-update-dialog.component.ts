@@ -75,7 +75,6 @@ export class UserUpdateDialogComponent implements AfterViewInit, OnInit {
 
   onClickVerifyAccount() {
     console.log("Verifying working")
-
   }
 
   onClickUpdateData() {

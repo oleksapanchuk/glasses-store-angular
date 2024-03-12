@@ -1,0 +1,44 @@
+.order__page-container {
+  padding: 20px 100px;
+}
+
+.order__main-title {
+  margin-top: 20px;
+
+  color: #353434;
+  font-family: Unbounded, sans-serif;
+  font-size: 3em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
+  text-transform: uppercase;
+}
+
+.order__row-title {
+  color: #2f2f2f;
+  margin-top: 60px;
+  font-size: 30px;
+  font-family: Raleway, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.order__items-list {
+  padding-top: 40px;
+  max-width: 1200px;
+}
+
+.order__details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order__address-container {
+  width: 50%;
+}
+
+.order__payment-container {
+  width: 50%;
+}
