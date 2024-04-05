@@ -32,7 +32,7 @@
 .order__details {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .order__address-container {
@@ -40,5 +40,33 @@
 }
 
 .order__payment-container {
+  display: block;
+  justify-content: space-between;
   width: 50%;
+}
+
+.order__button-submit {
+  display: flex;
+  justify-content: right;
+}
+
+.order__address-fields-container {
+  padding-top: 30px;
+  padding-right: 50px;
+}
+
+.order__payment-fields-container {
+  padding-top: 60px;
+}
+
+.order__total-due {
+  padding: 40px 0;
+
+  color: #353434;
+  font-family: Unbounded, sans-serif;
+  font-size: 2em;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
+  text-transform: uppercase;
 }

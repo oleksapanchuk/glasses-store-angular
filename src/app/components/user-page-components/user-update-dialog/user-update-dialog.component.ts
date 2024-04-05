@@ -7,6 +7,7 @@ import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faEnvelope} from "@fortawesome/free-solid-svg-icons";
 import {faCheck} from "@fortawesome/free-solid-svg-icons/faCheck";
 import {faXmark} from "@fortawesome/free-solid-svg-icons/faXmark";
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-user-update-dialog',
@@ -27,11 +28,13 @@ export class UserUpdateDialogComponent implements AfterViewInit, OnInit {
 
   formGroup!: FormGroup;
   serverErrorMessage!: string;
+  serverSuccessMessage!: string;
 
   constructor(
     public dialogRef: MatDialogRef<UserUpdateDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private userService: UserService
   ) {
   }
 
@@ -39,18 +42,16 @@ export class UserUpdateDialogComponent implements AfterViewInit, OnInit {
     this.formGroup = this.formBuilder.group({
       firstName: ['', [
         Validators.required,
-        Validators.minLength(5),  // Username should be at least 3 characters long
-        Validators.maxLength(30)  // Username should not exceed 20 characters
+        Validators.maxLength(30)
       ]],
       lastName: ['', [
         Validators.required,
-        Validators.minLength(5),  // Username should be at least 3 characters long
-        Validators.maxLength(30)  // Username should not exceed 20 characters
+        Validators.maxLength(30)
       ]],
       phoneNumber: ['', [
         Validators.required,
-        Validators.minLength(5),  // Username should be at least 3 characters long
-        Validators.maxLength(30)  // Username should not exceed 20 characters
+        Validators.minLength(8),
+        Validators.maxLength(15)
       ]],
     });
   }
@@ -82,20 +83,42 @@ export class UserUpdateDialogComponent implements AfterViewInit, OnInit {
 
     console.log("Update working")
     if (this.formGroup.valid) {
-      // Handle form submission here
-      console.log(this.formGroup.value);
+      this.userService.updateUserData(
+        this.formGroup.get('firstName')?.value,
+        this.formGroup.get('lastName')?.value,
+        this.formGroup.get('phoneNumber')?.value
+      ).subscribe({
+        next: (data: any) => {
+
+          this.serverSuccessMessage = "Password updated successfully"
+
+          this.formGroup.reset();
+
+          this.onClose();
+        },
+        error: (error: any) => {
+
+          console.log(error);
+
+          if (error.status === 400) {
+            this.serverErrorMessage = "Wrong old password";
+            return;
+          }
+        }
+      })
+      return;
     }
   }
 
-  get username() {
+  get firstName() {
     return this.formGroup.get('firstName');
   }
 
-  get email() {
+  get lastName() {
     return this.formGroup.get('lastName');
   }
 
-  get password() {
+  get phoneNumber() {
     return this.formGroup.get('phoneNumber');
   }
 

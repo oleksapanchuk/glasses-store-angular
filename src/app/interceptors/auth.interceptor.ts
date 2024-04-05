@@ -3,10 +3,11 @@ import {catchError, Observable, switchMap, throwError} from "rxjs";
 import {AuthService} from "../services/auth.service";
 import {inject} from "@angular/core";
 import {StorageService} from "../services/storage.service";
+import {environment} from "../../environments/environment";
 
 const excludedUrls: string[] = [
-  'http://localhost:8080/api/auth/sign-in',
-  'http://localhost:8080/api/auth/refresh-token'
+  environment.panShopApiUrl + '/auth/sign-in',
+  environment.panShopApiUrl + '/auth/refresh-token'
 ];
 
 export const authInterceptor: HttpInterceptorFn = (request: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> => {

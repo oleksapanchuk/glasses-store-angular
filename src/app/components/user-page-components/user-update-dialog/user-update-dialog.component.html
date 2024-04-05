@@ -14,28 +14,57 @@
       {{ serverErrorMessage }}
     </div>
 
+    <!-- Server success message -->
+    <div *ngIf="serverSuccessMessage" class="auth__server-success">
+      {{ serverSuccessMessage }}
+    </div>
+
     <div class="auth__from-input-container"
-         data-validate="First Name is required">
+         data-validate="First Name is required"
+         [class.auth_form-input-invalid]="firstName?.invalid && (firstName?.dirty || firstName?.touched)">
       <input class="auth__form-input" type="text" formControlName="firstName" #inputField
              (input)="serverErrorMessage=''">
       <span class="auth__form-focus-input"></span>
       <span class="auth__form-label">First Name</span>
+
+      <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)" class="auth__alert">
+        <div *ngIf="firstName?.errors?.['required']">
+          First Name is required
+        </div>
+      </div>
     </div>
 
     <div class="auth__from-input-container"
-         data-validate="Last Name is required">
+         data-validate="Last Name is required"
+         [class.auth_form-input-invalid]="lastName?.invalid && (lastName?.dirty || lastName?.touched)">
       <input class="auth__form-input" type="text" formControlName="lastName" #inputField
              (input)="serverErrorMessage=''">
       <span class="auth__form-focus-input"></span>
       <span class="auth__form-label">Last Name</span>
+
+      <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)" class="auth__alert">
+        <div *ngIf="lastName?.errors?.['required']">
+          Last Name is required
+        </div>
+      </div>
     </div>
 
     <div class="auth__from-input-container"
-         data-validate="Phone Number is required">
+         data-validate="Phone Number is required"
+         [class.auth_form-input-invalid]="phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)">
       <input class="auth__form-input" type="text" formControlName="phoneNumber" #inputField
              (input)="serverErrorMessage=''">
       <span class="auth__form-focus-input"></span>
       <span class="auth__form-label">Phone Number</span>
+
+      <div *ngIf="phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)" class="auth__alert">
+        <div *ngIf="phoneNumber?.errors?.['required']">
+          Phone Number is required
+        </div>
+        <div *ngIf="phoneNumber?.errors?.['minlength'] || phoneNumber?.errors?.['maxlength']">
+          Phone Number must be at least 5 and 15 max characters long
+        </div>
+      </div>
     </div>
 
     <div class="user__email-verify-container">

@@ -11,11 +11,16 @@ import {HomePageComponent} from "./components/home-page/home-page.component";
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [CommonModule, HttpClientModule, RouterOutlet, HeaderComponent, FooterComponent, HomePageComponent]
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    RouterOutlet,
+    HeaderComponent,
+    FooterComponent,
+    HomePageComponent
+  ]
 })
 export class AppComponent {
-
-  // RouterLink, RouterLinkActive
 
   constructor() {
 

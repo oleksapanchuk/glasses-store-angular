@@ -1,0 +1,14 @@
+.custom-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-input label {
+  font-weight: bold;
+}
+
+.custom-input input {
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+}

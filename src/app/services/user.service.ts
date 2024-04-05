@@ -21,10 +21,18 @@ export class UserService {
     );
   }
 
+  updateUserData(theFirstName: string, theLastName: string, thePhoneNumber: string) {
+    return this.httpClient.patch(
+      this.USERS_API + `/update`,
+      {
+        firstName: theFirstName,
+        lastName: theLastName,
+        phoneNumber: thePhoneNumber
+      }
+    );
+  }
+
   updatePassword(theOldPassword: string, theNewPassword: string) {
-
-    console.log("service invoke")
-
     return this.httpClient.put(
       this.USERS_API + `/update-password`,
       {

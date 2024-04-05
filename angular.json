@@ -32,7 +32,8 @@
               "src/app/components/auth-components/auth-style.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {
@@ -96,7 +97,8 @@
               "src/app/components/auth-components/auth-style.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           }
         }
       }

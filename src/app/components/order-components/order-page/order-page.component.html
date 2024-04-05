@@ -9,16 +9,106 @@
     <app-cart-item *ngFor="let item of cartItems" [cartItem]="item"></app-cart-item>
   </div>
 
-  <div class="order__details">
-    <div class="order__payment-container">
-      <div class="order__row-title">Payment Data</div>
-      some payment data
-    </div>
+  <form novalidate (ngSubmit)="createToken()" [formGroup]="paymentForm" class="order__details">
 
     <div class="order__address-container">
       <div class="order__row-title">Address</div>
-      pick address here
+
+      <div class="order__address-fields-container">
+
+        <!-- Country -->
+        <div class="auth__from-input-container"
+             data-validate="Valid email is required: ex@abc.xyz"
+             [class.auth_form-input-invalid]="country?.invalid && (country?.dirty || country?.touched)">
+          <input class="auth__form-input" type="text" formControlName="country" #inputField
+                 (input)="serverErrorMessage=''">
+          <span class="auth__form-focus-input"></span>
+          <span class="auth__form-label">Country</span>
+
+          <div *ngIf="country?.invalid && (country?.dirty || country?.touched)" class="auth__alert">
+            <div *ngIf="country?.errors?.['required'] || country?.errors?.['notOnlyWhitespace']">
+              Username is required
+            </div>
+            <div *ngIf="country?.errors?.['minlength']">
+              Username must be at least 5 characters long
+            </div>
+          </div>
+        </div>
+
+        <!-- State -->
+        <div class="auth__from-input-container"
+             data-validate="Valid email is required: ex@abc.xyz"
+             [class.auth_form-input-invalid]="state?.invalid && (state?.dirty || state?.touched)">
+          <input class="auth__form-input" type="text" formControlName="state" #inputField
+                 (input)="serverErrorMessage=''">
+          <span class="auth__form-focus-input"></span>
+          <span class="auth__form-label">State</span>
+
+          <div *ngIf="state?.invalid && (state?.dirty || state?.touched)" class="auth__alert">
+            <div *ngIf="state?.errors?.['required'] || state?.errors?.['notOnlyWhitespace']">
+              Username is required
+            </div>
+            <div *ngIf="state?.errors?.['minlength']">
+              Username must be at least 5 characters long
+            </div>
+          </div>
+        </div>
+
+        <!-- City -->
+        <div class="auth__from-input-container"
+             data-validate="Valid email is required: ex@abc.xyz"
+             [class.auth_form-input-invalid]="city?.invalid && (city?.dirty || city?.touched)">
+          <input class="auth__form-input" type="text" formControlName="city" #inputField
+                 (input)="serverErrorMessage=''">
+          <span class="auth__form-focus-input"></span>
+          <span class="auth__form-label">City</span>
+
+          <div *ngIf="city?.invalid && (city?.dirty || city?.touched)" class="auth__alert">
+            <div *ngIf="city?.errors?.['required'] || city?.errors?.['notOnlyWhitespace']">
+              Username is required
+            </div>
+            <div *ngIf="city?.errors?.['minlength']">
+              Username must be at least 5 characters long
+            </div>
+          </div>
+        </div>
+
+        <!-- Street -->
+        <div class="auth__from-input-container"
+             data-validate="Valid email is required: ex@abc.xyz"
+             [class.auth_form-input-invalid]="street?.invalid && (street?.dirty || street?.touched)">
+          <input class="auth__form-input" type="text" formControlName="street" #inputField
+                 (input)="serverErrorMessage=''">
+          <span class="auth__form-focus-input"></span>
+          <span class="auth__form-label">Street</span>
+
+          <div *ngIf="street?.invalid && (street?.dirty || street?.touched)" class="auth__alert">
+            <div *ngIf="street?.errors?.['required'] || street?.errors?.['notOnlyWhitespace']">
+              Username is required
+            </div>
+            <div *ngIf="street?.errors?.['minlength']">
+              Username must be at least 5 characters long
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
-  </div>
-    
+
+    <div class="order__payment-container">
+      <div class="order__row-title">Payment Data</div>
+
+      <div class="order__payment-fields-container">
+        <div id="card-element" class="field"></div>
+      </div>
+
+      <div class="order__row-title">AMOUNT DUE</div>
+      <div class="order__total-due">{{ totalPrice | currency: "USD" }}</div>
+
+      <app-button label="Place Order" [functionCall]="placeOrder"></app-button>
+    </div>
+
+  </form>
+
 </div>
