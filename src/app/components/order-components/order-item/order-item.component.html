@@ -1,1 +1,28 @@
-<p>order-item works!</p>
+<div class="order__item-container">
+
+  <div class="order__product">
+    <div class="order__image-container">
+      <img [src]=" order.product.imageUrl " alt="">
+    </div>
+    <div class="order__product-info">
+      <div class="order__product-name">
+        <a href="#">{{ order.product.name }}</a>
+      </div>
+      <div class="order__product-artikul">
+        Artikul: {{ order.product.sku }}
+      </div>
+    </div>
+  </div>
+
+  <div class="order__order-container">
+
+    <div class="order__quantity">
+      <span>{{ order.quantity }}</span>
+    </div>
+    <div class="order__price">
+      {{ Number(order.product.price) * Number(order.quantity) | currency: "USD" }}
+    </div>
+
+  </div>
+
+</div>

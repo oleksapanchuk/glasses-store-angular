@@ -1,0 +1,41 @@
+<app-route-banner pageName="Order Details"></app-route-banner>
+
+<div class="order-details__wrapper">
+  <div class="order-details__container">
+
+    <div class="order-details__title">Order details</div>
+    <div class="order-details__entry">
+      <div>Tracking number</div>
+      <div>{{ order.orderTrackingNumber }}</div>
+    </div>
+
+    <div class="order-details__entry">
+      <div>Shipping Address</div>
+      <div>{{ order.shippingAddress }}</div>
+    </div>
+
+    <div class="order-details__entry">
+      <div>Status</div>
+      <div>{{ order.status }}</div>
+    </div>
+
+    <div class="order-details__entry">
+      <div>Total Price</div>
+      <div>{{ order.totalPrice | currency: "USD" }}</div>
+    </div>
+
+    <div class="order-details__entry">
+      <div>Order Created</div>
+      <div>{{ formatDateString(order.dateCreated) }}</div>
+    </div>
+
+    <div class="order-details__title">Order items</div>
+    <div class="order-details__order-items-container">
+
+      <app-order-item *ngFor="let tempOrder of order.orderItems" class="order-details__item" [order]="tempOrder"></app-order-item>
+
+    </div>
+
+  </div>
+</div>
+

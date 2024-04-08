@@ -6,6 +6,8 @@ import {PaymentIntent} from "@stripe/stripe-js";
 import {PaymentInfo} from "../common/payment-info";
 import {Purchase} from "../common/purchase";
 import {OrderDto} from "../common/dto/OrderDto";
+import {OrderItem} from "../common/order-item";
+import {OrderDetailsResponse} from "../common/dto/order-details-response.dto";
 
 const ORDER_API = environment.panShopApiUrl + '/order';
 const httpOptions = {
@@ -21,6 +23,13 @@ export class OrderService {
   constructor(
     private http: HttpClient
   ) {
+  }
+
+  getOrderDetailsById(theOrderId: number): Observable<OrderDetailsResponse> {
+
+    return this.http.get<OrderDetailsResponse>(
+      `${ORDER_API}/fetch-order-details/${theOrderId}`
+    );
   }
 
   getOrderList(
@@ -62,3 +71,12 @@ interface GetResponseOrders {
   totalPages: number,
   number: number
 }
+
+// interface GetResponseOrderDetails {
+//   orderTrackingNumber: string,
+//   totalPrice: number,
+//   status: string,
+//   dateCreated: string,
+//   shippingAddress: string,
+//   orderItems: OrderItem[]
+// }
