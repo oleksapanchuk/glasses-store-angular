@@ -4,7 +4,7 @@ import {UserDto} from "../../../common/dto/user.dto";
 import {UserService} from "../../../services/user.service";
 import {RouteBannerComponent} from "../../route-banner/route-banner.component";
 import {NgIf} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import {RouterLink, RouterLinkActive} from "@angular/router";
 import {AuthService} from "../../../services/auth.service";
 import {UserDataComponent} from "../user-data/user-data.component";
 import {ChangePasswordComponent} from "../change-password/change-password.component";
@@ -12,13 +12,14 @@ import {ChangePasswordComponent} from "../change-password/change-password.compon
 @Component({
   selector: 'app-user-page',
   standalone: true,
-  imports: [
-    RouteBannerComponent,
-    NgIf,
-    RouterLink,
-    UserDataComponent,
-    ChangePasswordComponent
-  ],
+    imports: [
+        RouteBannerComponent,
+        NgIf,
+        RouterLink,
+        UserDataComponent,
+        ChangePasswordComponent,
+        RouterLinkActive
+    ],
   templateUrl: './user-page.component.html',
   styleUrl: './user-page.component.css'
 })

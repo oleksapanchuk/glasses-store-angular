@@ -1,0 +1,35 @@
+<app-route-banner pageName="Order History"></app-route-banner>
+
+<div class="order-history__wrapper">
+  <div class="order-history__container">
+
+    <!--TODO latter -->
+    <!--    <div class="order-history__menu-container"></div>-->
+
+    <div class="order-history__titles row">
+      <div class="col-4">Tracking number</div>
+      <div class="col-2">Total Price</div>
+      <div class="col-2">Status</div>
+      <div class="col-2">Order Date</div>
+      <div class="col-2">Details</div>
+    </div>
+
+    <div class="order-history__order-items-container">
+
+      <div *ngFor="let item of orderItems" class="row order-history__item">
+        <div class="col-4 order-history__item-details">{{ item.orderTrackingNumber }}</div>
+        <div class="col-2 order-history__item-details">{{ item.totalPrice | currency: "USD" }}</div>
+        <div class="col-2 order-history__item-details">{{ item.status }}</div>
+        <div class="col-2 order-history__item-details">{{ formatDateString(item.dateCreated) }}</div>
+        <div class="col-2 order-history__item-details">
+          <a routerLink="/account/order-history/order/{{ item.id }}">
+            <fa-icon [icon]="faCircleChevronRight"></fa-icon>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

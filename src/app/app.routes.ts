@@ -10,11 +10,15 @@ import {ForgotPasswordComponent} from './components/auth-components/forgot-passw
 import {ProductDetailsComponent} from './components/product-details/product-details.component';
 import {UserPageComponent} from "./components/user-page-components/user-page/user-page.component";
 import {OrderPageComponent} from "./components/order-components/order-page/order-page.component";
+import {OrderHistoryComponent} from "./components/order-components/order-history/order-history.component";
+import {OrderItemComponent} from "./components/order-components/order-item/order-item.component";
 
 export const routes: Routes = [
 
   {path: 'user-profile', component: UserPageComponent},
   {path: 'order', component: OrderPageComponent},
+  {path: 'account/order-history', component: OrderHistoryComponent},
+  {path: 'account/order-history/order/:id', component: OrderItemComponent},
   {path: 'shop', component: ShopPageComponent},
   {path: 'shop/products/:id', component: ProductDetailsComponent},
   {path: 'shop/:keyword', component: ShopPageComponent},

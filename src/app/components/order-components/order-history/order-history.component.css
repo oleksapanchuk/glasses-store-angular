@@ -1,0 +1,55 @@
+.order-history__wrapper {
+  background-color: #f9f9f9;
+}
+
+.order-history__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 30px 30px;
+}
+
+.order-history__menu-container {
+
+}
+
+.order-history__order-items-container {
+  margin-top: 20px;
+}
+
+.order-history__titles {
+  color: #353434;
+  font-family: Unbounded, sans-serif;
+  font-size: 1.3em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.order-history__item {
+  margin-top: 20px;
+  padding-bottom: 15px;
+
+  border-bottom: #0c0c0c 2px solid;
+}
+
+.order-history__item .order-history__item-details {
+  color: #292b2c;
+  font-family: Raleway, sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.order-history__item-details a {
+  color: #0c0c0c;
+  text-decoration: none;
+}
+
+.order-history__item-details fa-icon {
+  font-size: 1.5em;
+}

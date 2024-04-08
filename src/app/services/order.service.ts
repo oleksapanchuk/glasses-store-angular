@@ -5,8 +5,9 @@ import {Observable} from "rxjs";
 import {PaymentIntent} from "@stripe/stripe-js";
 import {PaymentInfo} from "../common/payment-info";
 import {Purchase} from "../common/purchase";
+import {OrderDto} from "../common/dto/OrderDto";
 
-const AUTH_API = environment.panShopApiUrl + '/order';
+const ORDER_API = environment.panShopApiUrl + '/order';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -22,10 +23,18 @@ export class OrderService {
   ) {
   }
 
+  getOrderList(
+    thePage: number = 0,
+    thePageSize: number = 8): Observable<GetResponseOrders> {
+
+    return this.http.get<GetResponseOrders>(
+      `${ORDER_API}/fetch-by-username?page=${thePage}&size=${thePageSize}`
+    );
+  }
 
   placeOrder(purchase: Purchase): Observable<any> {
 
-    return this.http.post<Purchase>(AUTH_API + '/place-order',
+    return this.http.post<Purchase>(ORDER_API + '/place-order',
       {
         shippingAddress: purchase.shippingAddress,
         order: purchase.order,
@@ -37,11 +46,19 @@ export class OrderService {
 
     console.log("AMOUNT = " + paymentInfo.amount);
 
-    return this.http.post<PaymentIntent>(AUTH_API + '/create-payment-intent',
+    return this.http.post<PaymentIntent>(ORDER_API + '/create-payment-intent',
       {
         amount: paymentInfo.amount,
         currency: paymentInfo.currency,
         receiptEmail: paymentInfo.receiptEmail
       }, httpOptions);
   }
+}
+
+interface GetResponseOrders {
+  content: OrderDto[],
+  size: number,
+  totalElements: number,
+  totalPages: number,
+  number: number
 }
