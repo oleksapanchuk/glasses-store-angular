@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {RouteBannerComponent} from '../route-banner/route-banner.component';
 import {ProductListComponent} from '../product-list/product-list.component';
@@ -15,8 +15,6 @@ import {PaginatorModule, PaginatorState} from "primeng/paginator";
 import {ProductItemComponent} from "../product-item/product-item.component";
 import {Product} from "../../common/product";
 import {ProductService} from "../../services/product.service";
-import {ProductCategory} from "../../common/product-category";
-import {ProductCategoryService} from "../../services/product-category.service";
 import {SortingMethod} from "../shop-page-components/sorting-method.enum";
 import {GenderFilter} from "../shop-page-components/gender-filter.enum";
 import {TypeFilter} from "../shop-page-components/type-filter.enum";
@@ -30,8 +28,7 @@ import {catchError, throwError} from "rxjs";
   styleUrl: './shop-page.component.css',
   imports: [RouterLink, FontAwesomeModule, RouteBannerComponent, SpecialDealItemComponent, ProductListComponent, SliderModule, FormsModule, SliderComponent, RatingStarsComponent, NgbDropdown, NgbDropdownMenu, NgbDropdownItem, NgbDropdownToggle, NgForOf, NgIf, PaginatorModule, ProductItemComponent, NgSwitch, NgSwitchCase]
 })
-export class ShopPageComponent {
-
+export class ShopPageComponent implements OnInit {
   // for modal window (choosing sorting method)
   showModal: boolean = false;
 
@@ -50,15 +47,13 @@ export class ShopPageComponent {
   theTotalElements: number = 0;
 
   products: Product[] = [];
-  productCategories: ProductCategory[] = [];
 
   previousKeyword: string = "";
   searchMode: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService,
-    private productCategoryService: ProductCategoryService
+    private productService: ProductService
   ) {
   }
 
@@ -68,35 +63,14 @@ export class ShopPageComponent {
     })
   }
 
-  listProductCategories() {
-    this.productCategoryService.getProductCategories()
-      // .pipe(
-      //   map((data) => {
-      //     console.log("here")
-      //     this.productCategories = data
-      //   } ),
-      //   catchError((error) => {
-      //     console.log(error)
-      //     return throwError(() => error);
-      //   })
-      // );
-      .subscribe(
-        data => {
-
-          this.productCategories = data;
-
-        }
-      );
-  }
-
   listProducts() {
     this.searchMode = this.route.snapshot.paramMap.has('keyword');
-
     if (this.searchMode) {
       this.handelSearchProducts();
-    } else {
-      this.handelListProducts();
+      return;
     }
+
+    this.handelListProducts();
   }
 
   private handelSearchProducts() {
@@ -115,7 +89,7 @@ export class ShopPageComponent {
     console.log(`keyword=${theKeyword}, thePageNumber=${this.thePageNumber}`);
 
     // now search for the products using keyword
-    this.productService.searchProductsPaginate(
+    this.productService.searchProducts(
       this.thePageNumber,
       this.thePageSize,
       theKeyword)
@@ -124,7 +98,7 @@ export class ShopPageComponent {
 
   private handelListProducts() {
 
-    this.productService.getProductListPaginateWithFilters(
+    this.productService.getProductListWithFilters(
       this.rangeValues[0],
       this.rangeValues[1],
       this.genderFilter,
@@ -138,11 +112,11 @@ export class ShopPageComponent {
           console.log(error)
           return throwError(() => error);
         })
-      ).subscribe(() => this.processResult());
+      ).subscribe(this.processResult());
   }
 
   toggleRefresh() {
-    this.productService.getProductListPaginateWithFilters(
+    this.productService.getProductListWithFilters(
       this.rangeValues[0],
       this.rangeValues[1],
       this.genderFilter,
@@ -165,14 +139,12 @@ export class ShopPageComponent {
       this.thePageNumber = data.number;
       this.thePageSize = data.size;
       this.theTotalElements = data.totalElements;
-
     }
   }
 
   onPageChange(event: PaginatorState) {
     this.first = event.first;
     this.rows = event.rows;
-
     this.thePageNumber = this.first! / this.thePageSize;
 
     this.listProducts();
@@ -193,8 +165,6 @@ export class ShopPageComponent {
       this.rangeValues[1] = newValue;
     }
 
-    console.log(`Received value: ${this.rangeValues}`);
-
     this.toggleRefresh();
   }
 
@@ -213,7 +183,6 @@ export class ShopPageComponent {
   }
 
   fetchProducts() {
-    console.log('Fetching products with range:', this.rangeValues);
     this.toggleRefresh();
   }
 

@@ -5,39 +5,43 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {SortingMethod} from "../components/shop-page-components/sorting-method.enum";
 
+const PRODUCTS_API = environment.panShopApiUrl + '/products';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-
-  private baseUrl = environment.panShopApiUrl + '/products';
-
 
   constructor(private httpClient: HttpClient) {
   }
 
   getProduct(theProductId: number): Observable<Product> {
 
-    // need to build URL based on product id
-    const productUrl = `${this.baseUrl}/${theProductId}`;
-
-    return this.httpClient.get<Product>(productUrl);
-
+    return this.httpClient.get<Product>(
+      `${PRODUCTS_API}/fetch/${theProductId}`
+    );
   }
 
-  getProductListPaginate(
+  searchProducts(
+    thePage: number,
+    thePageSize: number,
+    theKeyword: string): Observable<GetResponseProducts> {
+
+    return this.httpClient.get<GetResponseProducts>(
+      `${PRODUCTS_API}/search-products?search-text=${theKeyword}&page=${thePage}&size=${thePageSize}`
+    );
+  }
+
+  getProductList(
     thePage: number = 0,
-    thePageSize: number = 8
-  ): Observable<GetResponseProducts> {
+    thePageSize: number = 8): Observable<GetResponseProducts> {
 
-    const searchUrl = `${this.baseUrl}/paginable-list?page=${thePage}&size=${thePageSize}`;
-
-    console.log(`Getting products from - ${searchUrl}`);
-
-    return this.httpClient.get<GetResponseProducts>(searchUrl);
+    return this.httpClient.get<GetResponseProducts>(
+      `${PRODUCTS_API}/fetch-products?page=${thePage}&size=${thePageSize}`
+    );
   }
 
-  getProductListPaginateWithFilters(
+  getProductListWithFilters(
     minPrice: number = 0,
     maxPrice: number = 100,
     categoryGender: number,
@@ -45,10 +49,9 @@ export class ProductService {
     categoryFrame: number,
     selectedSortingMethod: SortingMethod,
     thePage: number = 0,
-    thePageSize: number = 8
-  ): Observable<GetResponseProducts>  {
+    thePageSize: number = 8): Observable<GetResponseProducts> {
 
-    // http://localhost:8080/api/products/paginable-list/filters?minPrice=0&maxPrice=100&categoryIds=1,7,11&page=0&size=10
+    // http://localhost:8080/api/products/fetch-products-with-filters?minPrice=0&maxPrice=100&categoryIds=1,7,11&page=0&size=10
 
     let sortingMethod: SortingField = SortingField.CREATED_DATE;
     let sortingOrder: SortingOrder = SortingOrder.ASC;
@@ -66,27 +69,13 @@ export class ProductService {
       sortingOrder = SortingOrder.DESC;
     }
 
-    const searchUrl = `${this.baseUrl}/paginable-list/filters?minPrice=
-    ${minPrice}&maxPrice=${maxPrice}&categoryIds=${categoryGender},${categoryType},
-    ${categoryFrame}&sorting-method=${sortingMethod}&sorting-order=${sortingOrder}
-    &page=${thePage}&size=${thePageSize}`;
-
-    console.log(`Getting products from - ${searchUrl}`);
-
-    return this.httpClient.get<GetResponseProducts>(searchUrl);
+    return this.httpClient.get<GetResponseProducts>(
+      `${PRODUCTS_API}/fetch-products-with-filters?minPrice=${minPrice}
+      &maxPrice=${maxPrice}&categoryIds=${categoryGender},${categoryType},
+      ${categoryFrame}&sorting-method=${sortingMethod}&sorting-order=${sortingOrder}
+      &page=${thePage}&size=${thePageSize}`
+    );
   }
-
-  searchProductsPaginate(
-    thePage: number,
-    thePageSize: number,
-    theKeyword: string): Observable<GetResponseProducts> {
-
-    const searchUrl = `${this.baseUrl}/search?search-text=${theKeyword}`
-      + `&page=${thePage}&size=${thePageSize}`;
-
-    return this.httpClient.get<GetResponseProducts>(searchUrl);
-  }
-
 }
 
 enum SortingField {
