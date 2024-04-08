@@ -15,6 +15,11 @@ import {StripeCardComponent, StripeService} from 'ngx-stripe';
 
 import {StripeCardElement, StripeCardElementOptions, StripeElements, StripeElementsOptions} from "@stripe/stripe-js";
 import {CartItem} from "../../../common/cart-item";
+import {Order} from "../../../common/order";
+import {OrderItem} from "../../../common/order-item";
+import {Purchase} from "../../../common/purchase";
+import {PaymentInfo} from "../../../common/payment-info";
+import {Address} from "../../../common/address";
 
 @Component({
   selector: 'app-order-page',
@@ -61,6 +66,10 @@ export class OrderPageComponent implements OnInit, AfterViewInit {
   paymentForm!: FormGroup;
   serverErrorMessage!: string;
 
+  full_name!: string;
+  email!: string;
+
+  paymentInfo: PaymentInfo = new PaymentInfo();
   cartItems!: CartItem[];
   totalPrice: number = 0;
   totalQuantity: number = 0;
@@ -91,10 +100,6 @@ export class OrderPageComponent implements OnInit, AfterViewInit {
       city: new FormControl('', [
         Validators.required,
         Validators.minLength(2)
-      ]),
-      zipCode: new FormControl('', [
-        Validators.required,
-        Validators.minLength(2)
       ])
     });
 
@@ -108,8 +113,10 @@ export class OrderPageComponent implements OnInit, AfterViewInit {
         }
       });
 
-
     this.listCartDetails();
+
+    this.initUser();
+
   }
 
   ngAfterViewInit() {
@@ -142,7 +149,103 @@ export class OrderPageComponent implements OnInit, AfterViewInit {
   }
 
   placeOrder() {
-    console.log("Handling the submit button");
+    if (this.paymentForm.invalid) {
+      // touching all fields triggers the display of the error messages
+      this.paymentForm.markAllAsTouched();
+      return;
+    }
+
+    let currentUser = this.storageService.getUser();
+
+    // set up order
+    let order = new Order();
+    order.userId = currentUser.id!;
+    order.totalPrice = this.totalPrice;
+    order.totalQuantity = this.totalQuantity;
+
+    // get cart items
+    const cartItems = this.cartService.cartItems;
+
+    // create orderItems from cartItems
+    let orderItems: OrderItem[] = cartItems.map(tempCartItems => new OrderItem(tempCartItems));
+
+    // set up purchase
+    let purchase = new Purchase();
+
+    // populate purchase - customer
+    purchase.user = currentUser;
+
+    // populate purchase - shipping address
+    purchase.shippingAddress = this.readAddress();
+
+    // populate purchase - order and orderItems
+    purchase.order = order;
+    purchase.orderItems = orderItems;
+
+    // compute payment info
+    this.paymentInfo.amount = Math.round(this.totalPrice * 100);
+    this.paymentInfo.currency = "USD";
+    this.paymentInfo.receiptEmail = purchase.user?.email;
+
+    console.log(`this.paymentInfo.amount: ${this.paymentInfo.amount}`);
+
+    // if valid form then
+    // - create payment
+    // - confirm card payment
+    // - place order
+    if (this.paymentForm.valid && this.serverErrorMessage === "") {
+      console.log("Init payment intent");
+
+      this.orderService.createPaymentIntent(this.paymentInfo).subscribe(
+        (paymentIntentResponse) => {
+          this.stripeService.confirmCardPayment(
+            paymentIntentResponse.client_secret!,
+            {
+              payment_method: {
+                card: this.card,
+                billing_details: {
+                  email: purchase.user?.email,
+                  name: `${purchase.user?.firstName} ${purchase.user?.lastName}`,
+                  address: {
+                    line1: purchase.shippingAddress?.street,
+                    city: purchase.shippingAddress?.city,
+                    state: purchase.shippingAddress?.state,
+                    postal_code: purchase.shippingAddress?.zipCode
+                  }
+                }
+              }
+            },
+            {handleActions: false}
+          ).toPromise().then((result: any) => {
+
+            if (result.error) {
+              // inform the customer there was an error
+              alert(`There was an error: ${result.error.messages}`);
+            } else {
+
+              this.orderService.placeOrder(purchase).subscribe({
+                next: (response: any) => {
+                  alert(`Your order has been recieved.\nOrder tracking number: ${response.orderTrackingNumber}`);
+
+                  // reset cart
+                  this.resetCart();
+
+                },
+                error: error => {
+                  alert(`There are an error: ${error.messages}`);
+                }
+              });
+
+            }
+
+          });
+        }
+      );
+
+    } else {
+      this.paymentForm.markAllAsTouched();
+      return;
+    }
   }
 
   listCartDetails() {
@@ -183,5 +286,37 @@ export class OrderPageComponent implements OnInit, AfterViewInit {
 
   get zipCode() {
     return this.paymentForm.get('zipCode');
+  }
+
+  private resetCart() {
+
+    // reset cart data
+    this.cartService.cartItems = [];
+    this.cartService.totalPrice.next(0);
+    this.cartService.totalQuantity.next(0);
+    this.cartService.persistCartItems();
+
+    // reset form data
+    this.paymentForm.reset();
+
+    // navigate back to the product page
+    this.router.navigateByUrl("/shop");
+  }
+
+  private initUser() {
+    let user = this.storageService.getUser();
+    this.full_name = user.firstName + " " + user.lastName;
+    this.email = user.email;
+  }
+
+  private readAddress(): Address {
+    const street = this.paymentForm.get('street')!.value;
+    const city = this.paymentForm.get('city')!.value;
+    const state = this.paymentForm.get('state')!.value;
+    const country = this.paymentForm.get('country')!.value;
+    // const zipCode = this.paymentForm.get('zipCode')!.value;
+    const zipCode = "31000";
+
+    return new Address(street, city, state, country, zipCode);
   }
 }

@@ -27,14 +27,21 @@ export class OrderService {
 
     return this.http.post<Purchase>(AUTH_API + '/place-order',
       {
-        purchase
+        shippingAddress: purchase.shippingAddress,
+        order: purchase.order,
+        orderItems: purchase.orderItems
       }, httpOptions);
   }
 
   createPaymentIntent(paymentInfo: PaymentInfo): Observable<PaymentIntent> {
+
+    console.log("AMOUNT = " + paymentInfo.amount);
+
     return this.http.post<PaymentIntent>(AUTH_API + '/create-payment-intent',
       {
-        paymentInfo
+        amount: paymentInfo.amount,
+        currency: paymentInfo.currency,
+        receiptEmail: paymentInfo.receiptEmail
       }, httpOptions);
   }
 }

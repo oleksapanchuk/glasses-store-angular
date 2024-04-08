@@ -4,10 +4,8 @@ import {User} from "./user";
 import {Address} from "./address";
 
 export class Purchase {
-
   user!: User;
   shippingAddress!: Address;
   order!: Order;
   orderItems!: OrderItem[];
-
 }

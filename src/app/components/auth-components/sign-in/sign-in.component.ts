@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, ErrorHandler, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {Router, RouterLink, RouterLinkActive} from '@angular/router';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {faFacebook, faGithub, faGoogle} from '@fortawesome/free-brands-svg-icons';
@@ -8,6 +8,9 @@ import {StorageService} from "../../../services/storage.service";
 import {InputFieldValidator} from "../../../validators/input-field-validator";
 import {NgIf} from "@angular/common";
 import {HttpErrorResponse} from "@angular/common/http";
+import {UserService} from "../../../services/user.service";
+import {UserDto} from "../../../common/dto/user.dto";
+import {User} from "../../../common/user";
 
 @Component({
   selector: 'app-sign-in',
@@ -26,6 +29,7 @@ export class SignInComponent implements AfterViewInit, OnInit {
     private formBuilder: FormBuilder,
     private storageService: StorageService,
     private authService: AuthService,
+    private userService: UserService,
     private router: Router
   ) {
   }
@@ -67,7 +71,9 @@ export class SignInComponent implements AfterViewInit, OnInit {
       ).subscribe({
         next: (data: any) => {
 
-          this.storageService.saveTokens(data)
+          this.storageService.saveTokens(data);
+
+          this.setUserDetails();
 
           // Navigate to UserAccount component upon successful login
           this.router.navigate(['/user-profile']);
@@ -77,6 +83,27 @@ export class SignInComponent implements AfterViewInit, OnInit {
         }
       });
     }
+  }
+
+  private setUserDetails() {
+    this.userService.getUserByUsername(this.storageService.getUsername()).subscribe({
+      next: (data: UserDto) => {
+
+        let user = new User(
+          data.id!,
+          data.username!,
+          data.firstName!,
+          data.lastName!,
+          data.email!
+        );
+
+        this.storageService.setUser(user);
+
+      },
+      error: (err: any) => {
+        console.error(err)
+      }
+    });
   }
 
   handleServerError(error: unknown) {

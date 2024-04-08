@@ -3,6 +3,7 @@ import {environment} from "../../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserDto} from "../common/dto/user.dto";
+import {User} from "../common/user";
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,12 @@ export class UserService {
   getUser(theUserId: string): Observable<UserDto> {
     return this.httpClient.get<UserDto>(
       this.USERS_API + `/${theUserId}`
+    );
+  }
+
+  getUserByUsername(theUsername: string): Observable<UserDto> {
+    return this.httpClient.get<UserDto>(
+      this.USERS_API + `/by-username/${theUsername}`
     );
   }
 

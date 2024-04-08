@@ -25,6 +25,8 @@ export class StorageService {
 
   public getUser(): User {
     return new User(
+      this.storage.getItem(USER_ID)!,
+      this.storage.getItem(USER_SUBJECT)!,
       this.storage.getItem(USER_FIRST_NAME)!,
       this.storage.getItem(USER_LAST_NAME)!,
       this.storage.getItem(USER_EMAIL)!
@@ -32,6 +34,8 @@ export class StorageService {
   }
 
   public setUser(user: User) {
+    this.storage.setItem(USER_ID, user.id)
+    this.storage.setItem(USER_SUBJECT, user.username);
     this.storage.setItem(USER_FIRST_NAME, user.firstName);
     this.storage.setItem(USER_LAST_NAME, user.lastName);
     this.storage.setItem(USER_EMAIL, user.email);

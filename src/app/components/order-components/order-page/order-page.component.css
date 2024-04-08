@@ -56,17 +56,32 @@
 }
 
 .order__payment-fields-container {
-  padding-top: 60px;
+  padding-top: 50px;
 }
 
-.order__total-due {
-  padding: 40px 0;
+.order__row-details {
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-between;
+}
 
+.order__row-summary {
+  padding-top: 20px;
   color: #353434;
   font-family: Unbounded, sans-serif;
-  font-size: 2em;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 300;
   letter-spacing: 0.1em;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
   text-transform: uppercase;
+}
+
+.order__total-due {
+  text-align: right;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.auth__button-container {
+  padding-top: 20px;
 }

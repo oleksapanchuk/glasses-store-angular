@@ -9,7 +9,7 @@
     <app-cart-item *ngFor="let item of cartItems" [cartItem]="item"></app-cart-item>
   </div>
 
-  <form novalidate (ngSubmit)="createToken()" [formGroup]="paymentForm" class="order__details">
+  <form [formGroup]="paymentForm" (ngSubmit)="placeOrder()" class="order__details">
 
     <div class="order__address-container">
       <div class="order__row-title">Address</div>
@@ -103,10 +103,29 @@
         <div id="card-element" class="field"></div>
       </div>
 
-      <div class="order__row-title">AMOUNT DUE</div>
-      <div class="order__total-due">{{ totalPrice | currency: "USD" }}</div>
+      <div class="order__row-title">Order Summary</div>
 
-      <app-button label="Place Order" [functionCall]="placeOrder"></app-button>
+      <div class="order__row-details">
+        <div class="order__row-summary">Name: </div>
+        <div class="order__row-summary">{{ full_name }}</div>
+      </div>
+
+      <div class="order__row-details">
+        <div class="order__row-summary">email: </div>
+        <div class="order__row-summary">{{ email }}</div>
+      </div>
+
+      <div class="order__row-details">
+        <div class="order__row-summary">Total amount: </div>
+        <div class="order__row-summary order__total-due">{{ totalPrice | currency: "USD" }}</div>
+      </div>
+
+      <div class="auth__button-container">
+        <button class="auth__button" type="submit">
+          Place Order
+        </button>
+      </div>
+
     </div>
 
   </form>
