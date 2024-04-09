@@ -13,20 +13,32 @@ import {OrderPageComponent} from "./components/order-components/order-page/order
 import {OrderHistoryComponent} from "./components/order-components/order-history/order-history.component";
 import {OrderDetailsComponent} from "./components/order-components/order-details/order-details.component";
 import {SavedAddressesComponent} from "./components/account-components/saved-addresses/saved-addresses.component";
+import {
+  ProductManagementComponent
+} from "./components/admin-components/product-management/product-management.component";
+import {AuthGuard} from "./config/auth.gard";
+import {OrderManagementComponent} from "./components/admin-components/order-management/order-management.component";
 
 export const routes: Routes = [
 
-  {path: 'order', component: OrderPageComponent},
+  {path: 'admin/product-management', component: ProductManagementComponent, canActivate: [AuthGuard]},
+  {path: 'admin/order-management', component: OrderManagementComponent, canActivate: [AuthGuard]},
+
   {path: 'account', component: UserPageComponent},
   {path: 'account/order-history', component: OrderHistoryComponent},
   {path: 'account/order-history/order/:id', component: OrderDetailsComponent},
   {path: 'account/saved-addresses', component: SavedAddressesComponent},
+
+  {path: 'order', component: OrderPageComponent},
+
   {path: 'shop', component: ShopPageComponent},
   {path: 'shop/products/:id', component: ProductDetailsComponent},
   {path: 'shop/:keyword', component: ShopPageComponent},
+
   {path: 'sign-in', component: SignInComponent},
   {path: 'sign-up', component: SignUpComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
+
   {path: 'contact', component: ContactPageComponent},
   {path: 'about', component: AboutComponent},
   {path: 'home', component: HomePageComponent},

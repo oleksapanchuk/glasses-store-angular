@@ -44,7 +44,7 @@ export class SignUpComponent implements AfterViewInit, OnInit {
       password: ['', [
         Validators.required,
         Validators.minLength(8),  // Password should be at least 8 characters long
-        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&.])[A-Za-z\\d@$!%*?&.]{8,}$')
+        // Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&.])[A-Za-z\\d@$!%*?&.]{8,}$')
       ]]
     });
 

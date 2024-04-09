@@ -12,19 +12,31 @@
     <div class="account__page-slidebar">
       <div class="account__slidebar-menu">
 
-        <div class="account__slidebar-menu-item">
+        <div *ngIf="user.role === 'ROLE_ADMIN'" class="account__slidebar-menu-item">
+          <a routerLink="/admin/product-management">
+            product management
+          </a>
+        </div>
+
+        <div *ngIf="user.role === 'ROLE_ADMIN'" class="account__slidebar-menu-item">
+          <a routerLink="/admin/order-management">
+            order management
+          </a>
+        </div>
+
+        <div *ngIf="user.role === 'ROLE_USER'" class="account__slidebar-menu-item">
           <a routerLink="/account">
             Personal data
           </a>
         </div>
 
-        <div class="account__slidebar-menu-item">
+        <div *ngIf="user.role === 'ROLE_USER'" class="account__slidebar-menu-item">
           <a routerLink="/account/saved-addresses">
             Saved addresses
           </a>
         </div>
 
-        <div class="account__slidebar-menu-item">
+        <div *ngIf="user.role === 'ROLE_USER'" class="account__slidebar-menu-item">
           <a routerLink="/account/order-history">
             Order history
           </a>
