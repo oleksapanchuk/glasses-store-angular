@@ -1,1 +1,59 @@
-<p>order-management works!</p>
+<app-route-banner pageName="Order Management"></app-route-banner>
+
+<div class="om__wrapper">
+  <div class="om__container">
+
+    <div class="om__find-order-container">
+      <div class="om__title">find order by tracking number</div>
+
+      <div class="om__input-container">
+        <input [(ngModel)]="trackingNumber" type="text" placeholder="Enter tracking number" class="om__input">
+      </div>
+
+      <div class="om__button-container">
+        <button (click)="findOrders(trackingNumber)" class="om__button">
+          Find
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="!orders || orders.length === 0" class="om__empty-container">
+      there are no orders with this tracking number
+    </div>
+
+    <div *ngIf="orders">
+      <div *ngIf="orders.length === 0" class="om__empty-container">
+        there are no orders with this tracking number
+      </div>
+
+      <div *ngIf="orders.length > 0">
+        <div class="om__titles row">
+          <div class="col-4">Tracking number</div>
+          <div class="col-2">Total Price</div>
+          <div class="col-2">Status</div>
+          <div class="col-2">Order Date</div>
+          <div class="col-2">Change Status</div>
+        </div>
+
+        <div class="om__order-items-container">
+
+          <div *ngFor="let item of orders" class="row om__item">
+            <div class="col-4 om__item-details">{{ item.orderTrackingNumber }}</div>
+            <div class="col-2 om__item-details">{{ item.totalPrice | currency: "USD" }}</div>
+            <div class="col-2 om__item-details">{{ item.status }}</div>
+            <div class="col-2 om__item-details">{{ formatDateString(item.dateCreated) }}</div>
+            <div class="col-2 om__item-details">
+              <button (click)="openDialog(item.id, trackingNumber)">
+                <fa-icon [icon]="faPenToSquare"></fa-icon>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>

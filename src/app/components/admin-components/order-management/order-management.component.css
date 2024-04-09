@@ -1,0 +1,137 @@
+.om__wrapper {
+  background-color: #f9f9f9;
+}
+
+.om__container {
+  max-width: 1280px;
+  min-height: 400px;
+  margin: 0 auto;
+  padding: 50px 30px;
+}
+
+.om__find-order-container {
+  padding-bottom: 30px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.om__title {
+  padding: 15px 0;
+
+  color: #353434;
+  font-family: Unbounded, sans-serif;
+  font-size: 1.3em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
+  text-transform: uppercase;
+}
+
+.om__input-container {
+
+}
+
+.om__input {
+  width: 30vw;
+  padding: 15px 30px;
+  border: #0c0c0c 2px solid;
+  text-align: center;
+
+  color: #212020;
+  font-family: Raleway, sans-serif;
+  font-size: 1.2em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
+  text-transform: uppercase;
+}
+
+.om__button-container {
+  width: 15vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.om__button {
+  width: 100%;
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+  background: #0e0f10;
+  font-family: Raleway, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  transition: 0.5s all;
+}
+
+.om__button:hover {
+  background: #ff4e00;
+}
+
+/* -- -- */
+
+.om__empty-container {
+  padding-top: 100px;
+
+  display: flex;
+  justify-content: center;
+
+  color: #0e0f10;
+  font-family: Raleway, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.om__titles {
+  padding-top: 30px;
+
+  color: #353434;
+  font-family: Unbounded, sans-serif;
+  font-size: 1.3em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.om__order-items-container {
+  margin-top: 20px;
+}
+
+.om__item {
+  margin-top: 20px;
+  padding-bottom: 15px;
+
+  border-bottom: #0c0c0c 2px solid;
+}
+
+.om__item .om__item-details {
+  color: #292b2c;
+  font-family: Raleway, sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.om__item-details button {
+  color: #0c0c0c;
+  text-decoration: none;
+}
+
+.om__item-details fa-icon {
+  font-size: 1.5em;
+}

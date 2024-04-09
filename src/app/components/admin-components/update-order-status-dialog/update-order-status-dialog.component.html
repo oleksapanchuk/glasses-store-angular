@@ -1,0 +1,16 @@
+<div class="om-modal__container">
+  <div class="om-modal__header">
+    <div class="om-modal__main-title">Select a status</div>
+    <button mat-button (click)="dialogRef.close()" class="om-modal__close-button">
+      <fa-icon [icon]="faTimes"></fa-icon>
+    </button>
+  </div>
+
+  <div *ngFor="let status of statuses" class="om-modal__options">
+    <button mat-button (click)="closeDialog(status)" class="om-modal__option">{{ status }}</button>
+  </div>
+
+
+</div>
+
+
