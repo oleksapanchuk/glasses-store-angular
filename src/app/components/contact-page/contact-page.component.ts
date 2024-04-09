@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouteBannerComponent } from "../route-banner/route-banner.component";
+import { RouteBannerComponent } from "../utils/route-banner/route-banner.component";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faMap, faEnvelope, faMobileAlt } from '@fortawesome/free-solid-svg-icons';
 
@@ -19,7 +19,7 @@ export class ContactPageComponent {
     constructor() { }
 
     ngOnInit(): void {
-        
+
     }
 
 }

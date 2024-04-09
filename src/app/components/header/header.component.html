@@ -46,6 +46,21 @@
         <app-search></app-search>
       </div>
 
+      <!-- FAVORITES
+      <div class="header__button-icon">
+        <a routerLink="/liked" routerLinkActive="active" class="btn-open">
+          <fa-icon [icon]="faHeart" aria-hidden="true"></fa-icon>
+        </a>
+      </div>
+      -->
+
+      <!-- CART -->
+      <div class="header__button-icon">
+        <button (click)="openDialog()" name="cart">
+          <fa-icon [icon]="faCartArrowDown"></fa-icon>
+        </button>
+      </div>
+
       <!-- SIGN IN -->
       <div class="header__button-icon">
         <!-- If user is not authorized -->
@@ -54,23 +69,9 @@
         </a>
 
         <!-- If user is authorized -->
-        <a *ngIf="isUserAuthorized()" routerLink="/user-profile" routerLinkActive="active" class="btn-open">
+        <a *ngIf="isUserAuthorized()" routerLink="/account" routerLinkActive="active" class="btn-open">
           <fa-icon [icon]="faUser" aria-hidden="true"></fa-icon>
         </a>
-      </div>
-
-      <!-- FAVORITES -->
-      <div class="header__button-icon">
-        <a routerLink="/liked" routerLinkActive="active" class="btn-open">
-          <fa-icon [icon]="faHeart" aria-hidden="true"></fa-icon>
-        </a>
-      </div>
-
-      <!-- CART -->
-      <div class="header__button-icon">
-        <button (click)="openDialog()" name="cart">
-          <fa-icon [icon]="faCartArrowDown"></fa-icon>
-        </button>
       </div>
 
     </div>

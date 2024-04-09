@@ -13,13 +13,13 @@
       <div class="account__slidebar-menu">
 
         <div class="account__slidebar-menu-item">
-          <a href="#">
+          <a routerLink="/account">
             Personal data
           </a>
         </div>
 
         <div class="account__slidebar-menu-item">
-          <a href="#">
+          <a routerLink="/account/saved-addresses">
             Saved addresses
           </a>
         </div>
@@ -30,8 +30,8 @@
           </a>
         </div>
 
-        <div class="account__slidebar-menu-item">
-          <a routerLink="/home" (click)="signOut()">
+        <div class="account__button-container">
+          <a routerLink="/shop" (click)="signOut()" class="account__button">
             Sign Out
           </a>
         </div>

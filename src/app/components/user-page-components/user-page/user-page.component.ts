@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {StorageService} from "../../../services/storage.service";
 import {UserDto} from "../../../common/dto/user.dto";
 import {UserService} from "../../../services/user.service";
-import {RouteBannerComponent} from "../../route-banner/route-banner.component";
+import {RouteBannerComponent} from "../../utils/route-banner/route-banner.component";
 import {NgIf} from "@angular/common";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {AuthService} from "../../../services/auth.service";

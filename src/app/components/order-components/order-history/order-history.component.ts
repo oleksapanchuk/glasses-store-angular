@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {RouteBannerComponent} from "../../route-banner/route-banner.component";
+import {RouteBannerComponent} from "../../utils/route-banner/route-banner.component";
 import {OrderDto} from "../../../common/dto/OrderDto";
 import {OrderService} from "../../../services/order.service";
 import {CurrencyPipe, NgForOf} from "@angular/common";

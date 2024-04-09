@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren} from '@angular/core';
-import {RouteBannerComponent} from "../../route-banner/route-banner.component";
+import {RouteBannerComponent} from "../../utils/route-banner/route-banner.component";
 import {CartItemComponent} from "../../cart-components/cart-item/cart-item.component";
 import {CurrencyPipe, NgForOf, NgIf} from "@angular/common";
 import {CartService} from "../../../services/cart.service";

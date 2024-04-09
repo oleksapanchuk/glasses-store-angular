@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {OrderService} from "../../../services/order.service";
 import {ActivatedRoute} from "@angular/router";
 import {OrderDetailsResponse} from "../../../common/dto/order-details-response.dto";
-import {RouteBannerComponent} from "../../route-banner/route-banner.component";
+import {RouteBannerComponent} from "../../utils/route-banner/route-banner.component";
 import {CurrencyPipe, NgForOf} from "@angular/common";
 import {OrderItemComponent} from "../order-item/order-item.component";
 

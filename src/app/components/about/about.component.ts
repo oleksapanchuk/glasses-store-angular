@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouteBannerComponent } from "../route-banner/route-banner.component";
+import { RouteBannerComponent } from "../utils/route-banner/route-banner.component";
 import { RouterLink } from '@angular/router';
 import { ShopButtonComponent } from '../shop-button/shop-button.component';
 import { PartnerCardComponent } from '../partner-card/partner-card.component';

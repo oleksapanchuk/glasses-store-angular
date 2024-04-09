@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, RouterLink} from '@angular/router';
-import {RouteBannerComponent} from '../route-banner/route-banner.component';
+import {RouteBannerComponent} from '../utils/route-banner/route-banner.component';
 import {ProductListComponent} from '../product-list/product-list.component';
 import {SpecialDealItemComponent} from '../shop-page-components/special-deal-item/special-deal-item.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
