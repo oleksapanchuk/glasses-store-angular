@@ -23,8 +23,8 @@ export class ProductService {
   }
 
   searchProducts(
-    thePage: number,
-    thePageSize: number,
+    thePage: number = 0,
+    thePageSize: number = 8,
     theKeyword: string): Observable<GetResponseProducts> {
 
     return this.httpClient.get<GetResponseProducts>(

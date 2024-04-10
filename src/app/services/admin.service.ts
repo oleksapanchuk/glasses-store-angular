@@ -16,7 +16,6 @@ export class AdminService {
   ) {
   }
 
-
   findOrders(theTrackingNumber: string): Observable<GetResponseOrders> {
     return this.http.get<GetResponseOrders>(
       `${ADMIN_API}/fetch-orders-by-tracking-number/${theTrackingNumber}`

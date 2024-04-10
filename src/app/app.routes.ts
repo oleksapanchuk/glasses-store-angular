@@ -18,10 +18,12 @@ import {
 } from "./components/admin-components/product-management/product-management.component";
 import {AuthGuard} from "./config/auth.gard";
 import {OrderManagementComponent} from "./components/admin-components/order-management/order-management.component";
+import {ProductWorkshopComponent} from "./components/admin-components/product-workshop/product-workshop.component";
 
 export const routes: Routes = [
 
   {path: 'admin/product-management', component: ProductManagementComponent, canActivate: [AuthGuard]},
+  {path: 'admin/product-workshop', component: ProductWorkshopComponent, canActivate: [AuthGuard]},
   {path: 'admin/order-management', component: OrderManagementComponent, canActivate: [AuthGuard]},
 
   {path: 'account', component: UserPageComponent},

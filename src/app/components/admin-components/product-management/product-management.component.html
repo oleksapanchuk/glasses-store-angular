@@ -1,1 +1,45 @@
-<p>product-management works!</p>
+<app-route-banner pageName="Product Management"></app-route-banner>
+
+<div class="pm__wrapper">
+  <div class="pm__container">
+
+    <div class="pm__main-title">Product Management</div>
+
+    <div class="pm__menu-bar">
+      <div class="pm__button-container">
+        <a routerLink="/admin/product-workshop" class="pm__button">
+          Add Product
+        </a>
+      </div>
+
+      <div class="pm__input-container">
+        <input [(ngModel)]="inputValue" type="text" placeholder="Enter value" class="pm__input">
+      </div>
+
+      <div class="pm__button-container">
+        <button (click)="findProductById(inputValue)" class="pm__button">
+          Find by id
+        </button>
+      </div>
+
+      <div class="pm__button-container">
+        <button (click)="findProductByName(inputValue)" class="pm__button">
+          Find by name
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="products.length === 0" class="pm__empty-container">
+      there are no products
+    </div>
+
+    <div *ngIf="products.length > 0" class="pm__product-list-container">
+
+      <div *ngFor="let product of products">
+        {{ product.id }} {{ product.name }}
+      </div>
+
+    </div>
+
+  </div>
+</div>
