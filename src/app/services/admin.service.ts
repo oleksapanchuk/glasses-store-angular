@@ -18,9 +18,9 @@ export class AdminService {
   ) {
   }
 
-  createProduct(product: Product): Observable<any> {
+  createProduct(product: Product): Observable<GetResponseDto> {
 
-    return this.http.post<any>(
+    return this.http.post<GetResponseDto>(
       `${PRODUCT_API}/create`, {
         sku: product.sku,
         name: product.name,
@@ -34,9 +34,9 @@ export class AdminService {
     );
   }
 
-  updateProduct(product: Product): Observable<any> {
+  updateProduct(product: Product): Observable<GetResponseDto> {
 
-    return this.http.put<any>(
+    return this.http.put<GetResponseDto>(
       `${PRODUCT_API}/update`, {
         id: product.id,
         sku: product.sku,
@@ -68,6 +68,11 @@ export class AdminService {
     );
   }
 
+}
+
+interface GetResponseDto {
+  statusCode: string,
+  statusMessage: string
 }
 
 interface GetResponseOrders {

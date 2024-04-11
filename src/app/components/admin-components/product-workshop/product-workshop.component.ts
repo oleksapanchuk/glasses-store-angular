@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {Product} from "../../../common/product";
 import {ProductService} from "../../../services/product.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {NgForOf, NgIf} from "@angular/common";
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
@@ -44,7 +44,8 @@ export class ProductWorkshopComponent implements OnInit, AfterViewInit {
     private adminService: AdminService,
     private productCategoryService: ProductCategoryService,
     private route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {
   }
 
@@ -136,19 +137,25 @@ export class ProductWorkshopComponent implements OnInit, AfterViewInit {
     newProd.active = this.productStatusIsActive;
     newProd.categoryIds = this.productCategories.map(category => category.id);
 
+
+    let productId;
+
     if (this.isEditMode) {
       newProd.id = this.product.id;
       console.log(newProd);
 
       this.adminService.updateProduct(newProd).subscribe(data => {
-          console.log("updated product");
+          productId = this.product.id;
+
         }
       );
-      return
+      return;
     }
 
     this.adminService.createProduct(newProd).subscribe(data => {
-        console.log("created product");
+        productId = data.statusMessage.replace("Product:", "");
+
+        this.router.navigate([`/shop/products/${productId}`]);
       }
     );
 
