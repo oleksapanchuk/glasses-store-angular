@@ -99,5 +99,46 @@
 }
 
 .pm__product-list-container {
-  padding-top: 50px;
+  padding-top: 40px;
+}
+
+.pm__titles {
+  padding-top: 30px;
+
+  color: #353434;
+  font-family: Unbounded, sans-serif;
+  font-size: 1.3em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.pm__product-items-container {
+  margin-top: 20px;
+}
+
+.pm__item {
+  margin-top: 20px;
+  padding-bottom: 15px;
+
+  border-bottom: #0c0c0c 2px solid;
+}
+
+.pm__item .pm__item-details,
+.pm__item-details a {
+  color: #292b2c;
+  font-family: Raleway, sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.pm__item-details fa-icon {
+  font-size: 1.3em;
+  padding: 0 10px;
 }

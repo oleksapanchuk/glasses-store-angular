@@ -133,21 +133,6 @@ export class OrderPageComponent implements OnInit, AfterViewInit {
 
   }
 
-  createToken() {
-    const name = this.paymentForm.get('city')!.value;
-    this.stripeService
-      .createToken(this.card, {name})
-      .subscribe((result) => {
-        if (result.token) {
-          // Use the token
-          console.log(result.token.id);
-        } else if (result.error) {
-          // Error creating the token
-          console.log(result.error.message);
-        }
-      });
-  }
-
   placeOrder() {
     if (this.paymentForm.invalid) {
       // touching all fields triggers the display of the error messages

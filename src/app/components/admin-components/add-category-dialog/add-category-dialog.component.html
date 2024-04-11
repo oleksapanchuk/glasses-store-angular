@@ -1,0 +1,15 @@
+<div class="category-modal__container">
+  <div class="category-modal__header">
+    <div class="category-modal__main-title">Select a status</div>
+    <button mat-button (click)="dialogRef.close()" class="category-modal__close-button">
+      <fa-icon [icon]="faTimes"></fa-icon>
+    </button>
+  </div>
+
+  <div class="category-modal__options-container">
+    <div *ngFor="let category of categories" class="category-modal__options">
+      <button mat-button (click)="closeDialog(category.id)" class="category-modal__option">{{ category.name }}</button>
+    </div>
+  </div>
+
+</div>

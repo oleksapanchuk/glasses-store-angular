@@ -35,8 +35,35 @@
 
     <div *ngIf="products.length > 0" class="pm__product-list-container">
 
-      <div *ngFor="let product of products">
-        {{ product.id }} {{ product.name }}
+      <div class="pm__titles row">
+        <div class="col-1">Id</div>
+        <div class="col-3">Name</div>
+        <div class="col-2">SKU</div>
+        <div class="col-1">Price</div>
+        <div class="col-2">Quantity</div>
+        <div class="col-1">Status</div>
+        <div class="col-2">Action</div>
+      </div>
+
+      <div class="pm__product-items-container">
+
+        <div *ngFor="let product of products" class="row pm__item">
+          <div class="col-1 pm__item-details">{{ product.id }}</div>
+          <div class="col-3 pm__item-details">{{ product.name }}</div>
+          <div class="col-2 pm__item-details">{{ product.sku }}</div>
+          <div class="col-1 pm__item-details">{{ product.price | currency: "USD" }}</div>
+          <div class="col-2 pm__item-details">{{ product.unitsInStock }}</div>
+          <div class="col-1 pm__item-details">{{ product.active }}</div>
+          <div class="col-2 pm__item-details">
+            <a routerLink="/shop/products/{{ product.id }}">
+              <fa-icon [icon]="faEye"></fa-icon>
+            </a>
+            <a routerLink="/admin/product-workshop/{{ product.id }}">
+              <fa-icon [icon]="faPenToSquare"></fa-icon>
+            </a>
+          </div>
+        </div>
+
       </div>
 
     </div>

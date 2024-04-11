@@ -3,9 +3,11 @@ import {RouteBannerComponent} from "../../utils/route-banner/route-banner.compon
 import {FormsModule} from "@angular/forms";
 import {RouterLink} from "@angular/router";
 import {Product} from "../../../common/product";
-import {NgForOf, NgIf} from "@angular/common";
+import {CurrencyPipe, NgForOf, NgIf} from "@angular/common";
 import {AdminService} from "../../../services/admin.service";
 import {ProductService} from "../../../services/product.service";
+import {faEye, faPenToSquare} from "@fortawesome/free-solid-svg-icons";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 
 @Component({
   selector: 'app-product-management',
@@ -15,7 +17,9 @@ import {ProductService} from "../../../services/product.service";
     FormsModule,
     RouterLink,
     NgIf,
-    NgForOf
+    NgForOf,
+    CurrencyPipe,
+    FaIconComponent
   ],
   templateUrl: './product-management.component.html',
   styleUrl: './product-management.component.css'
@@ -51,10 +55,13 @@ export class ProductManagementComponent implements OnInit {
     this.products = [];
     if (inputValue === "") return;
 
-    this.productService.searchProducts(0, 8, inputValue).subscribe(data => {
+    this.productService.searchProducts(0, 100, inputValue).subscribe(data => {
       this.products = data.content;
     });
 
     console.log(inputValue)
   }
+
+  protected readonly faPenToSquare = faPenToSquare;
+  protected readonly faEye = faEye;
 }

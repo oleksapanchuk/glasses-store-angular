@@ -1,1 +1,99 @@
-<p>product-workshop works!</p>
+<div class="pw__wrapper">
+  <div class="pw__container">
+
+    <div class="pw__title">{{ isEditMode ? 'Editing' : 'Creating' }} product</div>
+
+    <form [formGroup]="productForm" (ngSubmit)="manageProduct()">
+
+      <!-- Sku -->
+      <div class="auth__from-input-container"
+           [class.auth_form-input-invalid]="sku?.invalid && (sku?.dirty || sku?.touched)">
+        <input class="auth__form-input {{ isEditMode ? 'auth__has-value' : ''}}" type="text" formControlName="sku" #inputField (input)="serverErrorMessage=''">
+        <span class="auth__form-focus-input"></span>
+        <span class="auth__form-label">SKU</span>
+      </div>
+
+      <!-- Name -->
+      <div class="auth__from-input-container"
+           [class.auth_form-input-invalid]="name?.invalid && (name?.dirty || name?.touched)">
+        <input class="auth__form-input {{ isEditMode ? 'auth__has-value' : ''}}" type="text" formControlName="name" #inputField (input)="serverErrorMessage=''">
+        <span class="auth__form-focus-input"></span>
+        <span class="auth__form-label">Name</span>
+      </div>
+
+      <!-- Description -->
+      <div class="auth__from-input-container"
+           [class.auth_form-input-invalid]="description?.invalid && (description?.dirty || description?.touched)">
+        <input class="auth__form-input {{ isEditMode ? 'auth__has-value' : ''}}" type="text" formControlName="description" #inputField
+               (input)="serverErrorMessage=''">
+        <span class="auth__form-focus-input"></span>
+        <span class="auth__form-label">Description</span>
+      </div>
+
+      <!-- Price -->
+      <div class="auth__from-input-container"
+           [class.auth_form-input-invalid]="price?.invalid && (price?.dirty || price?.touched)">
+        <input class="auth__form-input {{ isEditMode ? 'auth__has-value' : ''}}" type="text" formControlName="price" #inputField (input)="serverErrorMessage=''">
+        <span class="auth__form-focus-input"></span>
+        <span class="auth__form-label">Price</span>
+      </div>
+
+      <!-- Quantity -->
+      <div class="auth__from-input-container"
+           [class.auth_form-input-invalid]="quantity?.invalid && (quantity?.dirty || quantity?.touched)">
+        <input class="auth__form-input {{ isEditMode ? 'auth__has-value' : ''}}" type="text" formControlName="quantity" #inputField
+               (input)="serverErrorMessage=''">
+        <span class="auth__form-focus-input"></span>
+        <span class="auth__form-label">Quantity</span>
+      </div>
+
+      <!--Image url -->
+      <div class="auth__from-input-container"
+           [class.auth_form-input-invalid]="imageUrl?.invalid && (imageUrl?.dirty || imageUrl?.touched)">
+        <input class="auth__form-input {{ isEditMode ? 'auth__has-value' : ''}}" type="text" formControlName="imageUrl" #inputField
+               (input)="serverErrorMessage=''">
+        <span class="auth__form-focus-input"></span>
+        <span class="auth__form-label">Image URL</span>
+      </div>
+
+      <div class="pw__product-details-container">
+        <div class="pw__small-title">Product is {{ productStatusIsActive ? 'active' : 'inactive' }}</div>
+        <div class="pw__status" (click)="changeStatus(!productStatusIsActive)">
+          {{ productStatusIsActive ? 'deactivate' : 'activate' }}
+        </div>
+      </div>
+
+      <div class="pw__category-handling-container">
+
+        <div class="pw__product-details-container mt-3">
+
+          <div class="pw__small-title">Product categories</div>
+
+          <div class="pw__category-list">
+            <div *ngIf="productCategories.length === 0" class="pw__small-title pw__light-title">No Categories</div>
+            <div *ngFor="let pc of productCategories" class="pw__category-container">
+              {{ pc.name }}
+              <div class="pw__category-del" (click)="deleteCategory(pc.id)">
+                <fa-icon [icon]="faTimes"></fa-icon>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="pw__add-cat-button mt-3" (click)="addCategory()">ADD</div>
+      </div>
+
+
+      <div class="auth__button-container mt-4">
+        <button class="auth__button" type="submit">
+          Submit
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+
+

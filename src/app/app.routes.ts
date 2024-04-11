@@ -24,6 +24,7 @@ export const routes: Routes = [
 
   {path: 'admin/product-management', component: ProductManagementComponent, canActivate: [AuthGuard]},
   {path: 'admin/product-workshop', component: ProductWorkshopComponent, canActivate: [AuthGuard]},
+  {path: 'admin/product-workshop/:id', component: ProductWorkshopComponent, canActivate: [AuthGuard]},
   {path: 'admin/order-management', component: OrderManagementComponent, canActivate: [AuthGuard]},
 
   {path: 'account', component: UserPageComponent},
