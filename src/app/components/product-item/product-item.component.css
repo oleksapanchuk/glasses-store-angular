@@ -39,6 +39,7 @@
 }
 
 .card__quick-view-container {
+  position: absolute;
   top: 50px;
   left: 0;
   bottom: 0;
@@ -46,7 +47,6 @@
   margin: auto;
   opacity: 0;
   overflow: hidden;
-  position: absolute;
   text-align: center;
   transition: all 0.5s ease-out 0s;
   visibility: hidden;
@@ -61,7 +61,7 @@
 
 .card__quick-view-container-inner .card__quick-view-link {
   width: 42%;
-  top: 0px;
+  top: 0;
   left: 28%;
   margin: 0 auto;
   position: absolute;
@@ -89,7 +89,7 @@
 
 .card__quick-view-container-inner .card__quick-view-link {
   width: 56%;
-  top: 0px;
+  top: 0;
   left: 22%;
 }
 
@@ -145,44 +145,19 @@
   transition: all 0.2s ease;
 }
 
-.card__container:nth-child(2) .card__new-product,
-.card__container:nth-child(6) .card__new-product,
-.card__container:nth-child(7) .card__new-product {
-  background: #FFC107;
-  /* Safari */
-  -webkit-transform: rotate(-90deg);
-  /* Firefox */
-  -moz-transform: rotate(-90deg);
-  /* IE */
-  -ms-transform: rotate(-90deg);
-  /* Opera */
-  -o-transform: rotate(-90deg);
-}
-
-.card__new-product,
-.card__container:nth-child(8) .card__new-product,
-.card__new-product,
-.card__container:nth-child(3) .card__new-product {
-  background: #219ff3;
-  /* Safari */
-  -webkit-transform: rotate(-90deg);
-  /* Firefox */
-  -moz-transform: rotate(-90deg);
-  /* IE */
-  -ms-transform: rotate(-90deg);
-  /* Opera */
-  -o-transform: rotate(-90deg);
-}
-
-.card__new-product {
-  background: #F60B0E;
-  color: #fff;
-  right: -18px;
+.card__unavailable {
+  width: 90px;
+  height: 30px;
   position: absolute;
   top: 10px;
-  width: 79px;
-  font-size: 13px;
-  height: 29px;
+  right: -18px;
+
+  color: #fff;
+  background: #817f7c;
+  font-family: Raleway, sans-serif;
+  font-size: 14px;
   text-align: center;
   line-height: 2.3;
+
+  transform: rotate(-90deg);
 }

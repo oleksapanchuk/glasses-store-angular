@@ -1,90 +1,68 @@
 .about-info {
-    background-color: #f5f7f7;
-    padding: 2% 4%;
+  background-color: #f5f7f7;
+  padding: 2% 4%;
 }
 
-.about-info a {
-    color: #333 !important;
+.about-info a,
+.about-info p {
+  color: #0e0f10 !important;
 }
 
 .tittle-main {
-    color: #353434;
-    font-size: 3em;
-    text-align: left;
-    letter-spacing: 1px;
-    font-weight: 400;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
+  color: #0e0f10;
+  font-family: Unbounded, sans-serif;
+  font-size: 3em;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-align: left;
+  text-transform: uppercase;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
 }
 
 .testimonials {
-    background: #f7f7f7;
+  background: #f7f7f7;
 }
 
 .mail-grid-icon fa-icon {
-    font-size: 1.3em;
-    color: #151515;
-    line-height: 3.2em;
+  font-size: 1.3em;
+  color: #0e0f10;
+  line-height: 3.2em;
 }
 
 .mail-grid-icon {
-    float: left;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-    border: 2px solid #777;
-}
-
-.mail-grid-text-info h3 {
-    font-size: 0.9em;
-    color: #ff4e00;
-    margin: 0em 0 0.5em;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
+  float: left;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid #777;
 }
 
 .mail-grid-text-info {
-    float: right;
-    width: 70%;
-    text-align: left;
+  float: right;
+  width: 70%;
+  text-align: left;
 }
 
+.mail-grid-text-info h3 {
+  margin: 0 0 0.5em;
 
-
-.footer-top-w3layouts-grid-sec:hover .mail-grid-icon fa-icon {
-    color: #ff4e00;
+  color: #ff4e00;
+  font-family: Raleway, sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-@media(max-width:1440px) {
-
-    .testimonials {
-        padding: 5em 0;
-    }
-
+.mail-grid-text-info p {
+  color: #0e0f10;
+  font-family: Raleway, sans-serif;
+  font-size: 0.9em;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
-@media(max-width:1050px) {
-
-    .mail-grid-text-info {
-        float: right;
-        width: 100%;
-        text-align: left;
-        margin-top: 1em;
-    }
-
+.about__footer-grid:hover .mail-grid-icon fa-icon {
+  color: #ff4e00;
 }
 
-@media(max-width:991px) {
-    
-    .mail-grid-text-info {
-        float: left;
-        width: 70%;
-        text-align: left;
-        margin-top: 1em;
-        margin-left: 5%;
-    }
-}

@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faFacebook, faTwitter, faGooglePlus } from '@fortawesome/free-brands-svg-icons';
+import {Component, Input} from '@angular/core';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {faFacebook, faGooglePlus, faTwitter} from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-partner-card',
@@ -10,11 +10,6 @@ import { faFacebook, faTwitter, faGooglePlus } from '@fortawesome/free-brands-sv
   styleUrl: './partner-card.component.css'
 })
 export class PartnerCardComponent {
-
-  faFacebook = faFacebook;
-  faTwitter = faTwitter;
-  faGooglePlus = faGooglePlus;
-
   @Input() partnerImageUrl: string | undefined;
   @Input() partnerName: string | undefined;
   @Input() partnerDescription: string | undefined;
@@ -22,4 +17,10 @@ export class PartnerCardComponent {
   @Input() partnerTwitterLink: string | undefined;
   @Input() partnerGooglePlusLink: string | undefined;
 
+  constructor() {
+  }
+
+  protected readonly faFacebook = faFacebook;
+  protected readonly faTwitter = faTwitter;
+  protected readonly faGooglePlus = faGooglePlus;
 }

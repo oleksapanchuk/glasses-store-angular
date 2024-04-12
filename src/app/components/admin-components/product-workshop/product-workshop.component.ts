@@ -32,7 +32,7 @@ export class ProductWorkshopComponent implements OnInit, AfterViewInit {
   product!: Product;
 
   productForm!: FormGroup;
-  productStatusIsActive: boolean = false;
+  productStatusIsActive!: boolean;
   serverErrorMessage!: string;
 
   allCategories: ProductCategory[] | undefined = [];
@@ -110,6 +110,7 @@ export class ProductWorkshopComponent implements OnInit, AfterViewInit {
       this.productService.getProduct(theProductId).subscribe(
         data => {
           this.product = data;
+          this.productStatusIsActive = this.product.active;
           this.loadProductCategories(this.product.categoryIds);
 
           this.productForm.get("sku")?.setValue(this.product.sku);
@@ -137,7 +138,6 @@ export class ProductWorkshopComponent implements OnInit, AfterViewInit {
     newProd.active = this.productStatusIsActive;
     newProd.categoryIds = this.productCategories.map(category => category.id);
 
-
     let productId;
 
     if (this.isEditMode) {
@@ -147,6 +147,7 @@ export class ProductWorkshopComponent implements OnInit, AfterViewInit {
       this.adminService.updateProduct(newProd).subscribe(data => {
           productId = this.product.id;
 
+          this.router.navigate([`/shop/products/${productId}`]);
         }
       );
       return;
