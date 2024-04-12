@@ -18,9 +18,9 @@
         </div>
 
         <div class="product__category">
-          <span>Артикул: {{ product.sku }} </span>
-          <span>Категорія: Світшоти, толстовки </span>
-          <span>Бренд: Staff</span>
+          <span>SKU: {{ product.sku }} </span>
+          <span>Categories:</span>
+          <span *ngFor="let item of productCategories"> {{ item.name }} </span>
         </div>
 
         <div class="product__price">
@@ -29,24 +29,17 @@
 
         <div class="product__order-form">
 
-          <div class="product__order-from-sizes">
-
-          </div>
-
           <div class="product__order-buttons">
-
-            <div class="product__order-button">
-              <button class="main-button add-to-cart-button" id="order-btn">
+            <div *ngIf="role === 'ROLE_ADMIN'" class="product__order-button">
+              <a routerLink="/admin/product-workshop/{{ product.id }}" class="main-button">
+                Edit product
+              </a>
+            </div>
+            <div *ngIf="role !== 'ROLE_ADMIN'" class="product__order-button">
+              <button class="main-button" (click)="addProductToCart()">
                 Add to cart
               </button>
             </div>
-
-            <div class="product__order-button">
-              <button class="main-button buy-one-click-button" id="quick-order-btn">
-                Buy in one click
-              </button>
-            </div>
-
           </div>
 
           <div class="product__share">

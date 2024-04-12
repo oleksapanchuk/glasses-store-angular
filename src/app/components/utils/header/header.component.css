@@ -65,3 +65,17 @@ header {
   font-size: 20px;
   text-decoration: none;
 }
+
+.header__cart-quantity {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  color: #fff;
+  background-color: #ff4e00;
+
+  border-radius: 50%;
+  text-align: center;
+  line-height: 17px;
+  font-size: 10px;
+  font-weight: 500;
+}

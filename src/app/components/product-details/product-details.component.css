@@ -66,14 +66,16 @@
 }
 
 .product__price {
-  font-size: 26px;
+  padding-top: 20px;
   margin-top: 20px;
+
   font-family: Unbounded, sans-serif;
+  font-size: 26px;
   font-weight: 500;
 }
 
 .product__order-form {
-  margin-top: 20px;
+  margin-top: 10px;
   padding-top: 30px;
   border-top: 1px solid #d3d3d3;
   width: 510px;
@@ -81,8 +83,8 @@
 
 .product__order-buttons {
   display: flex;
-  justify-content: space-between;
-  margin-top: 38px;
+  justify-content: flex-start;
+  margin-top: 40px;
 }
 
 .product__order-button {
@@ -90,43 +92,18 @@
 }
 
 .main-button {
-  padding: 20px 25px;
-  font-family: Unbounded, sans-serif;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
   width: 100%;
-  font-size: 12px;
+  padding: 20px 25px;
 
   color: #fff;
   background: #0e0f10;
-  -webkit-transition: 0.5s all;
-  -moz-transition: 0.5s all;
-  -o-transition: 0.5s all;
-  -ms-transition: 0.5s all;
+  font-family: Unbounded, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   transition: 0.5s all;
   cursor: pointer;
-}
-
-#order-btn {
-  background-color: #0e0f10;
-  opacity: 1;
-  color: #fff;
-}
-
-#order-btn:hover {
-  background: #ff4e00;
-}
-
-#quick-order-btn {
-  background-color: rgb(199, 199, 199);
-  opacity: 1;
-  color: #0e0f10;
-}
-
-#quick-order-btn:hover {
-  background: #ff4e00;
-  color: rgb(255, 255, 255);
 }
 
 .product__share {

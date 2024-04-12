@@ -58,6 +58,7 @@
       <div class="header__button-icon">
         <button (click)="openDialog()" name="cart">
           <fa-icon [icon]="faCartArrowDown"></fa-icon>
+          <span *ngIf="cartItemsCount > 0" class="header__cart-quantity">{{ cartItemsCount }}</span>
         </button>
       </div>
 
