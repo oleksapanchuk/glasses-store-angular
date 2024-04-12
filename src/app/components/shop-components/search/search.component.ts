@@ -1,7 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
-import {ProductService} from "../../services/product.service";
+import {ProductService} from "../../../services/product.service";
 import {Router} from "@angular/router";
 
 @Component({

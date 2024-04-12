@@ -4,7 +4,6 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {faCartPlus} from '@fortawesome/free-solid-svg-icons';
 import {RouterLink} from '@angular/router';
 import {Product} from '../../common/product';
-import {RatingStarsComponent} from "../rating-stars/rating-stars.component";
 import {CartService} from '../../services/cart.service';
 import {CartItem} from '../../common/cart-item';
 import {faHeart} from "@fortawesome/free-regular-svg-icons";
@@ -14,7 +13,7 @@ import {faHeart} from "@fortawesome/free-regular-svg-icons";
   standalone: true,
   templateUrl: './product-item.component.html',
   styleUrl: './product-item.component.css',
-  imports: [FontAwesomeModule, CommonModule, RouterLink, RatingStarsComponent]
+  imports: [FontAwesomeModule, CommonModule, RouterLink]
 })
 export class ProductItemComponent {
 

@@ -81,6 +81,23 @@ iframe {
   border: none !important;
 }
 
+
+/* --- ___ --- */
+.app_main-title {
+  margin-bottom: 20px;
+
+  color: #353434;
+  font-family: Unbounded, sans-serif;
+  font-size: 3em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
+  text-transform: uppercase;
+}
+
+/* --- ___ --- */
+
+
 .mobile-nav-button {
   position: absolute;
   right: 355px;
@@ -140,7 +157,6 @@ button#trigger-overlay {
   color: #fff;
   outline: none;
   background: none;
-  -webkit-appearance: none;
   border: 2px solid #fff;
   letter-spacing: 4px;
   border-radius: 0;
@@ -157,94 +173,6 @@ button#trigger-overlay {
   border: none;
   cursor: pointer;
   transition: 0.5s all;
-  -webkit-transition: 0.5s all;
-  -moz-transition: 0.5s all;
-  -webkit-appearance: none;
   background: #ff4e00;
   border-radius: 0;
 }
-
-
-/*--/responsive--*/
-@media (max-width: 1366px) {
-  .mobile-nav-button {
-    position: absolute;
-    right: 245px;
-    top: 24px;
-  }
-}
-
-@media (max-width: 1280px) {
-  .mobile-nav-button {
-    position: absolute;
-    right: 230px;
-    top: 24px;
-  }
-}
-
-@media (max-width: 1080px) {
-  .mobile-nav-button {
-    position: absolute;
-    right: 200px;
-    top: 24px;
-  }
-}
-
-@media (max-width: 1050px) {
-  .mobile-nav-button {
-    position: absolute;
-    right: 195px;
-    top: 24px;
-  }
-
-  .overlay-door form {
-    width: 70%;
-  }
-}
-
-@media (max-width: 1024px) {
-  .mobile-nav-button {
-    position: absolute;
-    right: 185px;
-    top: 24px;
-  }
-}
-
-@media (max-width: 767px) {
-  .mobile-nav-button {
-    position: absolute;
-    right: 185px;
-    top: 36px;
-  }
-}
-
-@media (max-width: 640px) {
-  .mobile-nav-button {
-    position: absolute;
-    right: 112px;
-    top: 36px;
-  }
-
-  .overlay-door form {
-    width: 90%;
-  }
-}
-
-@media (max-width: 480px) {
-  .mobile-nav-button {
-    position: absolute;
-    right: 70px;
-    top: 36px;
-  }
-
-}
-
-@media (max-width: 375px) {
-  .mobile-nav-button {
-    position: absolute;
-    right: 46px;
-    top: 36px;
-  }
-}
-
-

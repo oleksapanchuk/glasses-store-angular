@@ -1,24 +1,23 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, RouterLink} from '@angular/router';
-import {RouteBannerComponent} from '../utils/route-banner/route-banner.component';
-import {ProductListComponent} from '../product-list/product-list.component';
-import {SpecialDealItemComponent} from '../shop-page-components/special-deal-item/special-deal-item.component';
+import {RouteBannerComponent} from '../../utils/route-banner/route-banner.component';
+import {ProductListComponent} from '../../product-list/product-list.component';
+import {SpecialDealItemComponent} from '../../shop-page-components/special-deal-item/special-deal-item.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {faCaretDown, faMinus, faPlus, faSearch, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {SliderModule} from 'primeng/slider';
 import {FormsModule} from '@angular/forms';
-import {SliderComponent} from "../home-page-components/slider/slider.component";
-import {RatingStarsComponent} from "../rating-stars/rating-stars.component";
+import {SliderComponent} from "../../home-page-components/slider/slider.component";
 import {NgbDropdown, NgbDropdownItem, NgbDropdownMenu, NgbDropdownToggle} from "@ng-bootstrap/ng-bootstrap";
 import {NgForOf, NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
 import {PaginatorModule, PaginatorState} from "primeng/paginator";
-import {ProductItemComponent} from "../product-item/product-item.component";
-import {Product} from "../../common/product";
-import {ProductService} from "../../services/product.service";
-import {SortingMethod} from "../shop-page-components/sorting-method.enum";
-import {GenderFilter} from "../shop-page-components/gender-filter.enum";
-import {TypeFilter} from "../shop-page-components/type-filter.enum";
-import {FrameFilter} from "../shop-page-components/frame-filter.enum";
+import {ProductItemComponent} from "../../product-item/product-item.component";
+import {Product} from "../../../common/product";
+import {ProductService} from "../../../services/product.service";
+import {SortingMethod} from "../../shop-page-components/sorting-method.enum";
+import {GenderFilter} from "../../shop-page-components/gender-filter.enum";
+import {TypeFilter} from "../../shop-page-components/type-filter.enum";
+import {FrameFilter} from "../../shop-page-components/frame-filter.enum";
 import {catchError, throwError} from "rxjs";
 
 @Component({
@@ -26,7 +25,7 @@ import {catchError, throwError} from "rxjs";
   standalone: true,
   templateUrl: './shop-page.component.html',
   styleUrl: './shop-page.component.css',
-  imports: [RouterLink, FontAwesomeModule, RouteBannerComponent, SpecialDealItemComponent, ProductListComponent, SliderModule, FormsModule, SliderComponent, RatingStarsComponent, NgbDropdown, NgbDropdownMenu, NgbDropdownItem, NgbDropdownToggle, NgForOf, NgIf, PaginatorModule, ProductItemComponent, NgSwitch, NgSwitchCase]
+  imports: [RouterLink, FontAwesomeModule, RouteBannerComponent, SpecialDealItemComponent, ProductListComponent, SliderModule, FormsModule, SliderComponent, NgbDropdown, NgbDropdownMenu, NgbDropdownItem, NgbDropdownToggle, NgForOf, NgIf, PaginatorModule, ProductItemComponent, NgSwitch, NgSwitchCase]
 })
 export class ShopPageComponent implements OnInit {
   // for modal window (choosing sorting method)

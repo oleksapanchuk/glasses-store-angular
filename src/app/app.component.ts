@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterOutlet} from '@angular/router';
-import {HeaderComponent} from "./components/header/header.component";
-import {FooterComponent} from './components/footer/footer.component';
+import {HeaderComponent} from "./components/utils/header/header.component";
+import {FooterComponent} from './components/utils/footer/footer.component';
 import {HomePageComponent} from "./components/home-page/home-page.component";
 
 @Component({

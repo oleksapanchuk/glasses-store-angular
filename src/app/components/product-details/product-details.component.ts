@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { RatingStarsComponent } from "../rating-stars/rating-stars.component";
+import {Component} from '@angular/core';
+import {ActivatedRoute, RouterLink} from '@angular/router';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {faHeart} from "@fortawesome/free-regular-svg-icons";
 import {faFacebook} from "@fortawesome/free-brands-svg-icons";
 import {faTelegram} from "@fortawesome/free-brands-svg-icons/faTelegram";
@@ -15,7 +14,7 @@ import {CartService} from "../../services/cart.service";
   standalone: true,
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css',
-  imports: [RouterLink, RatingStarsComponent, CommonModule, FontAwesomeModule, NgOptimizedImage]
+  imports: [RouterLink, CommonModule, FontAwesomeModule, NgOptimizedImage]
 })
 export class ProductDetailsComponent {
 
@@ -25,7 +24,8 @@ export class ProductDetailsComponent {
     private productService: ProductService,
     private cartService: CartService,
     private route: ActivatedRoute
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.route.paramMap.subscribe(

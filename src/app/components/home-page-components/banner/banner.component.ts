@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ShopButtonComponent } from '../../shop-button/shop-button.component';
+import { ShopButtonComponent } from '../../shop-components/shop-button/shop-button.component';
 import { NgbCarouselModule, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

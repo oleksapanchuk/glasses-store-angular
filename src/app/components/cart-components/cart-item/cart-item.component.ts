@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { RatingStarsComponent } from "../../rating-stars/rating-stars.component";
 import { CommonModule } from '@angular/common';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -12,7 +11,7 @@ import { CartService } from '../../../services/cart.service';
   standalone: true,
   templateUrl: './cart-item.component.html',
   styleUrl: './cart-item.component.css',
-  imports: [CommonModule, RatingStarsComponent, FontAwesomeModule]
+  imports: [CommonModule, FontAwesomeModule]
 })
 export class CartItemComponent {
 
