@@ -1,27 +1,109 @@
-# GlassesShop
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.10.
+# Glass Store Angular Application
 
-## Development server
+Welcome to the Glasses Store Angular Application! This repository contains the source code for a modern, responsive e-commerce web application for a glass store.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Table of Contents
 
-## Code scaffolding
+- [Demo](#demo)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Contact](#contact)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Demo
 
-## Build
+Check out the live demo of the application: [Glasses Store](https://panorama-store.netlify.app/home)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Features
 
-## Running unit tests
+- Responsive design for seamless user experience on all devices
+- Product listing and detailed view
+- Shopping cart functionality
+- User authentication and authorization
+- Order management
+- Admin panel for product and order management
+- Search and filter functionality
+- Integration with payment gateway
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Technologies Used
 
-## Running end-to-end tests
+- **Frontend:** Angular, Angular Material, CSS
+- **Backend:** Spring Boot 3
+- **Database:** PostgreSQL
+- **Hosting:** Netlify (frontend), Azure (backend)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Getting Started
 
-## Further help
+To get a local copy of the project up and running, follow these steps.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Prerequisites
+
+Make sure you have the following installed on your local machine:
+- 
+- Angular CLI
+
+### Installation
+
+1. Clone the repositories:
+
+   ```bash
+   git clone https://github.com/oleksapanchuk/glasses-store-angular.git
+   git clone https://github.com/oleksapanchuk/glasses-store-backend.git
+   ```
+
+2. Navigate to the frontend project directory and install the dependencies:
+
+   ```bash
+   cd glasses-store-angular
+   npm install
+   ```
+
+3. Navigate to the backend project directory and install the dependencies:
+
+   ```bash
+   cd ../glasses-store-backend
+   npm install
+   ```
+
+### Usage
+
+To run the application locally:
+
+1. Start the backend server:
+
+   ```bash
+   cd glasses-store-backend
+   ```
+
+2. In a new terminal, start the frontend server:
+
+   ```bash
+   cd ../glasses-store-angular
+   ng serve
+   ```
+
+Open your browser and navigate to `http://localhost:4200` to see the application in action.
+
+
+## Contributing
+
+Contributions are welcome! Please follow these steps to contribute:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature/YourFeature`).
+5. Create a pull request.
+
+## Contact
+
+If you have any questions or feedback, feel free to reach out to the project maintainer:
+
+- Name: Oleksandr Panchuk
+- Email: olexandrpan4uk@gmail.com
+- GitHub: [oleksapanchuk](https://github.com/oleksapanchuk)
+
