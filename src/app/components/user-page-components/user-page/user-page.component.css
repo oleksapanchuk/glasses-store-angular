@@ -100,5 +100,51 @@
   background: #ff4e00;
 }
 
+@media (max-width: 760px) {
 
+  .account__title {
+    margin-bottom: 20px;
+    font-size: 30px;
+    line-height: 50px;
+    font-weight: 600;
+  }
+
+  .account__common-container {
+    margin: 0 auto;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .account__container {
+    padding: 0;
+    display: block;
+  }
+
+  .account__page-slidebar {
+    width: auto;
+  }
+
+
+  .account__slidebar-menu {
+    margin: 20px auto;
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .account__button-container {
+    margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .account__page-content {
+    width: 100%;
+  }
+
+}
 

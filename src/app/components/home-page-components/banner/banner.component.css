@@ -15,7 +15,7 @@ ngb-carousel .carousel-item-wrapper > img {
 }
 
 .carousel-caption {
-  bottom: 13em;
+  bottom: 7em;
   z-index: 10;
   margin: 0 auto;
 }
@@ -35,4 +35,38 @@ ngb-carousel .carousel-item-wrapper > img {
   font-size: 0.3em;
   letter-spacing: 10px;
   line-height: 1.3em;
+}
+
+@media (max-width: 760px) {
+
+  ngb-carousel .carousel-item-wrapper {
+    height: auto;
+  }
+
+  ngb-carousel .carousel-item-wrapper > img {
+    width: 100%;
+    filter: brightness(0.7);
+  }
+
+  .carousel-caption {
+    bottom: 20px;
+    z-index: 10;
+    margin: 0 auto;
+  }
+
+  .carousel-caption h3 {
+    font-size: 2em;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.14);
+  }
+
+  .carousel-caption span {
+    margin-top: 10px;
+    display: block;
+    font-size: 0.2em;
+    letter-spacing: 5px;
+    line-height: 1em;
+  }
+
 }

@@ -1,81 +1,83 @@
-<header>
-  <div class="row">
+<header class="header__container">
 
-    <!-- LOGO & BRAND NAME -->
-    <div class="header__brand-container col-3">
+  <!-- LOGO & BRAND NAME -->
+  <div class="header__brand-container">
 
-      <a routerLink="/home" routerLinkActive="active" class="header__brand-link">
+    <a routerLink="/home" routerLinkActive="active" class="header__brand-link">
 
-        <img src="../../../../assets/images/logo/logo_small.png" alt="logo">
-        <div class="header__main-title">panorama</div>
+      <img src="../../../../assets/images/logo/logo_small.png" alt="logo">
+      <div class="header__main-title">panorama</div>
 
-      </a>
+    </a>
 
+  </div>
+
+  <!-- NAV BAR -->
+  <div class="header__navbar-container">
+
+    <!-- HOME -->
+    <div class="header__navbar-item">
+      <a routerLink="/home" routerLinkActive="active">Home</a>
     </div>
 
-    <!-- NAV BAR -->
-    <div class="header__navbar-container col-6">
+    <!-- SHOP -->
+    <!-- <app-shop-dropdown></app-shop-dropdown> -->
+    <div class="header__navbar-item">
+      <a routerLink="/shop" routerLinkActive="active">Shop</a>
+    </div>
 
-      <!-- HOME -->
-      <div class="header__navbar-item">
+    <!-- ABOUT -->
+    <div class="header__navbar-item">
+      <a routerLink="/about" routerLinkActive="active">About</a>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="header__navbar-item">
+      <a routerLink="/contact" routerLinkActive="active">Contact</a>
+    </div>
+  </div>
+
+  <!-- CART AND PROFILE -->
+  <div class="header__icons-container">
+
+    <!-- SEARCH -->
+    <div class="header__button-icon">
+      <app-search></app-search>
+    </div>
+
+    <!-- CART -->
+    <div class="header__button-icon">
+      <button (click)="openDialog()" class="header__cart-btn" name="cart">
+        <fa-icon [icon]="faCartArrowDown"></fa-icon>
+        <span *ngIf="cartItemsCount > 0" class="header__cart-quantity">{{ cartItemsCount }}</span>
+      </button>
+    </div>
+
+    <!-- SIGN IN -->
+    <div class="header__button-icon">
+      <!-- If user is not authorized -->
+      <a *ngIf="!isUserAuthorized()" routerLink="/sign-in" routerLinkActive="active" class="btn-open">
+        <fa-icon [icon]="faUser" aria-hidden="true"></fa-icon>
+      </a>
+
+      <!-- If user is authorized -->
+      <a *ngIf="isUserAuthorized()" routerLink="/account" routerLinkActive="active" class="btn-open">
+        <fa-icon [icon]="faUser" aria-hidden="true"></fa-icon>
+      </a>
+    </div>
+
+    <!-- BURGER MENU -->
+    <div class="header__burger-icon" (click)="toggleMenu()">
+      <fa-icon [icon]="faBars" aria-hidden="true"></fa-icon>
+    </div>
+    <div class="header__burger-menu-container col-6">
+      <div class="header__burger-menu" [class.open]="menuOpen">
         <a routerLink="/home" routerLinkActive="active">Home</a>
-      </div>
-
-      <!-- SHOP -->
-      <!-- <app-shop-dropdown></app-shop-dropdown> -->
-      <div class="header__navbar-item">
         <a routerLink="/shop" routerLinkActive="active">Shop</a>
-      </div>
-
-      <!-- ABOUT -->
-      <div class="header__navbar-item">
         <a routerLink="/about" routerLinkActive="active">About</a>
-      </div>
-
-      <!-- CONTACT -->
-      <div class="header__navbar-item">
         <a routerLink="/contact" routerLinkActive="active">Contact</a>
       </div>
     </div>
-
-    <!-- CART AND PROFILE -->
-    <div class="header__icons-container col-3">
-
-      <!-- SEARCH -->
-      <div class="header__button-icon">
-        <app-search></app-search>
-      </div>
-
-      <!-- FAVORITES
-      <div class="header__button-icon">
-        <a routerLink="/liked" routerLinkActive="active" class="btn-open">
-          <fa-icon [icon]="faHeart" aria-hidden="true"></fa-icon>
-        </a>
-      </div>
-      -->
-
-      <!-- CART -->
-      <div class="header__button-icon">
-        <button (click)="openDialog()" name="cart">
-          <fa-icon [icon]="faCartArrowDown"></fa-icon>
-          <span *ngIf="cartItemsCount > 0" class="header__cart-quantity">{{ cartItemsCount }}</span>
-        </button>
-      </div>
-
-      <!-- SIGN IN -->
-      <div class="header__button-icon">
-        <!-- If user is not authorized -->
-        <a *ngIf="!isUserAuthorized()" routerLink="/sign-in" routerLinkActive="active" class="btn-open">
-          <fa-icon [icon]="faUser" aria-hidden="true"></fa-icon>
-        </a>
-
-        <!-- If user is authorized -->
-        <a *ngIf="isUserAuthorized()" routerLink="/account" routerLinkActive="active" class="btn-open">
-          <fa-icon [icon]="faUser" aria-hidden="true"></fa-icon>
-        </a>
-      </div>
-
-    </div>
-
   </div>
+
 </header>

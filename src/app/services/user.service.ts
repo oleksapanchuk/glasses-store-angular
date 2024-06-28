@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserDto} from "../common/dto/user.dto";
-import {User} from "../common/user";
 
 @Injectable({
   providedIn: 'root'
@@ -18,19 +17,19 @@ export class UserService {
 
   getUser(theUserId: string): Observable<UserDto> {
     return this.httpClient.get<UserDto>(
-      this.USERS_API + `/${theUserId}`
+      `${this.USERS_API}/${theUserId}`
     );
   }
 
-  getUserByUsername(theUsername: string): Observable<UserDto> {
+  getUserByEmail(theEmail: string): Observable<UserDto> {
     return this.httpClient.get<UserDto>(
-      this.USERS_API + `/by-username/${theUsername}`
+      `${this.USERS_API}/by-email/${theEmail}`
     );
   }
 
   updateUserData(theFirstName: string, theLastName: string, thePhoneNumber: string) {
     return this.httpClient.patch(
-      this.USERS_API + `/update`,
+      `${this.USERS_API}/update`,
       {
         firstName: theFirstName,
         lastName: theLastName,
@@ -41,7 +40,7 @@ export class UserService {
 
   updatePassword(theOldPassword: string, theNewPassword: string) {
     return this.httpClient.put(
-      this.USERS_API + `/update-password`,
+      `${this.USERS_API}/update-password`,
       {
         oldPassword: theOldPassword,
         newPassword: theNewPassword
@@ -49,5 +48,10 @@ export class UserService {
     );
   }
 
+  confirmAccount(theEmail: string) {
+    return this.httpClient.get(
+      `${this.USERS_API}/send-email-confirmation?email=${theEmail}`
+    );
+  }
 
 }

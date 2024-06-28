@@ -13,9 +13,8 @@
   <div class="cart__total-info">
     TOTAL PRICE: {{ totalPrice | currency: "USD" }}
   </div>
-  <a routerLink="/order"
-     class="cart__order-button"
+  <a class="cart__order-button"
      [mat-dialog-close]="true"
      cdkFocusInitial
-     (click)="onSubmitOrder()">Order All</a>
+     (click)="onOrderClick()">Order All</a>
 </div>

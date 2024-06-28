@@ -32,18 +32,12 @@
 .account__button-container {
   width: 100%;
   margin: 10px 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: start;
 }
 
 .account__button {
-  width: 30%;
+  width: 40%;
   margin-top: 10px;
   padding: 8px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   color: #fff;
   background: #0e0f10;
@@ -60,3 +54,41 @@
   background: #ff4e00;
 }
 
+@media (max-width: 760px) {
+
+  .account__details {
+    margin: 0;
+    padding: 0 20px;
+  }
+
+  .account__title {
+    margin-bottom: 20px;
+    line-height: 50px;
+    font-weight: 600;
+  }
+
+  .account__page-row {
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .account__button-container {
+    width: 100%;
+    margin: 10px 0;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  .account__button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 20px 50px;
+
+    text-align: center;
+  }
+
+
+
+}

@@ -32,3 +32,10 @@ a.b-home:hover {
     background: #ff4e00;
     letter-spacing: 1px;
 }
+
+@media (max-width: 760px) {
+
+  .error_page h4 {
+    line-height: 50px;
+  }
+}

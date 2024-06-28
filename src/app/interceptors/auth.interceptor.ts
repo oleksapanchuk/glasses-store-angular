@@ -50,7 +50,7 @@ export const unAuthErrorInterceptor: HttpInterceptorFn = (req: HttpRequest<unkno
                 ));
             }),
             catchError((error) => {
-              if (error.status === '401' || error.status == '403') {
+              if (error.status === '401' || error.status == '403' || error.status === '500') {
                 authService.signOut();
               }
               return throwError(() => error);
@@ -59,6 +59,7 @@ export const unAuthErrorInterceptor: HttpInterceptorFn = (req: HttpRequest<unkno
         }
       }
 
+      authService.signOut();
       return throwError(() => error);
     })
   );

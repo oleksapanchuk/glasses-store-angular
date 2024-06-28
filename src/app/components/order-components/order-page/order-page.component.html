@@ -106,17 +106,17 @@
       <div class="order__row-title">Order Summary</div>
 
       <div class="order__row-details">
-        <div class="order__row-summary">Name: </div>
+        <div class="order__row-summary title">Name:</div>
         <div class="order__row-summary">{{ full_name }}</div>
       </div>
 
       <div class="order__row-details">
-        <div class="order__row-summary">email: </div>
+        <div class="order__row-summary title">email:</div>
         <div class="order__row-summary">{{ email }}</div>
       </div>
 
-      <div class="order__row-details">
-        <div class="order__row-summary">Total amount: </div>
+      <div class="order__row-details sum-up">
+        <div class="order__row-summary title">Total amount:</div>
         <div class="order__row-summary order__total-due">{{ totalPrice | currency: "USD" }}</div>
       </div>
 

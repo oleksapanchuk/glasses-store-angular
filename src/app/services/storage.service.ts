@@ -11,6 +11,7 @@ const USER_ROLE = "user_role";
 const USER_FIRST_NAME = "user_fn";
 const USER_LAST_NAME = "user_ln";
 const USER_EMAIL = "user_email";
+const USER_VERIFIED = false;
 
 
 @Injectable({
@@ -29,7 +30,8 @@ export class StorageService {
       this.storage.getItem(USER_SUBJECT)!,
       this.storage.getItem(USER_FIRST_NAME)!,
       this.storage.getItem(USER_LAST_NAME)!,
-      this.storage.getItem(USER_EMAIL)!
+      this.storage.getItem(USER_EMAIL)!,
+      false
     );
   }
 

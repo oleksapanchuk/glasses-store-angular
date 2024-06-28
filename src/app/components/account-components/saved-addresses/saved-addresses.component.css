@@ -21,3 +21,12 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
+
+@media (max-width: 760px) {
+
+  .saved-address__current-title {
+    line-height: 50px;
+  }
+
+}
+

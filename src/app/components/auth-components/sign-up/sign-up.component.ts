@@ -7,6 +7,9 @@ import {StorageService} from "../../../services/storage.service";
 import {AuthService} from "../../../services/auth.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {NgIf} from "@angular/common";
+import {UserDto} from "../../../common/dto/user.dto";
+import {User} from "../../../common/user";
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-sign-up',
@@ -25,25 +28,31 @@ export class SignUpComponent implements AfterViewInit, OnInit {
     private formBuilder: FormBuilder,
     private storageService: StorageService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {
   }
 
   ngOnInit(): void {
 
     this.registerForm = this.formBuilder.group({
-      username: ['', [
+      firstName: ['', [
         Validators.required,
-        Validators.minLength(5),  // Username should be at least 3 characters long
-        Validators.maxLength(20)  // Username should not exceed 20 characters
+        Validators.minLength(2),
+        Validators.maxLength(50)
+      ]],
+      lastName: ['', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(50)
       ]],
       email: ['', [
         Validators.required,
-        Validators.email  // This will validate the email format
+        Validators.email
       ]],
       password: ['', [
         Validators.required,
-        Validators.minLength(8),  // Password should be at least 8 characters long
+        Validators.minLength(8),
         // Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&.])[A-Za-z\\d@$!%*?&.]{8,}$')
       ]]
     });
@@ -67,13 +76,16 @@ export class SignUpComponent implements AfterViewInit, OnInit {
   onSubmitRegister() {
     if (this.registerForm.valid) {
       this.authService.register(
-        this.registerForm.getRawValue().username!,
+        this.registerForm.getRawValue().firstName!,
+        this.registerForm.getRawValue().lastName!,
         this.registerForm.getRawValue().email!,
         this.registerForm.getRawValue().password!)
         .subscribe({
           next: (data: any) => {
 
             this.storageService.saveTokens(data)
+
+            this.setUserDetails();
 
             // Navigate to UserAccount component upon successful registration
             this.router.navigate(['/user-profile']);
@@ -83,6 +95,28 @@ export class SignUpComponent implements AfterViewInit, OnInit {
           }
         });
     }
+  }
+
+  private setUserDetails() {
+    this.userService.getUserByEmail(this.storageService.getUsername()).subscribe({
+      next: (data: UserDto) => {
+
+        let user = new User(
+          data.id!,
+          data.username!,
+          data.firstName!,
+          data.lastName!,
+          data.email!,
+          data.verified
+        );
+
+        this.storageService.setUser(user);
+
+      },
+      error: (err: any) => {
+        console.error(err)
+      }
+    });
   }
 
   handleServerError(error: unknown) {
@@ -105,8 +139,12 @@ export class SignUpComponent implements AfterViewInit, OnInit {
   }
 
   // getters for user
-  get username() {
-    return this.registerForm.get('username');
+  get firstName() {
+    return this.registerForm.get('firstName');
+  }
+
+  get lastName() {
+    return this.registerForm.get('lastName');
   }
 
   get email() {

@@ -191,3 +191,12 @@ input {
   font-weight: 700;
   text-transform: uppercase;
 }
+
+@media (max-width: 760px) {
+
+  .auth__from-title {
+    margin-bottom: 30px;
+    line-height: 50px;
+  }
+
+}

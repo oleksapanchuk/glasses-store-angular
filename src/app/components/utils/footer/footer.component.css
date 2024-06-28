@@ -166,3 +166,37 @@ footer {
 .footer__social li a:hover {
   color: #ff4e00;
 }
+
+@media (max-width: 760px) {
+
+  .footer__main-title {
+    margin-left: 10px;
+  }
+
+  .footer__social {
+    margin: 10px 10px 20px;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer__text p,
+  .footer__contact-info p {
+    margin-left: 10px;
+  }
+
+
+  .footer__contact-info h4 {
+    margin-top: 5px;
+    margin-left: 10px;
+  }
+
+  .footer__links {
+    margin-bottom: 20px;
+  }
+
+  .footer__links li {
+    margin-left: 10px;
+  }
+
+}

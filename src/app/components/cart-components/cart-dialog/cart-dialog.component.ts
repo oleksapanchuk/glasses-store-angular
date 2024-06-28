@@ -9,7 +9,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {CartItem} from '../../../common/cart-item';
 import {CommonModule} from '@angular/common';
 import {faXmark} from "@fortawesome/free-solid-svg-icons/faXmark";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
+import {StorageService} from "../../../services/storage.service";
 
 
 @Component({
@@ -26,7 +27,9 @@ export class CartDialogComponent {
   totalQuantity: number = 0;
 
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
+    private storageService: StorageService,
+    private router: Router
   ) {
   }
 
@@ -34,8 +37,12 @@ export class CartDialogComponent {
     this.listCartDetails();
   }
 
-  onSubmitOrder() {
-    console.log("Take order")
+  onOrderClick() {
+    if (this.storageService.isLoggedIn()) {
+      this.router.navigate(['/order']);
+    } else {
+      this.router.navigate(['/sign-in']);
+    }
   }
 
   listCartDetails() {

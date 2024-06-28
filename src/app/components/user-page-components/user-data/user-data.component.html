@@ -5,10 +5,6 @@
   </div>
 
   <div class="account__page-row">
-    <span>USERNAME: </span>
-    {{ user.username }}
-  </div>
-  <div class="account__page-row">
     <span>FULL NAME: </span>
     {{ user.firstName + " " + user.lastName }}
   </div>
@@ -18,7 +14,7 @@
   </div>
   <div class="account__page-row">
     <span>PHONE NUMBER: </span>
-    {{ user.phoneNumber }}
+    {{ user.phoneNumber === '' || user.phoneNumber == null ? 'missing' : user.phoneNumber }}
   </div>
 
   <div class="account__button-container">

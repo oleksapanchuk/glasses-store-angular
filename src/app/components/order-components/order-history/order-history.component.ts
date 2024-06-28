@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RouteBannerComponent} from "../../utils/route-banner/route-banner.component";
 import {OrderDto} from "../../../common/dto/OrderDto";
 import {OrderService} from "../../../services/order.service";
-import {CurrencyPipe, NgForOf} from "@angular/common";
+import {CurrencyPipe, NgForOf, NgIf} from "@angular/common";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faCircleChevronRight} from "@fortawesome/free-solid-svg-icons";
 import {RouterLink} from "@angular/router";
@@ -15,7 +15,8 @@ import {RouterLink} from "@angular/router";
     NgForOf,
     CurrencyPipe,
     FaIconComponent,
-    RouterLink
+    RouterLink,
+    NgIf
   ],
   templateUrl: './order-history.component.html',
   styleUrl: './order-history.component.css'

@@ -22,7 +22,7 @@
     <div class="auth__from-input-container"
          data-validate="First Name is required"
          [class.auth_form-input-invalid]="firstName?.invalid && (firstName?.dirty || firstName?.touched)">
-      <input class="auth__form-input" type="text" formControlName="firstName" #inputField
+      <input class="auth__form-input auth__has-value" type="text" formControlName="firstName" #inputField
              (input)="serverErrorMessage=''">
       <span class="auth__form-focus-input"></span>
       <span class="auth__form-label">First Name</span>
@@ -37,7 +37,7 @@
     <div class="auth__from-input-container"
          data-validate="Last Name is required"
          [class.auth_form-input-invalid]="lastName?.invalid && (lastName?.dirty || lastName?.touched)">
-      <input class="auth__form-input" type="text" formControlName="lastName" #inputField
+      <input class="auth__form-input auth__has-value" type="text" formControlName="lastName" #inputField
              (input)="serverErrorMessage=''">
       <span class="auth__form-focus-input"></span>
       <span class="auth__form-label">Last Name</span>
@@ -52,7 +52,7 @@
     <div class="auth__from-input-container"
          data-validate="Phone Number is required"
          [class.auth_form-input-invalid]="phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)">
-      <input class="auth__form-input" type="text" formControlName="phoneNumber" #inputField
+      <input class="auth__form-input auth__has-value" type="text" formControlName="phoneNumber" #inputField
              (input)="serverErrorMessage=''">
       <span class="auth__form-focus-input"></span>
       <span class="auth__form-label">Phone Number</span>
@@ -69,15 +69,15 @@
 
     <div class="user__email-verify-container">
       <fa-icon [icon]="faEnvelope"></fa-icon>
-      <span class="user__email">Email2^ukr.net</span>
+      <span class="user__email">{{ data.user.email }}</span>
 
 
-      <div *ngIf="false" class="user__verified">
+      <div *ngIf="data.user.verified" class="user__verified">
         <span>verified</span>
         <fa-icon [icon]="faCheck"></fa-icon>
       </div>
 
-      <div *ngIf="true" class="user__verify">
+      <div *ngIf="!data.user.verified" class="user__verify">
         <button class="user__button" type="submit" (click)="onClickVerifyAccount()">verify</button>
       </div>
 

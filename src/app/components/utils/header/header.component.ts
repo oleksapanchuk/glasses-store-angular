@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {faCartArrowDown, faUser} from '@fortawesome/free-solid-svg-icons';
+import {faBars, faBurger, faCartArrowDown, faUser} from '@fortawesome/free-solid-svg-icons';
 import {SearchComponent} from "../../shop-components/search/search.component";
 import {NavbarComponent} from "../../navbar/navbar.component";
 import {RouterLink, RouterLinkActive} from '@angular/router';
@@ -11,7 +11,6 @@ import {ShopDropdownComponent} from "../../shop-components/shop-dropdown/shop-dr
 import {NgbDropdownToggle} from "@ng-bootstrap/ng-bootstrap";
 import {StorageService} from "../../../services/storage.service";
 import {CartService} from "../../../services/cart.service";
-import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -22,7 +21,8 @@ import {Subscription} from "rxjs";
 })
 export class HeaderComponent implements OnInit {
 
-  cartItemsCount!: number;
+  cartItemsCount = 0;
+  menuOpen = false;
 
   constructor(
     public dialog: MatDialog,
@@ -46,6 +46,22 @@ export class HeaderComponent implements OnInit {
     dialogRef.afterClosed().subscribe();
   }
 
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    const isBurgerIcon = target.closest('.header__burger-icon');
+    const isBurgerMenu = target.closest('.header__burger-menu');
+
+    if (!isBurgerIcon && !isBurgerMenu) {
+      this.menuOpen = false;
+    }
+  }
+
   protected readonly faUser = faUser;
   protected readonly faCartArrowDown = faCartArrowDown;
+  protected readonly faBars = faBars;
 }

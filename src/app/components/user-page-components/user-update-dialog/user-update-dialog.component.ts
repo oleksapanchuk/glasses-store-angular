@@ -8,6 +8,8 @@ import {faEnvelope} from "@fortawesome/free-solid-svg-icons";
 import {faCheck} from "@fortawesome/free-solid-svg-icons/faCheck";
 import {faXmark} from "@fortawesome/free-solid-svg-icons/faXmark";
 import {UserService} from "../../../services/user.service";
+import {UserDto} from "../../../common/dto/user.dto";
+import {lastValueFrom} from "rxjs";
 
 @Component({
   selector: 'app-user-update-dialog',
@@ -32,7 +34,7 @@ export class UserUpdateDialogComponent implements AfterViewInit, OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<UserUpdateDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: { user: UserDto },
     private formBuilder: FormBuilder,
     private userService: UserService
   ) {
@@ -40,15 +42,15 @@ export class UserUpdateDialogComponent implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
-      firstName: ['', [
+      firstName: [this.data.user.firstName, [
         Validators.required,
         Validators.maxLength(30)
       ]],
-      lastName: ['', [
+      lastName: [this.data.user.lastName, [
         Validators.required,
         Validators.maxLength(30)
       ]],
-      phoneNumber: ['', [
+      phoneNumber: [this.data.user.phoneNumber, [
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(15)
@@ -74,8 +76,21 @@ export class UserUpdateDialogComponent implements AfterViewInit, OnInit {
     this.dialogRef.close();
   }
 
-  onClickVerifyAccount() {
-    console.log("Verifying working")
+  async onClickVerifyAccount() {
+    try {
+      const data: any = await lastValueFrom(this.userService.confirmAccount(this.data.user.email));
+      this.serverSuccessMessage = "Email confirmation sent successfully";
+
+      this.formGroup.reset();
+
+      this.onClose();
+    } catch (error: any) {
+      console.log(error);
+
+      if (error.status === 417) {
+        this.serverErrorMessage = "Email confirmation was not sent";
+      }
+    }
   }
 
   onClickUpdateData() {

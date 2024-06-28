@@ -66,3 +66,13 @@
   color: #ff4e00;
 }
 
+@media (max-width: 760px) {
+  .tittle-main {
+    padding-top: 20px;
+  }
+
+  app-shop-button {
+    display: flex;
+    justify-content: center;
+  }
+}

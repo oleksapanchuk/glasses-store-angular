@@ -10,6 +10,7 @@
 }
 
 .counter__middle-text-info {
+  margin-top: 100px;
   background: url(../../../../assets/images/banner-mid.jpg) no-repeat 0 0;
   background-size: cover;
   min-height: 400px;
@@ -59,4 +60,47 @@
   text-transform: uppercase;
   text-shadow: 2px 2px 3px rgba(0, 0, 0, .5);
   letter-spacing: 1px;
+}
+
+@media (max-width: 760px) {
+
+  .counter__middle-text-info {
+    margin-top: 15px;
+    min-height: 200px;
+    padding: 3em 0 0 0;
+  }
+
+  .counter__tittle {
+    padding-top: 0;
+    font-size: 2em;
+    font-weight: 600;
+    letter-spacing: 5px;
+  }
+
+  .simply-countdown-custom > .simply-section {
+    width: 30px;
+    height: 30px;
+
+    margin-top: 40px;
+    font-size: 1.2em;
+  }
+
+  .simply-countdown-custom > .simply-section .simply-amount {
+    font-size: 1.5em;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, .5);
+  }
+
+
+  .simply-word {
+    padding-top: 10px;
+
+    font-family: Raleway, sans-serif;
+    font-size: 0.6em;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, .5);
+    letter-spacing: 1px;
+  }
 }

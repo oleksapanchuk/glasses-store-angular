@@ -86,7 +86,7 @@ export class SignInComponent implements AfterViewInit, OnInit {
   }
 
   private setUserDetails() {
-    this.userService.getUserByUsername(this.storageService.getUsername()).subscribe({
+    this.userService.getUserByEmail(this.storageService.getUsername()).subscribe({
       next: (data: UserDto) => {
 
         let user = new User(
@@ -94,7 +94,8 @@ export class SignInComponent implements AfterViewInit, OnInit {
           data.username!,
           data.firstName!,
           data.lastName!,
-          data.email!
+          data.email!,
+          data.verified
         );
 
         this.storageService.setUser(user);

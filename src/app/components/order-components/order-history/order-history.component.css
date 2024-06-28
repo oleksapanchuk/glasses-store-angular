@@ -2,6 +2,26 @@
   background-color: #f9f9f9;
 }
 
+.order-history__main-container {
+  margin: 0 auto;
+  max-width: 1280px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.order-history__current-title {
+  padding: 200px 0;
+  text-align: center;
+
+  color: #2f2f2f;
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-family: Unbounded, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
 .order-history__container {
   max-width: 1280px;
   margin: 0 auto;
@@ -52,4 +72,32 @@
 
 .order-history__item-details fa-icon {
   font-size: 1.5em;
+}
+
+@media (max-width: 760px) {
+
+  .order-history__main-container {
+    padding: 0 7px;
+  }
+
+  .order-history__container {
+    padding: 15px;
+  }
+
+  .order-history__titles {
+    font-size: 0.8em;
+  }
+
+  .order-history__titles .order-hide-title {
+    display: none;
+  }
+
+  .order-history__item .order-hide-data {
+    display: none;
+  }
+
+  .order-history__item-details a {
+    margin-left: 50px;
+  }
+
 }

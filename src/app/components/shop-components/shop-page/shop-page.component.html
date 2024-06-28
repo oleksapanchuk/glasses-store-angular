@@ -1,244 +1,235 @@
 <app-route-banner pageName="Shop"></app-route-banner>
 
 <div class="shop__container">
-  <div class="row">
 
-    <!-- side bar -->
-    <div class="shop__side-bar col-3">
+  <button (click)="toggleFiltersContainer()" class="mobile__btn">{{buttonText}}</button>
 
-      <!-- search products -->
-      <!--
-      <div class="shop__search-container">
+  <!-- side bar -->
+  <div class="shop__side-bar {{ isContainerVisible ? 'd-block' : 'd-none' }}">
 
-        <input class="shop__input-search" name="search" type="text" placeholder="Search here..." required="">
+    <!-- search products -->
+    <!--
+    <div class="shop__search-container">
 
-        <button class="shop__button-search">
-          <fa-icon [icon]="faSearch"></fa-icon>
-        </button>
+      <input class="shop__input-search" name="search" type="text" placeholder="Search here..." required="">
 
+      <button class="shop__button-search">
+        <fa-icon [icon]="faSearch"></fa-icon>
+      </button>
+
+    </div>
+    -->
+
+    <!-- price range -->
+    <div class="shop__filter-container">
+
+      <div class="shop__tittle">Price</div>
+
+      <div class="shop__price-range">
+        <p-slider [(ngModel)]="rangeValues" [range]="true" [step]="1" (onSlideEnd)="fetchProducts()"></p-slider>
       </div>
-      -->
 
-      <!-- price range -->
-      <div class="shop__filter-container">
+      <div class="shop__price-inputs">
 
-        <div class="shop__tittle">Price</div>
-
-        <div class="shop__price-range">
-          <p-slider [(ngModel)]="rangeValues" [range]="true" [step]="1" (onSlideEnd)="fetchProducts()"></p-slider>
+        <div class="shop__min-price">
+          <span>from </span>
+          <input (change)="handleInputChange($event, true)" class="shop__input-price" name="min-price" type="text" value="{{ rangeValues[0] }}" [(ngModel)]="rangeValues[0]"/>
         </div>
-
-        <div class="shop__price-inputs">
-
-          <div class="shop__min-price">
-            <span>from </span>
-            <input (change)="handleInputChange($event, true)" class="shop__input-price" name="min-price" type="text" value="{{ rangeValues[0] }}" [(ngModel)]="rangeValues[0]"/>
-          </div>
-          <div class="shop__max-price">
-            <span>to </span>
-            <input (change)="handleInputChange($event, false)" class="shop__input-price" name="min-price" type="text" value="{{ rangeValues[1] }}" [(ngModel)]="rangeValues[1]"/>
-          </div>
-
+        <div class="shop__max-price">
+          <span>to </span>
+          <input (change)="handleInputChange($event, false)" class="shop__input-price" name="min-price" type="text" value="{{ rangeValues[1] }}" [(ngModel)]="rangeValues[1]"/>
         </div>
-
-      </div>
-
-      <!-- sorting -->
-      <div class="shop__sorting-container">
-
-        <button (click)="toggleModal()" class="shop__button-down">
-          <div class="shop__tittle">Sorting</div>
-          <fa-icon [icon]="faCaretDown"></fa-icon>
-        </button>
-
-        <div *ngIf="showModal" class="shop__sorting-options-container">
-
-          <div class="shop__modal-header">
-            <div class="shop__tittle m-0">Sorting</div>
-            <button (click)="toggleModal()">
-              <fa-icon [icon]="faTimes"></fa-icon>
-            </button>
-          </div>
-
-          <div class="shop__modal-options">
-            <button (click)="toggleSort(SortingMethod.NEWEST_FIRST)"
-                    class="shop__modal-option {{ selectedSortingMethod === SortingMethod.NEWEST_FIRST ? 'active' : '' }}">
-              {{ SortingMethod.NEWEST_FIRST }}
-            </button>
-            <button (click)="toggleSort(SortingMethod.FROM_CHEAP_TO_EXPENSIVE)"
-                    class="shop__modal-option {{ selectedSortingMethod === SortingMethod.FROM_CHEAP_TO_EXPENSIVE ? 'active' : '' }}">
-              {{ SortingMethod.FROM_CHEAP_TO_EXPENSIVE }}
-            </button>
-            <button (click)="toggleSort(SortingMethod.FROM_EXPENSIVE_TO_CHEAP)"
-                    class="shop__modal-option {{ selectedSortingMethod === SortingMethod.FROM_EXPENSIVE_TO_CHEAP ? 'active' : '' }}">
-              {{ SortingMethod.FROM_EXPENSIVE_TO_CHEAP }}
-            </button>
-            <button (click)="toggleSort(SortingMethod.DISCOUNTED_FIRST)"
-                    class="shop__modal-option {{ selectedSortingMethod === SortingMethod.DISCOUNTED_FIRST ? 'active' : '' }}">
-              {{ SortingMethod.DISCOUNTED_FIRST }}
-            </button>
-            <button (click)="toggleSort(SortingMethod.HIGHEST_RATING_FIRST)"
-                    class="shop__modal-option {{ selectedSortingMethod === SortingMethod.HIGHEST_RATING_FIRST ? 'active' : '' }}">
-              {{ SortingMethod.HIGHEST_RATING_FIRST }}
-            </button>
-          </div>
-
-        </div>
-
-        <hr>
-
-        <div class="shop__sorting-category-selected">{{ selectedSortingMethod }}</div>
-
-      </div>
-
-      <!-- gender -->
-      <div class="shop__filter-container">
-
-        <div class="shop__tittle">Gender</div>
-
-        <ul>
-          <li>
-            <button (click)="toggleGenderCategory(GenderFilter.ALL)"
-                    class="shop__button-filter-item {{ genderFilter === GenderFilter.ALL ? 'active' : '' }}">
-              <fa-icon [icon]="genderFilter === GenderFilter.ALL ? faPlus : faMinus"></fa-icon>
-              All
-            </button>
-          </li>
-          <li>
-            <button (click)="toggleGenderCategory(GenderFilter.MAN)"
-                    class="shop__button-filter-item {{ genderFilter === GenderFilter.MAN ? 'active' : '' }}">
-              <fa-icon [icon]="genderFilter === GenderFilter.MAN ? faPlus : faMinus"></fa-icon>
-              Man
-            </button>
-          </li>
-          <li>
-            <button (click)="toggleGenderCategory(GenderFilter.WOMAN)"
-                    class="shop__button-filter-item {{ genderFilter === GenderFilter.WOMAN ? 'active' : '' }}">
-              <fa-icon [icon]="genderFilter === GenderFilter.WOMAN ? faPlus : faMinus"></fa-icon>
-              Woman
-            </button>
-          </li>
-        </ul>
-
-      </div>
-
-      <!-- type -->
-      <div class="shop__filter-container">
-
-        <div class="shop__tittle">Type</div>
-
-        <ul>
-          <li>
-            <button (click)="toggleTypeCategory(TypeFilter.ALL)"
-                    class="shop__button-filter-item {{ typeFilter === TypeFilter.ALL ? 'active' : '' }}">
-              <fa-icon [icon]="typeFilter === TypeFilter.ALL ? faPlus : faMinus"></fa-icon>
-              All
-            </button>
-          </li>
-          <li>
-            <button (click)="toggleTypeCategory(TypeFilter.PRESCRIPTION)"
-                    class="shop__button-filter-item {{ typeFilter === TypeFilter.PRESCRIPTION ? 'active' : '' }}">
-              <fa-icon [icon]="typeFilter === TypeFilter.PRESCRIPTION ? faPlus : faMinus"></fa-icon>
-              Prescription
-            </button>
-          </li>
-          <li>
-            <button (click)="toggleTypeCategory(TypeFilter.READING)"
-                    class="shop__button-filter-item {{ typeFilter === TypeFilter.READING ? 'active' : '' }}">
-              <fa-icon [icon]="typeFilter === TypeFilter.READING ? faPlus : faMinus"></fa-icon>
-              Reading
-            </button>
-          </li>
-          <li>
-            <button (click)="toggleTypeCategory(TypeFilter.COMPUTER)"
-                    class="shop__button-filter-item {{ typeFilter === TypeFilter.COMPUTER ? 'active' : '' }}">
-              <fa-icon [icon]="typeFilter === TypeFilter.COMPUTER ? faPlus : faMinus"></fa-icon>
-              Computer
-            </button>
-          </li>
-          <li>
-            <button (click)="toggleTypeCategory(TypeFilter.SUNGLASSES)"
-                    class="shop__button-filter-item {{ typeFilter === TypeFilter.SUNGLASSES ? 'active' : '' }}">
-              <fa-icon [icon]="typeFilter === TypeFilter.SUNGLASSES ? faPlus : faMinus"></fa-icon>
-              Sunglasses
-            </button>
-          </li>
-        </ul>
-
-      </div>
-
-      <!-- frame material -->
-      <div class="shop__filter-container">
-
-        <div class="shop__tittle">Frame Material</div>
-
-        <ul>
-          <li>
-            <button (click)="toggleFrameMaterialCategory(FrameFilter.ALL)"
-                    class="shop__button-filter-item {{ frameFilter === FrameFilter.ALL ? 'active' : '' }}">
-              <fa-icon [icon]="frameFilter === FrameFilter.ALL ? faPlus : faMinus"></fa-icon>
-              All
-            </button>
-          </li>
-          <li>
-            <button (click)="toggleFrameMaterialCategory(FrameFilter.METAL)"
-                    class="shop__button-filter-item {{ frameFilter === FrameFilter.METAL ? 'active' : '' }}">
-              <fa-icon [icon]="frameFilter === FrameFilter.METAL ? faPlus : faMinus"></fa-icon>
-              Metal
-            </button>
-          </li>
-          <li>
-            <button (click)="toggleFrameMaterialCategory(FrameFilter.PLASTIC)"
-                    class="shop__button-filter-item {{ frameFilter === FrameFilter.PLASTIC ? 'active' : '' }}">
-              <fa-icon [icon]="frameFilter === FrameFilter.PLASTIC ? faPlus : faMinus"></fa-icon>
-              Plastic
-            </button>
-          </li>
-          <li>
-            <button (click)="toggleFrameMaterialCategory(FrameFilter.WOODEN)"
-                    class="shop__button-filter-item {{ frameFilter === FrameFilter.WOODEN ? 'active' : '' }}">
-              <fa-icon [icon]="frameFilter === FrameFilter.WOODEN ? faPlus : faMinus"></fa-icon>
-              Wooden
-            </button>
-          </li>
-        </ul>
 
       </div>
 
     </div>
 
-    <!-- if products empty then display a message -->
-    <div *ngIf="products.length == 0" class="shop__no-products-container col-9">
+    <!-- sorting -->
+    <div class="shop__sorting-container">
 
-      <img src="../../../../assets/images/no-product.png" alt="">
+      <button (click)="toggleModal()" class="shop__button-down">
+        <div class="shop__tittle">Sorting</div>
+        <fa-icon [icon]="faCaretDown"></fa-icon>
+      </button>
 
-      <div class="shop__large-title">No products found</div>
+      <div *ngIf="showModal" class="shop__sorting-options-container">
+
+        <div class="shop__modal-header">
+          <div class="shop__tittle m-0">Sorting</div>
+          <button (click)="toggleModal()">
+            <fa-icon [icon]="faTimes"></fa-icon>
+          </button>
+        </div>
+
+        <div class="shop__modal-options">
+          <button (click)="toggleSort(SortingMethod.NEWEST_FIRST)"
+                  class="shop__modal-option {{ selectedSortingMethod === SortingMethod.NEWEST_FIRST ? 'active' : '' }}">
+            {{ SortingMethod.NEWEST_FIRST }}
+          </button>
+          <button (click)="toggleSort(SortingMethod.FROM_CHEAP_TO_EXPENSIVE)"
+                  class="shop__modal-option {{ selectedSortingMethod === SortingMethod.FROM_CHEAP_TO_EXPENSIVE ? 'active' : '' }}">
+            {{ SortingMethod.FROM_CHEAP_TO_EXPENSIVE }}
+          </button>
+          <button (click)="toggleSort(SortingMethod.FROM_EXPENSIVE_TO_CHEAP)"
+                  class="shop__modal-option {{ selectedSortingMethod === SortingMethod.FROM_EXPENSIVE_TO_CHEAP ? 'active' : '' }}">
+            {{ SortingMethod.FROM_EXPENSIVE_TO_CHEAP }}
+          </button>
+          <!--            <button (click)="toggleSort(SortingMethod.DISCOUNTED_FIRST)"-->
+          <!--                    class="shop__modal-option {{ selectedSortingMethod === SortingMethod.DISCOUNTED_FIRST ? 'active' : '' }}">-->
+          <!--              {{ SortingMethod.DISCOUNTED_FIRST }}-->
+          <!--            </button>-->
+          <!--            <button (click)="toggleSort(SortingMethod.HIGHEST_RATING_FIRST)"-->
+          <!--                    class="shop__modal-option {{ selectedSortingMethod === SortingMethod.HIGHEST_RATING_FIRST ? 'active' : '' }}">-->
+          <!--              {{ SortingMethod.HIGHEST_RATING_FIRST }}-->
+          <!--            </button>-->
+        </div>
+
+      </div>
+
+      <hr>
+
+      <div class="shop__sorting-category-selected">{{ selectedSortingMethod }}</div>
 
     </div>
 
-    <!-- product container -->
-    <div *ngIf="products.length > 0" class="shop__product-container col-9">
+    <!-- gender -->
+    <div class="shop__filter-container">
 
-      <div class="row">
-        <app-product-item *ngFor="let tempProduct of products" class="shop__product-item col-4"
-                          [product]="tempProduct"></app-product-item>
-      </div>
+      <div class="shop__tittle">Gender</div>
 
-      <div class="d-flex justify-content-center align-items-end">
-        <p-paginator (onPageChange)="onPageChange($event)" [first]="thePageNumber * thePageSize"
-                     [rows]="thePageSize" [totalRecords]="theTotalElements"></p-paginator>
-      </div>
+      <ul>
+        <li>
+          <button (click)="toggleGenderCategory(GenderFilter.ALL)"
+                  class="shop__button-filter-item {{ genderFilter === GenderFilter.ALL ? 'active' : '' }}">
+            <fa-icon [icon]="genderFilter === GenderFilter.ALL ? faPlus : faMinus"></fa-icon>
+            All
+          </button>
+        </li>
+        <li>
+          <button (click)="toggleGenderCategory(GenderFilter.MAN)"
+                  class="shop__button-filter-item {{ genderFilter === GenderFilter.MAN ? 'active' : '' }}">
+            <fa-icon [icon]="genderFilter === GenderFilter.MAN ? faPlus : faMinus"></fa-icon>
+            Man
+          </button>
+        </li>
+        <li>
+          <button (click)="toggleGenderCategory(GenderFilter.WOMAN)"
+                  class="shop__button-filter-item {{ genderFilter === GenderFilter.WOMAN ? 'active' : '' }}">
+            <fa-icon [icon]="genderFilter === GenderFilter.WOMAN ? faPlus : faMinus"></fa-icon>
+            Woman
+          </button>
+        </li>
+      </ul>
+
+    </div>
+
+    <!-- type -->
+    <div class="shop__filter-container">
+
+      <div class="shop__tittle">Type</div>
+
+      <ul>
+        <li>
+          <button (click)="toggleTypeCategory(TypeFilter.ALL)"
+                  class="shop__button-filter-item {{ typeFilter === TypeFilter.ALL ? 'active' : '' }}">
+            <fa-icon [icon]="typeFilter === TypeFilter.ALL ? faPlus : faMinus"></fa-icon>
+            All
+          </button>
+        </li>
+        <li>
+          <button (click)="toggleTypeCategory(TypeFilter.PRESCRIPTION)"
+                  class="shop__button-filter-item {{ typeFilter === TypeFilter.PRESCRIPTION ? 'active' : '' }}">
+            <fa-icon [icon]="typeFilter === TypeFilter.PRESCRIPTION ? faPlus : faMinus"></fa-icon>
+            Prescription
+          </button>
+        </li>
+        <li>
+          <button (click)="toggleTypeCategory(TypeFilter.READING)"
+                  class="shop__button-filter-item {{ typeFilter === TypeFilter.READING ? 'active' : '' }}">
+            <fa-icon [icon]="typeFilter === TypeFilter.READING ? faPlus : faMinus"></fa-icon>
+            Reading
+          </button>
+        </li>
+        <li>
+          <button (click)="toggleTypeCategory(TypeFilter.COMPUTER)"
+                  class="shop__button-filter-item {{ typeFilter === TypeFilter.COMPUTER ? 'active' : '' }}">
+            <fa-icon [icon]="typeFilter === TypeFilter.COMPUTER ? faPlus : faMinus"></fa-icon>
+            Computer
+          </button>
+        </li>
+        <li>
+          <button (click)="toggleTypeCategory(TypeFilter.SUNGLASSES)"
+                  class="shop__button-filter-item {{ typeFilter === TypeFilter.SUNGLASSES ? 'active' : '' }}">
+            <fa-icon [icon]="typeFilter === TypeFilter.SUNGLASSES ? faPlus : faMinus"></fa-icon>
+            Sunglasses
+          </button>
+        </li>
+      </ul>
+
+    </div>
+
+    <!-- frame material -->
+    <div class="shop__filter-container">
+
+      <div class="shop__tittle">Frame Material</div>
+
+      <ul>
+        <li>
+          <button (click)="toggleFrameMaterialCategory(FrameFilter.ALL)"
+                  class="shop__button-filter-item {{ frameFilter === FrameFilter.ALL ? 'active' : '' }}">
+            <fa-icon [icon]="frameFilter === FrameFilter.ALL ? faPlus : faMinus"></fa-icon>
+            All
+          </button>
+        </li>
+        <li>
+          <button (click)="toggleFrameMaterialCategory(FrameFilter.METAL)"
+                  class="shop__button-filter-item {{ frameFilter === FrameFilter.METAL ? 'active' : '' }}">
+            <fa-icon [icon]="frameFilter === FrameFilter.METAL ? faPlus : faMinus"></fa-icon>
+            Metal
+          </button>
+        </li>
+        <li>
+          <button (click)="toggleFrameMaterialCategory(FrameFilter.PLASTIC)"
+                  class="shop__button-filter-item {{ frameFilter === FrameFilter.PLASTIC ? 'active' : '' }}">
+            <fa-icon [icon]="frameFilter === FrameFilter.PLASTIC ? faPlus : faMinus"></fa-icon>
+            Plastic
+          </button>
+        </li>
+        <li>
+          <button (click)="toggleFrameMaterialCategory(FrameFilter.WOODEN)"
+                  class="shop__button-filter-item {{ frameFilter === FrameFilter.WOODEN ? 'active' : '' }}">
+            <fa-icon [icon]="frameFilter === FrameFilter.WOODEN ? faPlus : faMinus"></fa-icon>
+            Wooden
+          </button>
+        </li>
+      </ul>
 
     </div>
 
   </div>
 
-  <!-- Featured Products -->
-  <!--
-    <div class="shop__featured-container mt-lg-5">
-      <h3 class="shop__large-title">Featured Products</h3>
-      <app-slider></app-slider>
+  <!-- if products empty then display a message -->
+  <div *ngIf="products.length === 0" class="shop__no-products-container">
+
+    <img src="../../../../assets/images/no-product.png" alt="">
+
+    <div class="shop__large-title">No products found</div>
+
+  </div>
+
+  <!-- product container -->
+  <div *ngIf="products.length > 0" class="shop__product-container">
+
+    <div class="row">
+      <app-product-item *ngFor="let tempProduct of products" class="shop__product-item col-4"
+                        [product]="tempProduct"></app-product-item>
     </div>
-    -->
+
+    <div class="d-flex justify-content-center align-items-end">
+      <p-paginator (onPageChange)="onPageChange($event)" [first]="thePageNumber * thePageSize"
+                   [rows]="thePageSize" [totalRecords]="theTotalElements"></p-paginator>
+    </div>
+
+  </div>
 
 </div>

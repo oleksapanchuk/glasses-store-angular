@@ -3,12 +3,6 @@
 <div class="account__common-container">
   <div *ngIf="user" class="account__container">
 
-    <div class="account__page-content">
-      <app-user-data [user-data]="user"></app-user-data>
-
-      <app-change-password></app-change-password>
-    </div>
-
     <div class="account__page-slidebar">
       <div class="account__slidebar-menu">
 
@@ -50,6 +44,14 @@
 
       </div>
     </div>
+
+    <div class="account__page-content">
+      <app-user-data [user-data]="user"></app-user-data>
+
+      <app-change-password></app-change-password>
+    </div>
+
+
 
   </div>
 </div>

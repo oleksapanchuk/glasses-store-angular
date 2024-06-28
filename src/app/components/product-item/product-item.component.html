@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <span *ngIf="!product.active" class="card__unavailable">Unavailable</span>
+    <span *ngIf="product.active" class="card__unavailable">Unavailable</span>
 
   </div>
 
@@ -32,10 +32,10 @@
       <a *ngIf="role === 'ROLE_ADMIN'" routerLink="/admin/product-workshop/{{ product.id }}" class="card__button">
         <fa-icon [icon]="faPenToSquare"></fa-icon>
       </a>
-      <button *ngIf="role !== 'ROLE_ADMIN'" (click)="addToCart()" class="card__button">
-        <fa-icon [icon]="faHeart"></fa-icon>
-      </button>
-      <button *ngIf="role !== 'ROLE_ADMIN' && product.active " (click)="addToCart()" class="card__button">
+<!--      <button *ngIf="role !== 'ROLE_ADMIN'" (click)="addToCart()" class="card__button">-->
+<!--        <fa-icon [icon]="faHeart"></fa-icon>-->
+<!--      </button>-->
+      <button *ngIf="role !== 'ROLE_ADMIN' && !product.active " (click)="addToCart()" class="card__button">
         <fa-icon [icon]="faCartPlus"></fa-icon>
       </button>
     </div>

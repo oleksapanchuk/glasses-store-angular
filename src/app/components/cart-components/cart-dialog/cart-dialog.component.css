@@ -66,3 +66,37 @@
 .cart__order-button:hover {
   background: #ff4e00;
 }
+
+@media (max-width: 760px) {
+
+  .cart__top-container {
+    padding: 5px 10px;
+  }
+
+  .cart__item-list {
+    margin: 0;
+    padding: 7px;
+  }
+
+
+  .cart__footer-container {
+    padding: 7px;
+    display: block;
+  }
+
+  .cart__total-info {
+    padding: 7px;
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+
+  .cart__order-button {
+    margin-top: 10px;
+    padding: 10px 50px;
+    font-size: 16px;
+    letter-spacing: 2px;
+
+    transition: 0.5s all;
+  }
+
+}

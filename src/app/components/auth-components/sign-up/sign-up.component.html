@@ -13,21 +13,43 @@
       </div>
 
       <div class="auth__from-input-container"
-           data-validate="Username is required"
-           [class.auth_form-input-invalid]="username?.invalid && (username?.dirty || username?.touched)">
-        <input class="auth__form-input" type="text" formControlName="username" #inputField (input)="serverErrorMessage=''">
+           data-validate="First name is required"
+           [class.auth_form-input-invalid]="firstName?.invalid && (firstName?.dirty || firstName?.touched)">
+        <input class="auth__form-input" type="text" formControlName="firstName" #inputField
+               (input)="serverErrorMessage=''">
         <span class="auth__form-focus-input"></span>
-        <span class="auth__form-label">Username</span>
+        <span class="auth__form-label">First name</span>
 
-        <div *ngIf="username?.invalid && (username?.dirty || username?.touched)" class="auth__alert">
-          <div *ngIf="username?.errors?.['required'] || username?.errors?.['notOnlyWhitespace']">
-            Username is required
+        <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)" class="auth__alert">
+          <div *ngIf="firstName?.errors?.['required'] || firstName?.errors?.['notOnlyWhitespace']">
+            First name is required
           </div>
-          <div *ngIf="username?.errors?.['minlength']">
-            Username must be at least 5 characters long
+          <div *ngIf="firstName?.errors?.['minlength']">
+            First name must be at least 2 characters long
           </div>
-          <div *ngIf="username?.errors?.['maxlength']">
-            Username cannot exceed 20 characters
+          <div *ngIf="firstName?.errors?.['maxlength']">
+            First name cannot exceed 50 characters
+          </div>
+        </div>
+      </div>
+
+      <div class="auth__from-input-container"
+           data-validate="Last name is required"
+           [class.auth_form-input-invalid]="lastName?.invalid && (lastName?.dirty || lastName?.touched)">
+        <input class="auth__form-input" type="text" formControlName="lastName" #inputField
+               (input)="serverErrorMessage=''">
+        <span class="auth__form-focus-input"></span>
+        <span class="auth__form-label">Last name</span>
+
+        <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)" class="auth__alert">
+          <div *ngIf="lastName?.errors?.['required'] || lastName?.errors?.['notOnlyWhitespace']">
+            Last name is required
+          </div>
+          <div *ngIf="lastName?.errors?.['minlength']">
+            Last name must be at least 2 characters long
+          </div>
+          <div *ngIf="lastName?.errors?.['maxlength']">
+            Last name cannot exceed 50 characters
           </div>
         </div>
       </div>
@@ -52,7 +74,8 @@
       <div class="auth__from-input-container auth__validate-password"
            data-validate="Password is required"
            [class.auth_form-input-invalid]="password?.invalid && (password?.dirty || password?.touched)">
-        <input class="auth__form-input" type="password" formControlName="password" #inputField (input)="serverErrorMessage=''">
+        <input class="auth__form-input" type="password" formControlName="password" #inputField
+               (input)="serverErrorMessage=''">
         <span class="auth__form-focus-input"></span>
         <span class="auth__form-label">Password</span>
 

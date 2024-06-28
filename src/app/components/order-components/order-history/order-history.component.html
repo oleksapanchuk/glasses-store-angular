@@ -1,7 +1,10 @@
 <app-route-banner pageName="Order History"></app-route-banner>
 
 <div class="order-history__wrapper">
-  <div class="order-history__container">
+  <div *ngIf="orderItems.length === 0" class="order-history__main-container">
+    <div class="order-history__current-title">You do not have any orders yet</div>
+  </div>
+  <div *ngIf="orderItems.length > 0" class="order-history__container">
 
     <!--TODO latter -->
     <!--    <div class="order-history__menu-container"></div>-->
@@ -10,8 +13,8 @@
       <div class="col-4">Tracking number</div>
       <div class="col-2">Total Price</div>
       <div class="col-2">Status</div>
-      <div class="col-2">Order Date</div>
-      <div class="col-2">Details</div>
+      <div class="col-2 order-hide-title">Order Date</div>
+      <div class="col-2 order-hide-title">Details</div>
     </div>
 
     <div class="order-history__order-items-container">
@@ -20,7 +23,7 @@
         <div class="col-4 order-history__item-details">{{ item.orderTrackingNumber }}</div>
         <div class="col-2 order-history__item-details">{{ item.totalPrice | currency: "USD" }}</div>
         <div class="col-2 order-history__item-details">{{ item.status }}</div>
-        <div class="col-2 order-history__item-details">{{ formatDateString(item.dateCreated) }}</div>
+        <div class="col-2 order-history__item-details order-hide-data">{{ formatDateString(item.dateCreated) }}</div>
         <div class="col-2 order-history__item-details">
           <a routerLink="/account/order-history/order/{{ item.id }}">
             <fa-icon [icon]="faCircleChevronRight"></fa-icon>

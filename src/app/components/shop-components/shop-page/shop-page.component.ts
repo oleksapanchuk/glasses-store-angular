@@ -200,6 +200,15 @@ export class ShopPageComponent implements OnInit {
     this.toggleRefresh();
   }
 
+
+  isContainerVisible = true;
+  buttonText = 'Hide filters';
+
+  toggleFiltersContainer() {
+    this.isContainerVisible = !this.isContainerVisible;
+    this.buttonText = this.isContainerVisible ? 'Hide filters' : 'Show filters';
+  }
+
   protected readonly faSearch = faSearch;
   protected readonly faCaretDown = faCaretDown;
   protected readonly faTimes = faTimes;
@@ -209,4 +218,6 @@ export class ShopPageComponent implements OnInit {
   protected readonly GenderFilter = GenderFilter;
   protected readonly TypeFilter = TypeFilter;
   protected readonly FrameFilter = FrameFilter;
+
+
 }

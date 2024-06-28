@@ -6,7 +6,6 @@ import {OrderDto} from "../common/dto/OrderDto";
 import {Product} from "../common/product";
 
 const ADMIN_API = environment.panShopApiUrl + '/admin';
-const PRODUCT_API = environment.panShopApiUrl + '/products';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +20,7 @@ export class AdminService {
   createProduct(product: Product): Observable<GetResponseDto> {
 
     return this.http.post<GetResponseDto>(
-      `${PRODUCT_API}/create`, {
+      `${ADMIN_API}/products/create`, {
         sku: product.sku,
         name: product.name,
         description: product.description,
@@ -37,7 +36,7 @@ export class AdminService {
   updateProduct(product: Product): Observable<GetResponseDto> {
 
     return this.http.put<GetResponseDto>(
-      `${PRODUCT_API}/update`, {
+      `${ADMIN_API}/products/update`, {
         id: product.id,
         sku: product.sku,
         name: product.name,

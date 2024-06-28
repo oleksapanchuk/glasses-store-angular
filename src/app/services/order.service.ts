@@ -6,10 +6,9 @@ import {PaymentIntent} from "@stripe/stripe-js";
 import {PaymentInfo} from "../common/payment-info";
 import {Purchase} from "../common/purchase";
 import {OrderDto} from "../common/dto/OrderDto";
-import {OrderItem} from "../common/order-item";
 import {OrderDetailsResponse} from "../common/dto/order-details-response.dto";
 
-const ORDER_API = environment.panShopApiUrl + '/order';
+const ORDER_API = environment.panShopApiUrl + '/orders';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -37,16 +36,17 @@ export class OrderService {
     thePageSize: number = 8): Observable<GetResponseOrders> {
 
     return this.http.get<GetResponseOrders>(
-      `${ORDER_API}/fetch-by-username?page=${thePage}&size=${thePageSize}`
+      `${ORDER_API}/fetch-by-email?page=${thePage}&size=${thePageSize}`
     );
   }
 
   placeOrder(purchase: Purchase): Observable<any> {
 
-    return this.http.post<Purchase>(ORDER_API + '/place-order',
+    return this.http.post<Purchase>(
+      `${ORDER_API}/place-order`,
       {
-        shippingAddress: purchase.shippingAddress,
-        order: purchase.order,
+        userId: purchase.user.id,
+        address: purchase.shippingAddress,
         orderItems: purchase.orderItems
       }, httpOptions);
   }

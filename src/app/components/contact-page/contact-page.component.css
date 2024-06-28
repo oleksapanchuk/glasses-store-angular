@@ -28,6 +28,14 @@ p.sub {
   color: #ff4e00;
 }
 
+.address-left {
+  text-align: center;
+}
+
+.address-right {
+  text-align: left;
+}
+
 .address-right a {
   color: #083940;
 }
@@ -124,4 +132,21 @@ p.sub {
   width: 100%;
   height: 350px;
   border: 10px solid #ebeeef;
+}
+
+@media (max-width: 760px) {
+
+  .address-info {
+    padding: 1em 1em;
+  }
+
+  .address-left {
+    padding-top: 10px;
+  }
+
+  .address-right {
+    padding-top: 20px;
+    text-align: center;
+  }
+
 }

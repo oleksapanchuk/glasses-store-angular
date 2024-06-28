@@ -64,9 +64,6 @@ export class ProductService {
     } else if (selectedSortingMethod === SortingMethod.FROM_EXPENSIVE_TO_CHEAP) {
       sortingMethod = SortingField.PRICE;
       sortingOrder = SortingOrder.DESC;
-    } else if (selectedSortingMethod === SortingMethod.HIGHEST_RATING_FIRST) {
-      sortingMethod = SortingField.RATING;
-      sortingOrder = SortingOrder.DESC;
     }
 
     return this.httpClient.get<GetResponseProducts>(
@@ -79,9 +76,8 @@ export class ProductService {
 }
 
 enum SortingField {
-  CREATED_DATE = "product_date_created",
-  PRICE = "product_price",
-  RATING = "product_rating"
+  CREATED_DATE = "date_created",
+  PRICE = "price"
 }
 
 enum SortingOrder {

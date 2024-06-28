@@ -1,6 +1,9 @@
 .shop__container {
   background-color: #f9f9f9;
   padding: 30px 30px;
+
+  display: flex;
+  justify-content: space-between;
 }
 
 .shop__tittle {
@@ -14,6 +17,7 @@
 }
 
 .shop__side-bar {
+  max-width: 600px;
   padding: 0 30px;
 }
 
@@ -241,6 +245,7 @@
 
 
 .shop__product-container {
+  max-width: 1100px;
   min-height: 800px;
   background-color: #f9f9f9;
   padding-top: 15px;
@@ -269,4 +274,53 @@
   background: #f3efef;
   border-color: #f3efef;
   color: #ff4e00;
+}
+
+.mobile__btn {
+  display: none;
+}
+
+
+@media (max-width: 400px) {
+
+  .shop__container {
+    display: inline-block;
+    padding: 0;
+  }
+
+  .shop__side-bar {
+    display: none;
+    max-width: 600px;
+    padding: 0 30px;
+  }
+
+  .col-4 {
+    width: 100%;
+  }
+
+  .shop__product-container {
+    max-width: 1100px;
+    padding: 20px 25px;
+  }
+
+  .mobile__btn {
+    padding-top: 15px;
+    margin: auto;
+
+    display: flex;
+    color: #353434;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    outline: none;
+    letter-spacing: 4px;
+    cursor: pointer;
+    transition: 0.5s all;
+    border-radius: 0;
+  }
+
+  ::ng-deep .p-paginator.p-component {
+    padding: 0;
+  }
+
 }

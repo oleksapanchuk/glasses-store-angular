@@ -1,19 +1,14 @@
 .banner__container {
   background: url(../../../../assets/images/banner-mid.jpg) no-repeat 0px -93px;
   background-size: cover;
-  -webkit-background-size: cover;
-  -o-background-size: cover;
-  -ms-background-size: cover;
-  moz-background-size: cover;
   min-height: 100px;
 }
 
 .banner__breadcrumb ul li fa-icon {
   padding: 0 1em;
-  letter-spacing: 1em;
 }
 
-ul.short {
+.short {
   padding: 3em 0 0 2em;
   font-size: 1em;
   font-weight: 600;
@@ -23,12 +18,28 @@ ul.short {
   text-align: left;
 }
 
-ul.short li {
+.short li {
   display: inline-block;
   color: #fff;
+  font-weight: 600;
 }
 
-ul.short li a {
+.short li a {
   color: #fff;
-  font-weight: 700;
+  font-weight: 600;
+}
+
+@media (max-width: 760px) {
+
+  .banner__container {
+    background: url(../../../../assets/images/banner-mid.jpg) no-repeat 0px -3px;
+    background-size: cover;
+    min-height: 70px;
+  }
+
+  .short {
+    padding: 2em 0 0 2em;
+    font-size: 1em;
+  }
+
 }
